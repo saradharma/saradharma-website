@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donate | SaraDharma</title>
+<link rel="stylesheet" href="assets/css/theme.css">
+<style>
+.panel{background:#fff;padding:28px;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,.08);margin:24px 0}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:24px}
+label{display:block;margin:10px 0 4px;font-weight:bold}
+input,select{width:100%;padding:10px;border:1px solid #ccc;border-radius:8px}
+.note{background:#fff8e8;padding:16px;border-left:4px solid #d9b56b;border-radius:8px}
+@media(max-width:800px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div id="header"></div>
+
+<div id="navigation"></div>
+
+<section class="hero"><img src="assets/images/donatebanner.png" alt="Sara Dharma Donate Banner"></section>
+
+<main class="container">
+<h2>Donate</h2>
+
+<div class="note">
+<strong>Integration Required:</strong> Replace the placeholders below with your live Razorpay Key ID, QR image and server endpoint before going live.
+</div>
+
+<div class="grid">
+<div class="panel">
+<form id="donationForm">
+<label>Donation Purpose</label>
+<select id="purpose">
+<option>Resident Care</option>
+
+<option>Infrastructure</option>
+
+<option>Wellness & Activities</option>
+
+<option>Medical Support</option>
+<option>Sustainability</option>
+<option>General fund</option>
+</select>
+
+!-- update if Resident  care is select the amount  should be Rs. 25000; If infrastructure is selected automatically amount should show as 50000. etc...  -->
+
+<label>Amount (INR)</label>
+<input id="amount" type="number" min="100" value="1000">
+
+<!-- validate inputs -->
+<!-- for General fund min is 10000, max is 1000000 -->
+
+<label>Donor Name</label>
+<input id="name" required>
+
+<label>Email</label>
+<input id="email" type="email" required>
+
+<label>Phone</label>
+<input id="phone">
+
+<p><button class="button" type="button" onclick="startPayment()">Pay with Razorpay</button></p>
+</form>
+</div>
+
+<div class="panel" style="text-align:center">
+<h3>UPI QR Code</h3>
+<img src="assets/images/upi-qr.png" alt="UPI QR" style="max-width:220px;width:100%">
+<p>UPI ID:<br><strong>your-upi@bank</strong></p>
+</div>
+</div>
+</main>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+const RAZORPAY_KEY="YOUR_RAZORPAY_KEY_ID";
+
+function startPayment(){
+  alert("Replace RAZORPAY_KEY and implement a server endpoint that creates Razorpay Orders before going live.");
+}
+
+/*
+Production flow:
+
+1. Browser -> POST /create-order
+2. Server creates Razorpay Order using Razorpay Secret
+3. Browser opens Razorpay Checkout
+4. Razorpay returns payment_id + signature
+5. Server verifies signature
+6. Server stores donation in database/Google Sheet
+7. Server generates PDF receipt
+8. Server emails receipt to donor
+*/
+</script>
+
+<div id="footer"></div>
+
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
