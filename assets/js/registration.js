@@ -1,86 +1,179 @@
-/*************************************************************************
-    SaraDharma Registration
-    registration.js
-    Version 2.0
-*************************************************************************/
+/**************************************************************************
+ *
+ * SaraDharma Registration
+ *
+ * Version 3.0
+ *
+ * Part 1
+ *
+ **************************************************************************/
+
+
+/***********************************************************************
+ CONFIGURATION
+***********************************************************************/
+
+const WEBAPP_URL =
+"https://script.google.com/macros/s/AKfycbzXMycoRg9HKpkFuQBdRB01gjm6EVLu9uCjIndYRnjIdyT8aErJVBdIjDRFU06kpZUDpg/exec";
+
+const MIN_MESSAGE_LENGTH = 100;
+
+const MAX_MESSAGE_LENGTH = 1000;
 
 
 /***********************************************************************
  DOM REFERENCES
 ***********************************************************************/
 
-const form = document.getElementById("registrationForm");
+const form =
+document.getElementById("registrationForm");
 
-const submitButton = document.getElementById("submitButton");
+const submitButton =
+document.getElementById("submitButton");
 
-const clearButton = document.getElementById("clearButton");
+const clearButton =
+document.getElementById("clearButton");
 
-const spinner = document.getElementById("spinner");
+const spinner =
+document.getElementById("spinner");
 
-const successPanel = document.getElementById("successPanel");
+const successPanel =
+document.getElementById("successPanel");
 
-const message = document.getElementById("message");
+const message =
+document.getElementById("message");
 
-const counter = document.getElementById("messageCount");
+const counter =
+document.getElementById("messageCount");
 
 
 /***********************************************************************
- CURRENT MONTH
+ INITIALIZE FORM
 ***********************************************************************/
 
-(function(){
+window.addEventListener(
+
+    "load",
+
+    initializeForm
+
+);
+
+function initializeForm(){
+
+    setCurrentMonth();
+
+    updateCounter();
+
+    hideSuccessPanel();
+
+}
+
+
+/***********************************************************************
+ SET CURRENT MONTH
+***********************************************************************/
+
+function setCurrentMonth(){
 
     const months=[
 
         "January",
+
         "February",
+
         "March",
+
         "April",
+
         "May",
+
         "June",
+
         "July",
+
         "August",
+
         "September",
+
         "October",
+
         "November",
+
         "December"
 
     ];
 
-    document.getElementById("moveMonth").value=
-        months[new Date().getMonth()];
+    document.getElementById(
 
-})();
+        "moveMonth"
+
+    ).value=
+
+    months[new Date().getMonth()];
+
+}
 
 
 /***********************************************************************
  CHARACTER COUNTER
 ***********************************************************************/
 
+message.addEventListener(
+
+    "input",
+
+    updateCounter
+
+);
+
 function updateCounter(){
 
-    const count = message.value.trim().length;
+    const count=
 
-    counter.textContent = count;
+    message.value.length;
 
-    counter.parentElement.classList.remove("valid","invalid");
+    counter.textContent=
 
-    if(count >= 100){
+    count;
 
-        counter.parentElement.classList.add("valid");
+    if(
+
+        count>=MIN_MESSAGE_LENGTH
+
+    ){
+
+        counter.parentElement.classList.remove(
+
+            "invalid"
+
+        );
+
+        counter.parentElement.classList.add(
+
+            "valid"
+
+        );
 
     }
+
     else{
 
-        counter.parentElement.classList.add("invalid");
+        counter.parentElement.classList.remove(
+
+            "valid"
+
+        );
+
+        counter.parentElement.classList.add(
+
+            "invalid"
+
+        );
 
     }
 
 }
-
-message.addEventListener("input",updateCounter);
-
-updateCounter();
 
 
 /***********************************************************************
@@ -89,7 +182,8 @@ updateCounter();
 
 function validateEmail(email){
 
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        .test(email.trim());
 
 }
 
@@ -100,10 +194,10 @@ function validateEmail(email){
 
 function validatePhone(phone){
 
-    return /^[0-9]{6,15}$/.test(phone);
+    return /^[0-9]{6,15}$/
+        .test(phone.trim());
 
 }
-
 
 /***********************************************************************
  NAME VALIDATION
@@ -111,7 +205,7 @@ function validatePhone(phone){
 
 function validateName(name){
 
-    name=name.trim();
+    name = name.trim();
 
     if(name.length < 3){
 
@@ -123,16 +217,23 @@ function validateName(name){
 
 }
 
-
 /***********************************************************************
  MESSAGE VALIDATION
 ***********************************************************************/
 
 function validateMessage(text){
 
-    const len=text.trim().length;
+    const len=
 
-    return len>=100 && len<=1000;
+    text.trim().length;
+
+    return(
+
+        len>=MIN_MESSAGE_LENGTH &&
+
+        len<=MAX_MESSAGE_LENGTH
+
+    );
 
 }
 
@@ -143,9 +244,9 @@ function validateMessage(text){
 
 function showError(field,messageText){
 
-    field.classList.add("error");
-
     field.classList.remove("success");
+
+    field.classList.add("error");
 
     alert(messageText);
 
@@ -163,6 +264,34 @@ function showSuccess(field){
     field.classList.remove("error");
 
     field.classList.add("success");
+
+}
+
+
+/***********************************************************************
+ HIDE SUCCESS PANEL
+***********************************************************************/
+
+function hideSuccessPanel(){
+
+    successPanel.style.display="none";
+
+}
+
+
+/***********************************************************************
+ SHOW SUCCESS PANEL
+***********************************************************************/
+
+function showSuccessPanel(enquiryId){
+
+    successPanel.style.display="block";
+
+    if(document.getElementById("enquiryId")){
+
+        document.getElementById("enquiryId").textContent=enquiryId;
+
+    }
 
 }
 
@@ -189,7 +318,7 @@ function validateForm(){
 
             fullName,
 
-            "Please enter a valid full name."
+            "Please enter your full name."
 
         );
 
@@ -259,7 +388,7 @@ function validateForm(){
 
         alert(
 
-            "Please confirm that the information is correct."
+            "Please confirm the information before submitting."
 
         );
 
@@ -268,6 +397,8 @@ function validateForm(){
         return false;
 
     }
+
+
 
     return true;
 
@@ -334,29 +465,6 @@ function getFormData(){
 
 }
 
-/***********************************************************************
- APPS SCRIPT WEB APP URL   "YOUR_WEBAPP_URL_HERE";
-***********************************************************************/
-
-const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzmYvUjaZamm6EcG6z7iDgsCCQFkrDU_2x7sxSmMeTtKF5sL0SCruwiNP5ymEcgDNj2bQ/exec"
-
-
-/***********************************************************************
- SHOW / HIDE SUCCESS PANEL
-***********************************************************************/
-
-function hideSuccess(){
-
-    successPanel.style.display="none";
-
-}
-
-function showSuccessPanel(){
-
-    successPanel.style.display="block";
-
-}
-
 
 /***********************************************************************
  RESET FORM
@@ -366,28 +474,39 @@ function resetForm(){
 
     form.reset();
 
+    setCurrentMonth();
+
     updateCounter();
 
-    hideSuccess();
+    hideSuccessPanel();
 
-    /* restore current month */
 
-    const months=[
 
-        "January","February","March","April","May","June",
+    document
 
-        "July","August","September","October","November","December"
+        .querySelectorAll(
 
-    ];
+            ".error,.success"
 
-    document.getElementById("moveMonth").value =
-        months[new Date().getMonth()];
+        )
+
+        .forEach(function(item){
+
+            item.classList.remove(
+
+                "error",
+
+                "success"
+
+            );
+
+        });
 
 }
 
 
 /***********************************************************************
- CLEAR BUTTON
+ CLEAR FORM BUTTON
 ***********************************************************************/
 
 clearButton.addEventListener(
@@ -396,7 +515,19 @@ clearButton.addEventListener(
 
     function(){
 
-        setTimeout(resetForm,10);
+        if(
+
+            confirm(
+
+                "Clear the entire enquiry form?"
+
+            )
+
+        ){
+
+            resetForm();
+
+        }
 
     }
 
@@ -404,7 +535,7 @@ clearButton.addEventListener(
 
 
 /***********************************************************************
- HIDE SUCCESS WHEN USER STARTS EDITING AGAIN
+ HIDE SUCCESS WHEN USER EDITS
 ***********************************************************************/
 
 form.querySelectorAll(
@@ -417,19 +548,22 @@ form.querySelectorAll(
 
         "input",
 
-        hideSuccess
+        hideSuccessPanel
 
     );
+
+
 
     control.addEventListener(
 
         "change",
 
-        hideSuccess
+        hideSuccessPanel
 
     );
 
 });
+
 
 
 /***********************************************************************
@@ -444,6 +578,8 @@ form.addEventListener(
 
         e.preventDefault();
 
+        hideSuccessPanel();
+
         if(!validateForm()){
 
             return;
@@ -452,13 +588,29 @@ form.addEventListener(
 
         submitButton.disabled=true;
 
-        spinner.style.display="block";
-
-        const data=getFormData();
+        spinner.style.display="inline-block";
 
         try{
 
-            const response = await fetch(
+            const data=getFormData();
+
+            const formData=new FormData();
+
+            Object.keys(data).forEach(function(key){
+
+                formData.append(
+
+                    key,
+
+                    data[key]
+
+                );
+
+            });
+
+            const response=
+
+            await fetch(
 
                 WEBAPP_URL,
 
@@ -466,19 +618,27 @@ form.addEventListener(
 
                     method:"POST",
 
-                    headers:{
-
-                        "Content-Type":"application/json"
-
-                    },
-
-                    body:JSON.stringify(data)
+                    body:formData
 
                 }
 
             );
 
-            const result = await response.json();
+            if(!response.ok){
+
+                throw new Error(
+
+                    "Server returned "
+
+                    + response.status
+
+                );
+
+            }
+
+            const result=
+
+            await response.json();
 
             spinner.style.display="none";
 
@@ -486,11 +646,13 @@ form.addEventListener(
 
             if(result.success){
 
-                showSuccessPanel();
+                showSuccessPanel(
 
-                form.reset();
+                    result.enquiryId
 
-                updateCounter();
+                );
+
+                resetForm();
 
                 window.scrollTo({
 
@@ -508,7 +670,7 @@ form.addEventListener(
 
                     result.message ||
 
-                    "Unable to submit your enquiry."
+                    "Registration could not be completed."
 
                 );
 
@@ -524,7 +686,7 @@ form.addEventListener(
 
             alert(
 
-                "Unable to connect to the SaraDharma server.\n\n"
+                "Unable to connect to SaraDharma Registration Service.\n\n"
 
                 + err.message
 
