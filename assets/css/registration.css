@@ -731,6 +731,84 @@
 
 }
 
+/*==========================================================
+SUCCESS PANEL
+==========================================================*/
+
+.success-panel{
+
+    display:none;
+
+    margin:40px auto;
+
+    padding:40px;
+
+    background:#F5FFF4;
+
+    border:2px solid #6AA84F;
+
+    border-radius:16px;
+
+    text-align:center;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+
+}
+
+.success-icon{
+
+    font-size:64px;
+
+    color:#4CAF50;
+
+    margin-bottom:15px;
+
+}
+
+.success-panel h2{
+
+    color:#B46A1F;
+
+    margin-bottom:15px;
+
+}
+
+.reference-box{
+
+    display:inline-block;
+
+    margin:25px 0;
+
+    padding:20px 35px;
+
+    background:white;
+
+    border-radius:10px;
+
+    border:1px solid #DDD;
+
+}
+
+.reference-title{
+
+    font-size:14px;
+
+    color:#777;
+
+}
+
+.reference-number{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+    color:#B46A1F;
+
+    letter-spacing:1px;
+
+}
+
 
 /*==========================================================
   END OF FILE
