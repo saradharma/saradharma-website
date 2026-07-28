@@ -285,13 +285,13 @@ function hideSuccessPanel(){
 
 function showSuccessPanel(enquiryId){
 
+    document.getElementById(
+
+        "enquiryId"
+
+    ).textContent=enquiryId;
+
     successPanel.style.display="block";
-
-    if(document.getElementById("enquiryId")){
-
-        document.getElementById("enquiryId").textContent=enquiryId;
-
-    }
 
 }
 
@@ -587,8 +587,8 @@ form.addEventListener(
         }
 
         submitButton.disabled=true;
-
-        spinner.style.display="inline-block";
+     
+        submitButton.innerHTML="Submitting...";
 
         try{
 
@@ -640,19 +640,25 @@ form.addEventListener(
 
             await response.json();
 
-            spinner.style.display="none";
+            submitButton.innerHTML="✓ Submitted";
 
             submitButton.disabled=false;
 
             if(result.success){
 
-                showSuccessPanel(
+              showSuccessPanel(
 
-                    result.enquiryId
+               result.enquiryId
 
-                );
+             );
 
-                resetForm();
+            setTimeout(function(){
+
+              resetForm();
+
+              submitButton.innerHTML="Submit Enquiry";
+
+           },8000);
 
                 window.scrollTo({
 
