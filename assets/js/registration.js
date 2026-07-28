@@ -14,7 +14,7 @@
 ***********************************************************************/
 
 const WEBAPP_URL =
-"https://script.google.com/macros/s/AKfycbzXMycoRg9HKpkFuQBdRB01gjm6EVLu9uCjIndYRnjIdyT8aErJVBdIjDRFU06kpZUDpg/exec";
+"https://script.google.com/macros/s/AKfycbzFsn6SewnaYOLMf1L11vnnv-GzX03UUY6JtZxFxawiHeeouF-y9z9Pyhwr2pwJ4OGf-w/exec";
 
 const MIN_MESSAGE_LENGTH = 100;
 
