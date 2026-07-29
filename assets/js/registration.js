@@ -687,7 +687,7 @@ form.addEventListener(
 
             spinner.style.display="none";
 
-            submitButton.disabled=false;
+            submitButton.disabled=false; 
 
             alert(
 
