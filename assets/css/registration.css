@@ -687,7 +687,24 @@
 
 }
 
+/*=========================================================
+YOUR JOURNEY BEGINS HERE
+=========================================================*/
 
+.journey-image-section{
+    max-width:1400px;
+    margin:60px auto;
+    padding:0 20px;
+    text-align:center;
+}
+
+.journey-image{
+    width:100%;
+    max-width:1400px;
+    height:auto;
+    display:block;
+    margin:0 auto;
+}
 /*==========================================================
   REDUCED MOTION
 ==========================================================*/
