@@ -60,8 +60,13 @@ function enableSmoothScrolling() {
 // ---------------------------------------------------
 // Simple Form Validation
 // ---------------------------------------------------
-
 function enableFormValidation() {
+    return;
+}
+
+
+
+/** function enableFormValidation() {
 
     document.querySelectorAll("form").forEach(form => {
 
@@ -112,7 +117,7 @@ function enableFormValidation() {
 
     });
 
-}
+}   **/
 
 // ---------------------------------------------------
 // Footer Year
