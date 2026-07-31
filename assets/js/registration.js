@@ -15,7 +15,7 @@
 
 const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwsvvCQ6TQpLcf86kEv8VwGRvRjB5rfRUVrsFAWUwkaID7kTqqBOeeFzeSi4QwzQv_l5w/exec"
 
-const MIN_MESSAGE_LENGTH = 100;
+const MIN_MESSAGE_LENGTH = 10;
 
 const MAX_MESSAGE_LENGTH = 1000;
 
