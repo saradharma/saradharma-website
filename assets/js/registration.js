@@ -13,7 +13,7 @@
  CONFIGURATION
 ***********************************************************************/
 
-const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwtQr0LEQObwBTCRAzAAwsdssC9nwUDG1jyB0HkbtqbV8SRmUDYg3XeXhe1HhI7rMA4/exec"
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzFd4gLlRctpjsXu76pq8gCDOCGd9wilyYQwWZJsZMjNER1scKyCZPYO3xjnDq1hb9KGw/exec"
 
 const MIN_MESSAGE_LENGTH = 100;
 
