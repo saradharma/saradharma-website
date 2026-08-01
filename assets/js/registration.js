@@ -704,7 +704,7 @@ form.addEventListener(
 
               submitButton.innerHTML="Submit Enquiry";
 
-           },8000);
+           },18000);
 
                 window.scrollTo({
 
