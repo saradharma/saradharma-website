@@ -692,7 +692,7 @@ form.addEventListener(
 
             if(result.success){
 
-              showSuccessPanel(
+              showSuccessDialog(
 
                result.enquiryId
 
@@ -706,13 +706,7 @@ form.addEventListener(
 
            },18000);
 
-                window.scrollTo({
-
-                    top:0,
-
-                    behavior:"smooth"
-
-                });
+                
 
             }
 
