@@ -532,7 +532,54 @@ clearButton.addEventListener(
 
 );
 
+/********************************************************************
+SUCCESS DIALOG
+********************************************************************/
 
+let successTimer = null;
+
+function showSuccessDialog(referenceNo){
+
+    document.getElementById(
+        "successReference"
+    ).innerHTML = referenceNo;
+
+    document.getElementById(
+        "successOverlay"
+    ).style.display="flex";
+
+    document.body.style.overflow="hidden";
+
+    successTimer=setTimeout(
+
+        closeSuccessDialog,
+
+        8000
+
+    );
+
+}
+
+
+function closeSuccessDialog(){
+
+    if(successTimer){
+
+        clearTimeout(successTimer);
+
+    }
+
+    document.getElementById(
+        "successOverlay"
+    ).style.display="none";
+
+    document.body.style.overflow="auto";
+
+    document.getElementById(
+        "registrationForm"
+    ).reset();
+
+}
 /***********************************************************************
  HIDE SUCCESS WHEN USER EDITS
 ***********************************************************************/
