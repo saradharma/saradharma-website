@@ -578,7 +578,13 @@ function closeSuccessDialog(){
     document.getElementById(
         "registrationForm"
     ).reset();
+     window.scrollTo({
 
+        top:0,
+
+        behavior:"smooth"
+
+    });
 }
 /***********************************************************************
  HIDE SUCCESS WHEN USER EDITS
