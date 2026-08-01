@@ -273,7 +273,7 @@ function showSuccess(field){
 
 function hideSuccessPanel(){
 
-    successPanel.style.display="none";
+    // successPanel.style.display="none";  not needed
 
 }
 
@@ -284,13 +284,7 @@ function hideSuccessPanel(){
 
 function showSuccessPanel(enquiryId){
 
-    document.getElementById(
-
-        "enquiryId"
-
-    ).textContent=enquiryId;
-
-    successPanel.style.display="block";
+    showSuccessDialog(enquiryId);
 
 }
 
