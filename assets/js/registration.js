@@ -690,7 +690,9 @@ form.addEventListener(
             const result=
 
             await response.json();
-
+            console.log(result);
+             alert(JSON.stringify(result));
+         
             submitButton.innerHTML="✓ Submitted";
 
             submitButton.disabled=false;
