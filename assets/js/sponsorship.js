@@ -399,7 +399,7 @@ async function submitSponsorship(event){
 
             showSuccessDialog(
 
-                result.enquiryId
+              result.referenceId
 
             );
 
