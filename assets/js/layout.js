@@ -39,7 +39,7 @@ const navigation = `
 
 <li><a href="registration.html">Registration</a></li>
 
-<li><a href="sponsor.html">Sponsorship</a></li>
+<li><a href="sponsorship.html">Sponsorship</a></li>
 
 <li><a href="donate.html">Donate</a></li>
 <li><a href="contact.html">Contact</a></li>
