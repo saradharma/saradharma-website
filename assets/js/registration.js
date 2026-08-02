@@ -654,6 +654,11 @@ form.addEventListener(
 
             });
 
+            formData.append(
+                   "action",
+                   "registration"
+            );
+
             const response=
 
             await fetch(
