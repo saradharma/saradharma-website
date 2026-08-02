@@ -15,8 +15,8 @@ File : sponsorship.js
 CONFIGURATION
 ***********************************************************************/
 
-const WEBAPP_URL =
-"https://YOUR-APPS-SCRIPT-WEBAPP-URL/exec";
+
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxbqB8BSOFaI6bcQ5xMf-H5lp1dqIc09eRLmyKZEz9ZT6tz8DM4uzixy6v9YMmzp7E77A/exec"
 
 
 /***********************************************************************
