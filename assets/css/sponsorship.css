@@ -1,0 +1,693 @@
+/**************************************************************************
+
+SaraDharma Community
+
+Version : 1.0
+
+File : sponsorship.css
+
+Purpose
+
+Styles unique to the Sponsorship Module.
+
+**************************************************************************/
+
+
+/*************************************************************
+PAGE HEADER
+*************************************************************/
+
+.page-header{
+
+    background:linear-gradient(
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.45)
+    ),
+    url("../images/sponsorship-banner.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    color:white;
+
+    text-align:center;
+
+    padding:90px 20px;
+
+}
+
+
+.page-header h1{
+
+    margin:15px 0;
+
+    font-size:42px;
+
+}
+
+
+.page-header p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    font-size:20px;
+
+    line-height:1.7;
+
+}
+
+
+.logo{
+
+    width:120px;
+
+    height:auto;
+
+}
+
+
+
+/*************************************************************
+DURATION GRID
+*************************************************************/
+
+.duration-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-top:25px;
+
+}
+
+
+
+/*************************************************************
+DURATION CARD
+*************************************************************/
+
+.duration-card{
+
+    cursor:pointer;
+
+    display:block;
+
+}
+
+
+.duration-card input{
+
+    display:none;
+
+}
+
+
+.duration-card div{
+
+    background:white;
+
+    border:2px solid #dddddd;
+
+    border-radius:12px;
+
+    padding:25px;
+
+    text-align:center;
+
+    transition:.25s;
+
+}
+
+
+.duration-card h3{
+
+    margin-bottom:12px;
+
+    color:var(--primary);
+
+}
+
+
+.duration-card p{
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    color:#444;
+
+    margin:0;
+
+}
+
+
+.duration-card:hover div{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 6px 18px rgba(0,0,0,.15);
+
+}
+
+
+.duration-card input:checked + div{
+
+    border-color:var(--primary);
+
+    background:#FFF7EF;
+
+    box-shadow:0 8px 22px rgba(0,0,0,.15);
+
+}
+
+
+
+/*************************************************************
+SPONSORSHIP SUMMARY
+*************************************************************/
+
+.summary-grid input{
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    color:var(--primary);
+
+    text-align:center;
+
+}
+
+
+
+/*************************************************************
+RECOGNITION PANEL
+*************************************************************/
+
+.page-card h2{
+
+    border-bottom:1px solid #eeeeee;
+
+    padding-bottom:10px;
+
+}
+
+
+
+/*************************************************************
+HELP GRID
+*************************************************************/
+
+.help-item{
+
+    transition:.25s;
+
+}
+
+
+.help-item:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 5px 15px rgba(0,0,0,.10);
+
+}
+
+
+
+/*************************************************************
+COMING SOON
+*************************************************************/
+
+.coming-soon{
+
+    background:#FFF9F1;
+
+}
+
+
+.coming-icon{
+
+    font-size:60px;
+
+}
+
+
+
+/*************************************************************
+FAQ
+*************************************************************/
+
+details{
+
+    margin:18px 0;
+
+    border:1px solid #dddddd;
+
+    border-radius:8px;
+
+    padding:14px;
+
+    background:#ffffff;
+
+}
+
+
+summary{
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    color:var(--primary);
+
+}
+
+
+details p{
+
+    margin-top:12px;
+
+    line-height:1.8;
+
+}
+
+
+
+/*************************************************************
+FOOTER
+*************************************************************/
+
+footer{
+
+    background:#333;
+
+    color:white;
+
+    text-align:center;
+
+    padding:35px 20px;
+
+    margin-top:50px;
+
+}
+
+
+footer p{
+
+    margin:8px;
+
+}
+
+
+
+/*************************************************************
+RESPONSIVE
+*************************************************************/
+
+@media(max-width:768px){
+
+.page-header{
+
+    padding:60px 20px;
+
+}
+
+.page-header h1{
+
+    font-size:30px;
+
+}
+
+.page-header p{
+
+    font-size:17px;
+
+}
+
+.logo{
+
+    width:90px;
+
+}
+
+.duration-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+}/**************************************************************************
+
+SaraDharma Community
+
+Version : 1.0
+
+File : sponsorship.css
+
+Purpose
+
+Styles unique to the Sponsorship Module.
+
+**************************************************************************/
+
+
+/*************************************************************
+PAGE HEADER
+*************************************************************/
+
+.page-header{
+
+    background:linear-gradient(
+        rgba(0,0,0,.45),
+        rgba(0,0,0,.45)
+    ),
+    url("../images/sponsorship-banner.jpg");
+
+    background-size:cover;
+
+    background-position:center;
+
+    color:white;
+
+    text-align:center;
+
+    padding:90px 20px;
+
+}
+
+
+.page-header h1{
+
+    margin:15px 0;
+
+    font-size:42px;
+
+}
+
+
+.page-header p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    font-size:20px;
+
+    line-height:1.7;
+
+}
+
+
+.logo{
+
+    width:120px;
+
+    height:auto;
+
+}
+
+
+
+/*************************************************************
+DURATION GRID
+*************************************************************/
+
+.duration-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(220px,1fr));
+
+    gap:25px;
+
+    margin-top:25px;
+
+}
+
+
+
+/*************************************************************
+DURATION CARD
+*************************************************************/
+
+.duration-card{
+
+    cursor:pointer;
+
+    display:block;
+
+}
+
+
+.duration-card input{
+
+    display:none;
+
+}
+
+
+.duration-card div{
+
+    background:white;
+
+    border:2px solid #dddddd;
+
+    border-radius:12px;
+
+    padding:25px;
+
+    text-align:center;
+
+    transition:.25s;
+
+}
+
+
+.duration-card h3{
+
+    margin-bottom:12px;
+
+    color:var(--primary);
+
+}
+
+
+.duration-card p{
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    color:#444;
+
+    margin:0;
+
+}
+
+
+.duration-card:hover div{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 6px 18px rgba(0,0,0,.15);
+
+}
+
+
+.duration-card input:checked + div{
+
+    border-color:var(--primary);
+
+    background:#FFF7EF;
+
+    box-shadow:0 8px 22px rgba(0,0,0,.15);
+
+}
+
+
+
+/*************************************************************
+SPONSORSHIP SUMMARY
+*************************************************************/
+
+.summary-grid input{
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    color:var(--primary);
+
+    text-align:center;
+
+}
+
+
+
+/*************************************************************
+RECOGNITION PANEL
+*************************************************************/
+
+.page-card h2{
+
+    border-bottom:1px solid #eeeeee;
+
+    padding-bottom:10px;
+
+}
+
+
+
+/*************************************************************
+HELP GRID
+*************************************************************/
+
+.help-item{
+
+    transition:.25s;
+
+}
+
+
+.help-item:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 5px 15px rgba(0,0,0,.10);
+
+}
+
+
+
+/*************************************************************
+COMING SOON
+*************************************************************/
+
+.coming-soon{
+
+    background:#FFF9F1;
+
+}
+
+
+.coming-icon{
+
+    font-size:60px;
+
+}
+
+
+
+/*************************************************************
+FAQ
+*************************************************************/
+
+details{
+
+    margin:18px 0;
+
+    border:1px solid #dddddd;
+
+    border-radius:8px;
+
+    padding:14px;
+
+    background:#ffffff;
+
+}
+
+
+summary{
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    color:var(--primary);
+
+}
+
+
+details p{
+
+    margin-top:12px;
+
+    line-height:1.8;
+
+}
+
+
+
+/*************************************************************
+FOOTER
+*************************************************************/
+
+footer{
+
+    background:#333;
+
+    color:white;
+
+    text-align:center;
+
+    padding:35px 20px;
+
+    margin-top:50px;
+
+}
+
+
+footer p{
+
+    margin:8px;
+
+}
+
+
+
+/*************************************************************
+RESPONSIVE
+*************************************************************/
+
+@media(max-width:768px){
+
+.page-header{
+
+    padding:60px 20px;
+
+}
+
+.page-header h1{
+
+    font-size:30px;
+
+}
+
+.page-header p{
+
+    font-size:17px;
+
+}
+
+.logo{
+
+    width:90px;
+
+}
+
+.duration-grid{
+
+    grid-template-columns:1fr;
+
+}
+
+}
