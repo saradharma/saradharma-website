@@ -16,7 +16,7 @@ CONFIGURATION
 ***********************************************************************/
 
 
-const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxbqB8BSOFaI6bcQ5xMf-H5lp1dqIc09eRLmyKZEz9ZT6tz8DM4uzixy6v9YMmzp7E77A/exec"
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzVS-7QlDLfQf4yS-DZ4-ly8TG_jzoRGHJ87um0RFM_PPX20Q3dFjhavJNfMLtO5R77rQ/exec"
 
 
 /***********************************************************************
