@@ -694,8 +694,8 @@ form.addEventListener(
 
               showSuccessDialog(
 
-               result.enquiryId
-
+               // result.enquiryId
+               result.referenceId
              );
 
             setTimeout(function(){
