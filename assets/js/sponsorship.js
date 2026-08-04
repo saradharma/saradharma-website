@@ -16,7 +16,7 @@ CONFIGURATION
 ***********************************************************************/
 
 
-const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbxWlTPNXcBOFY35hofEhqjx9d6dm6KRgAzq5hgiCjLQfta8LP6oohJAT8bkW3cydgEz_g/exec"
+const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbwoBOB7FbQJ0CqnQ-lxL44HAyRTJ_gS5zt2FqGUhPjPr_OWtT23j_sGQG4Kwf6_6LWX/exec"
 
 console.log("Sponsorship.js loaded");
 /***********************************************************************
