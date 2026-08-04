@@ -18,7 +18,7 @@ CONFIGURATION
 
 const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbw9Lb04HVLvHiq-E6GtkXqgbzKXRof20dp2CXMrwAyMMZct7OrqS2eYbcAEtKsLe6L3/exec"
 
-
+console.log("Sponsorship.js loaded");
 /***********************************************************************
 INITIALIZATION
 ***********************************************************************/
