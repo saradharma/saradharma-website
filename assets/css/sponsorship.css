@@ -19,12 +19,12 @@ PAGE HEADER
 
 .page-header{
 
-    background:linear-gradient(
+   /* background:linear-gradient(
         rgba(0,0,0,.45),
         rgba(0,0,0,.45)
     ),
     url("../images/sponsorbanner.png");
-
+    */
     background-size:cover;
 
     background-position:center;
