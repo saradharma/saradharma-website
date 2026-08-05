@@ -24,7 +24,7 @@ PAGE HEADER
         rgba(0,0,0,.45)
     ),
     url("../images/sponsorbanner.png");
-    */
+   
     background-size:cover;
 
     background-position:center;
@@ -34,6 +34,7 @@ PAGE HEADER
     text-align:center;
 
     padding:90px 20px;
+   */
 
 }
 
