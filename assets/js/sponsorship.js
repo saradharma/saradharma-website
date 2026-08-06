@@ -2,16 +2,17 @@
  *
  * SaraDharma Community
  *
- * Version : 5.1
+ * Version : 5.2
+ *
  * File    : sponsorship.js
  *
  * Purpose :
+ *
  * Resident & Infrastructure Sponsorship
  *
  **************************************************************************/
 
 "use strict";
-
 
 /**************************************************************************
 CONFIGURATION
@@ -20,8 +21,8 @@ CONFIGURATION
 const WEBAPP_URL =
 "https://script.google.com/macros/s/AKfycbzQVWji2VOvG8omxm9KsUApNz_LS5Go73WmqCQ62qkTk5NlWhhjWcBxw0dzgdQVcg_W/exec";
 
-
 let successTimer = null;
+
 
 
 /**************************************************************************
@@ -40,101 +41,17 @@ document.addEventListener(
 
 function initialiseSponsorship(){
 
-    initialiseResidentCards();
+    initialiseSelectionCards();
 
-    initialiseFacilityCards();
+    initialiseSponsorshipCards();
 
     document
-
         .getElementById(
-
             "sponsorshipForm"
-
         )
-
         .addEventListener(
-
             "submit",
-
             submitSponsorship
-
-        );
-
-}
-
-
-/**************************************************************************
-RESIDENT SPONSORSHIP
-**************************************************************************/
-
-function initialiseResidentCards(){
-
-    const radios =
-
-        document.querySelectorAll(
-
-            'input[name="residentDuration"]'
-
-        );
-
-    radios.forEach(function(radio){
-
-        radio.addEventListener(
-
-            "change",
-
-            function(){
-
-                updateResidentSummary(
-
-                    radio
-
-                );
-
-            }
-
-        );
-
-    });
-
-}
-
-
-
-function updateResidentSummary(radio){
-
-    document
-
-        .getElementById(
-
-            "residentDuration"
-
-        )
-
-        .value =
-
-        radio.value;
-
-    document
-
-        .getElementById(
-
-            "residentAmount"
-
-        )
-
-        .value =
-
-        Number(
-
-            radio.dataset.amount
-
-        )
-
-        .toLocaleString(
-
-            "en-IN"
-
         );
 
 }
@@ -142,16 +59,132 @@ function updateResidentSummary(radio){
 
 
 /**************************************************************************
-INFRASTRUCTURE SPONSORSHIP
+SPONSORSHIP TYPE
 **************************************************************************/
 
-function initialiseFacilityCards(){
+function initialiseSelectionCards(){
+
+    document
+        .getElementById(
+            "residentSelector"
+        )
+        .addEventListener(
+            "click",
+            showResidentSection
+        );
+
+    document
+        .getElementById(
+            "infrastructureSelector"
+        )
+        .addEventListener(
+            "click",
+            showInfrastructureSection
+        );
+
+}
+
+
+
+/**************************************************************************
+SHOW RESIDENT SECTION
+**************************************************************************/
+
+function showResidentSection(){
+
+    document
+        .getElementById(
+            "residentSelector"
+        )
+        .classList
+        .add(
+            "active"
+        );
+
+    document
+        .getElementById(
+            "infrastructureSelector"
+        )
+        .classList
+        .remove(
+            "active"
+        );
+
+    document
+        .getElementById(
+            "residentSection"
+        )
+        .style
+        .display =
+        "block";
+
+    document
+        .getElementById(
+            "infrastructureSection"
+        )
+        .style
+        .display =
+        "none";
+
+}
+
+
+
+/**************************************************************************
+SHOW INFRASTRUCTURE SECTION
+**************************************************************************/
+
+function showInfrastructureSection(){
+
+    document
+        .getElementById(
+            "residentSelector"
+        )
+        .classList
+        .remove(
+            "active"
+        );
+
+    document
+        .getElementById(
+            "infrastructureSelector"
+        )
+        .classList
+        .add(
+            "active"
+        );
+
+    document
+        .getElementById(
+            "residentSection"
+        )
+        .style
+        .display =
+        "none";
+
+    document
+        .getElementById(
+            "infrastructureSection"
+        )
+        .style
+        .display =
+        "block";
+
+}
+
+
+
+/**************************************************************************
+INITIALISE SPONSORSHIP CARDS
+**************************************************************************/
+
+function initialiseSponsorshipCards(){
 
     const cards =
 
         document.querySelectorAll(
 
-            'input[name="facilityItem"]'
+            'input[name="sponsorshipChoice"]'
 
         );
 
@@ -163,7 +196,7 @@ function initialiseFacilityCards(){
 
             function(){
 
-                updateFacilitySummary(
+                updateSponsorshipSummary(
 
                     card
 
@@ -177,42 +210,62 @@ function initialiseFacilityCards(){
 
 }
 
+/**************************************************************************
+PART 1 END
+**************************************************************************//**************************************************************************
+ *
+ * SaraDharma Community
+ *
+ * Version : 5.2
+ *
+ * File    : sponsorship.js
+ *
+ * Purpose :
+ *
+ * Resident & Infrastructure Sponsorship
+ *
+ **************************************************************************/
+
+"use strict";
+
+/**************************************************************************
+CONFIGURATION
+**************************************************************************/
+
+const WEBAPP_URL =
+"https://script.google.com/macros/s/AKfycbzQVWji2VOvG8omxm9KsUApNz_LS5Go73WmqCQ62qkTk5NlWhhjWcBxw0dzgdQVcg_W/exec";
+
+let successTimer = null;
 
 
-function updateFacilitySummary(card){
+
+/**************************************************************************
+INITIALIZE
+**************************************************************************/
+
+document.addEventListener(
+
+    "DOMContentLoaded",
+
+    initialiseSponsorship
+
+);
+
+
+
+function initialiseSponsorship(){
+
+    initialiseSelectionCards();
+
+    initialiseSponsorshipCards();
 
     document
-
         .getElementById(
-
-            "residentDuration"
-
+            "sponsorshipForm"
         )
-
-        .value =
-
-        card.value;
-
-    document
-
-        .getElementById(
-
-            "residentAmount"
-
-        )
-
-        .value =
-
-        Number(
-
-            card.dataset.amount
-
-        )
-
-        .toLocaleString(
-
-            "en-IN"
-
+        .addEventListener(
+            "submit",
+            submitSponsorship
         );
 
 }
@@ -220,7 +273,228 @@ function updateFacilitySummary(card){
 
 
 /**************************************************************************
-VALIDATION
+SPONSORSHIP TYPE
+**************************************************************************/
+
+function initialiseSelectionCards(){
+
+    document
+        .getElementById(
+            "residentSelector"
+        )
+        .addEventListener(
+            "click",
+            showResidentSection
+        );
+
+    document
+        .getElementById(
+            "infrastructureSelector"
+        )
+        .addEventListener(
+            "click",
+            showInfrastructureSection
+        );
+
+}
+
+
+
+/**************************************************************************
+SHOW RESIDENT SECTION
+**************************************************************************/
+
+function showResidentSection(){
+
+    document
+        .getElementById(
+            "residentSelector"
+        )
+        .classList
+        .add(
+            "active"
+        );
+
+    document
+        .getElementById(
+            "infrastructureSelector"
+        )
+        .classList
+        .remove(
+            "active"
+        );
+
+    document
+        .getElementById(
+            "residentSection"
+        )
+        .style
+        .display =
+        "block";
+
+    document
+        .getElementById(
+            "infrastructureSection"
+        )
+        .style
+        .display =
+        "none";
+
+}
+
+
+
+/**************************************************************************
+SHOW INFRASTRUCTURE SECTION
+**************************************************************************/
+
+function showInfrastructureSection(){
+
+    document
+        .getElementById(
+            "residentSelector"
+        )
+        .classList
+        .remove(
+            "active"
+        );
+
+    document
+        .getElementById(
+            "infrastructureSelector"
+        )
+        .classList
+        .add(
+            "active"
+        );
+
+    document
+        .getElementById(
+            "residentSection"
+        )
+        .style
+        .display =
+        "none";
+
+    document
+        .getElementById(
+            "infrastructureSection"
+        )
+        .style
+        .display =
+        "block";
+
+}
+
+
+
+/**************************************************************************
+INITIALISE SPONSORSHIP CARDS
+**************************************************************************/
+
+function initialiseSponsorshipCards(){
+
+    const cards =
+
+        document.querySelectorAll(
+
+            'input[name="sponsorshipChoice"]'
+
+        );
+
+    cards.forEach(function(card){
+
+        card.addEventListener(
+
+            "change",
+
+            function(){
+
+                updateSponsorshipSummary(
+
+                    card
+
+                );
+
+            }
+
+        );
+
+    });
+
+}
+
+/**************************************************************************
+PART 1 END
+**************************************************************************/
+
+/**************************************************************************
+UPDATE SPONSORSHIP SUMMARY
+**************************************************************************/
+
+function updateSponsorshipSummary(card){
+
+    const category =
+
+        card.dataset.category;
+
+    const item =
+
+        card.dataset.item;
+
+    const amount =
+
+        Number(
+            card.dataset.amount
+        );
+
+
+
+    document
+        .getElementById(
+            "sponsorshipCategory"
+        )
+        .value =
+        category;
+
+    document
+        .getElementById(
+            "selectedOption"
+        )
+        .value =
+        item;
+
+    document
+        .getElementById(
+            "selectedAmount"
+        )
+        .value =  amount
+
+    
+    document
+        .getElementById(
+            "selectedSponsorship"
+        )
+        .style
+        .display =
+        "block";
+
+
+
+    document
+        .getElementById(
+            "sponsorshipForm"
+        )
+        .style
+        .display =
+        "block";
+
+}
+
+
+
+/**************************************************************************
+VALIDATE FORM
 **************************************************************************/
 
 function validateForm(){
@@ -228,20 +502,17 @@ function validateForm(){
     if(
 
         document
-
         .getElementById(
-
-            "residentDuration"
-
+            "selectedOption"
         )
-
-        .value===""
+        .value
+        .trim()===""
 
     ){
 
         alert(
 
-            "Please select a Resident Sponsorship duration or an Infrastructure Sponsorship."
+            "Please select a sponsorship."
 
         );
 
@@ -254,15 +525,10 @@ function validateForm(){
     if(
 
         document
-
         .getElementById(
-
             "sponsorName"
-
         )
-
         .value
-
         .trim()===""
 
     ){
@@ -274,14 +540,10 @@ function validateForm(){
         );
 
         document
-
-        .getElementById(
-
-            "sponsorName"
-
-        )
-
-        .focus();
+            .getElementById(
+                "sponsorName"
+            )
+            .focus();
 
         return false;
 
@@ -292,15 +554,10 @@ function validateForm(){
     if(
 
         document
-
         .getElementById(
-
             "email"
-
         )
-
         .value
-
         .trim()===""
 
     ){
@@ -312,14 +569,10 @@ function validateForm(){
         );
 
         document
-
-        .getElementById(
-
-            "email"
-
-        )
-
-        .focus();
+            .getElementById(
+                "email"
+            )
+            .focus();
 
         return false;
 
@@ -330,15 +583,10 @@ function validateForm(){
     if(
 
         document
-
         .getElementById(
-
             "phone"
-
         )
-
         .value
-
         .trim()===""
 
     ){
@@ -350,14 +598,10 @@ function validateForm(){
         );
 
         document
-
-        .getElementById(
-
-            "phone"
-
-        )
-
-        .focus();
+            .getElementById(
+                "phone"
+            )
+            .focus();
 
         return false;
 
@@ -368,15 +612,10 @@ function validateForm(){
     if(
 
         document
-
         .getElementById(
-
             "city"
-
         )
-
         .value
-
         .trim()===""
 
     ){
@@ -388,14 +627,10 @@ function validateForm(){
         );
 
         document
-
-        .getElementById(
-
-            "city"
-
-        )
-
-        .focus();
+            .getElementById(
+                "city"
+            )
+            .focus();
 
         return false;
 
@@ -406,15 +641,10 @@ function validateForm(){
     if(
 
         document
-
         .getElementById(
-
             "country"
-
         )
-
         .value
-
         .trim()===""
 
     ){
@@ -426,14 +656,10 @@ function validateForm(){
         );
 
         document
-
-        .getElementById(
-
-            "country"
-
-        )
-
-        .focus();
+            .getElementById(
+                "country"
+            )
+            .focus();
 
         return false;
 
@@ -444,13 +670,9 @@ function validateForm(){
     if(
 
         !document
-
         .getElementById(
-
             "agree"
-
         )
-
         .checked
 
     ){
@@ -471,6 +693,9 @@ function validateForm(){
 
 }
 
+/**************************************************************************
+PART 2 END
+**************************************************************************/
 
 /**************************************************************************
 SUBMIT SPONSORSHIP
@@ -487,8 +712,11 @@ async function submitSponsorship(event){
     }
 
     const submitButton =
-        event.target.querySelector(
-            'button[type="submit"]'
+
+        document.getElementById(
+
+            "submitButton"
+
         );
 
     submitButton.disabled = true;
@@ -500,132 +728,204 @@ async function submitSponsorship(event){
         const formData = new FormData();
 
         formData.append(
+
             "action",
+
             "sponsorship"
+
         );
 
         formData.append(
+
+            "category",
+
+            document.getElementById(
+
+                "sponsorshipCategory"
+
+            ).value
+
+        );
+
+        formData.append(
+
             "duration",
+
             document.getElementById(
-                "residentDuration"
+
+                "selectedOption"
+
             ).value
+
         );
 
         formData.append(
+
             "amount",
+
             document.getElementById(
-                "residentAmount"
-            ).value.replace(/,/g,"")
+
+                "selectedAmount"
+
+            ).value
+
         );
 
         formData.append(
+
             "sponsorName",
+
             document.getElementById(
+
                 "sponsorName"
+
             ).value.trim()
+
         );
 
         formData.append(
+
             "email",
+
             document.getElementById(
+
                 "email"
+
             ).value.trim()
+
         );
 
         formData.append(
+
             "countryCode",
+
             document.getElementById(
+
                 "countryCode"
+
             ).value
+
         );
 
         formData.append(
+
             "phone",
+
             document.getElementById(
+
                 "phone"
+
             ).value.trim()
+
         );
 
         formData.append(
+
             "city",
+
             document.getElementById(
+
                 "city"
+
             ).value.trim()
+
         );
 
         formData.append(
+
             "country",
+
             document.getElementById(
+
                 "country"
+
             ).value.trim()
+
         );
 
         formData.append(
+
             "receipt80G",
+
             document.getElementById(
+
                 "receipt80G"
+
             ).value
+
         );
 
         formData.append(
+
             "recognitionName",
+
             document.getElementById(
+
                 "recognitionName"
+
             ).value.trim()
+
         );
 
         formData.append(
+
             "dedicationType",
+
             document.getElementById(
+
                 "dedicationType"
+
             ).value
+
         );
 
         formData.append(
+
             "dedicationName",
+
             document.getElementById(
+
                 "dedicationName"
+
             ).value.trim()
+
         );
 
         formData.append(
+
             "comments",
+
             document.getElementById(
+
                 "comments"
+
             ).value.trim()
+
         );
 
-        const response =
-            await fetch(
-                WEBAPP_URL,
-                {
-                    method:"POST",
-                    body:formData
-                }
-            );
+        const response = await fetch(
 
-        if(!response.ok){
+            WEBAPP_URL,
 
-            throw new Error(
+            {
 
-                "Server returned " +
+                method:"POST",
 
-                response.status
+                body:formData
 
-            );
+            }
 
-        }
+        );
 
         const result =
+
             await response.json();
 
         if(result.success){
 
             showSuccessDialog(
 
-                result.sponsorshipId ||
-
-                result.referenceId
+                result.sponsorshipId
 
             );
 
@@ -633,11 +933,9 @@ async function submitSponsorship(event){
 
         else{
 
-            alert(
+            throw new Error(
 
-                result.message ||
-
-                "Unable to submit sponsorship."
+                result.message
 
             );
 
@@ -647,13 +945,9 @@ async function submitSponsorship(event){
 
     catch(error){
 
-        console.error(error);
-
         alert(
 
-            "Unable to connect to SaraDharma Sponsorship Service.\n\n"
-
-            + error.message
+            error.message
 
         );
 
@@ -661,9 +955,9 @@ async function submitSponsorship(event){
 
     finally{
 
-        submitButton.disabled=false;
+        submitButton.disabled = false;
 
-        submitButton.innerHTML=
+        submitButton.innerHTML =
 
             "Proceed to Payment";
 
@@ -672,39 +966,29 @@ async function submitSponsorship(event){
 }
 
 
+
 /**************************************************************************
 SUCCESS DIALOG
 **************************************************************************/
 
-function showSuccessDialog(referenceNo){
+function showSuccessDialog(reference){
 
     document.getElementById(
 
         "successReference"
 
-    ).innerHTML =
-
-        referenceNo;
+    ).innerHTML = reference;
 
     document.getElementById(
 
         "successOverlay"
 
-    ).style.display="flex";
+    ).style.display = "flex";
 
-    document.body.style.overflow="hidden";
-
-    successTimer =
-
-        setTimeout(
-
-            closeSuccessDialog,
-
-            8000
-
-        );
+    document.body.style.overflow = "hidden";
 
 }
+
 
 
 /**************************************************************************
@@ -713,27 +997,18 @@ CLOSE SUCCESS DIALOG
 
 function closeSuccessDialog(){
 
-    if(successTimer){
-
-        clearTimeout(
-
-            successTimer
-
-        );
-
-    }
-
     document.getElementById(
 
         "successOverlay"
 
-    ).style.display="none";
+    ).style.display = "none";
 
-    document.body.style.overflow="auto";
+    document.body.style.overflow = "auto";
 
     resetForm();
 
 }
+
 
 
 /**************************************************************************
@@ -750,43 +1025,57 @@ function resetForm(){
 
     document.getElementById(
 
-        "residentDuration"
+        "selectedSponsorship"
 
-    ).value="";
+    ).style.display = "none";
 
     document.getElementById(
 
-        "residentAmount"
+        "sponsorshipForm"
 
-    ).value="";
+    ).style.display = "none";
 
-    document
+    document.getElementById(
 
-        .querySelectorAll(
+        "residentSection"
 
-            'input[name="residentDuration"]'
+    ).style.display = "none";
 
-        )
+    document.getElementById(
 
-        .forEach(function(r){
+        "infrastructureSection"
 
-            r.checked=false;
+    ).style.display = "none";
 
-        });
+    document.getElementById(
 
-    document
+        "residentSelector"
 
-        .querySelectorAll(
+    ).classList.remove(
 
-            'input[name="facilityItem"]'
+        "active"
 
-        )
+    );
 
-        .forEach(function(r){
+    document.getElementById(
 
-            r.checked=false;
+        "infrastructureSelector"
 
-        });
+    ).classList.remove(
+
+        "active"
+
+    );
+
+    document.querySelectorAll(
+
+        'input[name="sponsorshipChoice"]'
+
+    ).forEach(function(item){
+
+        item.checked = false;
+
+    });
 
     window.scrollTo({
 
@@ -798,3 +1087,6 @@ function resetForm(){
 
 }
 
+/**************************************************************************
+END OF FILE
+**************************************************************************/
