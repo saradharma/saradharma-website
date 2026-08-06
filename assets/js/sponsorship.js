@@ -1,27 +1,32 @@
 /**************************************************************************
-
-SaraDharma Community
-
-Version : 1.0
-
-File : sponsorship.js
-
-**************************************************************************/
+ *
+ * SaraDharma Community
+ *
+ * Version : 5.1
+ * File    : sponsorship.js
+ *
+ * Purpose :
+ * Resident & Infrastructure Sponsorship
+ *
+ **************************************************************************/
 
 "use strict";
 
 
-/***********************************************************************
+/**************************************************************************
 CONFIGURATION
-***********************************************************************/
+**************************************************************************/
+
+const WEBAPP_URL =
+"https://script.google.com/macros/s/AKfycbzQVWji2VOvG8omxm9KsUApNz_LS5Go73WmqCQ62qkTk5NlWhhjWcBxw0dzgdQVcg_W/exec";
 
 
-const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbzQVWji2VOvG8omxm9KsUApNz_LS5Go73WmqCQ62qkTk5NlWhhjWcBxw0dzgdQVcg_W/exec"
+let successTimer = null;
 
-console.log("Sponsorship.js loaded");
-/***********************************************************************
-INITIALIZATION
-***********************************************************************/
+
+/**************************************************************************
+INITIALIZE
+**************************************************************************/
 
 document.addEventListener(
 
@@ -32,13 +37,20 @@ document.addEventListener(
 );
 
 
+
 function initialiseSponsorship(){
 
-    initialiseDurationCards();
+    initialiseResidentCards();
+
+    initialiseFacilityCards();
 
     document
 
-        .getElementById("sponsorshipForm")
+        .getElementById(
+
+            "sponsorshipForm"
+
+        )
 
         .addEventListener(
 
@@ -51,17 +63,19 @@ function initialiseSponsorship(){
 }
 
 
-/***********************************************************************
-DURATION SELECTION
-***********************************************************************/
+/**************************************************************************
+RESIDENT SPONSORSHIP
+**************************************************************************/
 
-function initialiseDurationCards(){
+function initialiseResidentCards(){
 
-    const radios = document.querySelectorAll(
+    const radios =
 
-        'input[name="residentDuration"]'
+        document.querySelectorAll(
 
-    );
+            'input[name="residentDuration"]'
+
+        );
 
     radios.forEach(function(radio){
 
@@ -71,7 +85,11 @@ function initialiseDurationCards(){
 
             function(){
 
-                updateSummary(radio);
+                updateResidentSummary(
+
+                    radio
+
+                );
 
             }
 
@@ -82,25 +100,38 @@ function initialiseDurationCards(){
 }
 
 
-function updateSummary(radio){
 
-    document.getElementById(
+function updateResidentSummary(radio){
 
-        "residentDuration"
+    document
 
-    ).value = radio.value;
+        .getElementById(
 
-    document.getElementById(
+            "residentDuration"
 
-        "residentAmount"
+        )
 
-    ).value =
+        .value =
+
+        radio.value;
+
+    document
+
+        .getElementById(
+
+            "residentAmount"
+
+        )
+
+        .value =
 
         Number(
 
             radio.dataset.amount
 
-        ).toLocaleString(
+        )
+
+        .toLocaleString(
 
             "en-IN"
 
@@ -109,297 +140,492 @@ function updateSummary(radio){
 }
 
 
-/***********************************************************************
-VALIDATION
-***********************************************************************/
 
-function validateForm(){
+/**************************************************************************
+INFRASTRUCTURE SPONSORSHIP
+**************************************************************************/
 
-    const form =
+function initialiseFacilityCards(){
 
-        document.getElementById(
+    const cards =
 
-            "sponsorshipForm"
+        document.querySelectorAll(
+
+            'input[name="facilityItem"]'
 
         );
 
-    if(
+    cards.forEach(function(card){
 
-        !form.checkValidity()
+        card.addEventListener(
 
-    ){
+            "change",
 
-        form.reportValidity();
+            function(){
 
-        return false;
+                updateFacilitySummary(
 
-    }
+                    card
 
-    if(
+                );
 
-        document.getElementById(
+            }
+
+        );
+
+    });
+
+}
+
+
+
+function updateFacilitySummary(card){
+
+    document
+
+        .getElementById(
 
             "residentDuration"
 
-        ).value===""
+        )
+
+        .value =
+
+        card.value;
+
+    document
+
+        .getElementById(
+
+            "residentAmount"
+
+        )
+
+        .value =
+
+        Number(
+
+            card.dataset.amount
+
+        )
+
+        .toLocaleString(
+
+            "en-IN"
+
+        );
+
+}
+
+
+
+/**************************************************************************
+VALIDATION
+**************************************************************************/
+
+function validateForm(){
+
+    if(
+
+        document
+
+        .getElementById(
+
+            "residentDuration"
+
+        )
+
+        .value===""
+
     ){
 
         alert(
 
-            "Please choose a sponsorship duration."
+            "Please select a Resident Sponsorship duration or an Infrastructure Sponsorship."
 
         );
 
         return false;
 
     }
+
+
+
+    if(
+
+        document
+
+        .getElementById(
+
+            "sponsorName"
+
+        )
+
+        .value
+
+        .trim()===""
+
+    ){
+
+        alert(
+
+            "Please enter Sponsor Name."
+
+        );
+
+        document
+
+        .getElementById(
+
+            "sponsorName"
+
+        )
+
+        .focus();
+
+        return false;
+
+    }
+
+
+
+    if(
+
+        document
+
+        .getElementById(
+
+            "email"
+
+        )
+
+        .value
+
+        .trim()===""
+
+    ){
+
+        alert(
+
+            "Please enter Email Address."
+
+        );
+
+        document
+
+        .getElementById(
+
+            "email"
+
+        )
+
+        .focus();
+
+        return false;
+
+    }
+
+
+
+    if(
+
+        document
+
+        .getElementById(
+
+            "phone"
+
+        )
+
+        .value
+
+        .trim()===""
+
+    ){
+
+        alert(
+
+            "Please enter Mobile Number."
+
+        );
+
+        document
+
+        .getElementById(
+
+            "phone"
+
+        )
+
+        .focus();
+
+        return false;
+
+    }
+
+
+
+    if(
+
+        document
+
+        .getElementById(
+
+            "city"
+
+        )
+
+        .value
+
+        .trim()===""
+
+    ){
+
+        alert(
+
+            "Please enter City."
+
+        );
+
+        document
+
+        .getElementById(
+
+            "city"
+
+        )
+
+        .focus();
+
+        return false;
+
+    }
+
+
+
+    if(
+
+        document
+
+        .getElementById(
+
+            "country"
+
+        )
+
+        .value
+
+        .trim()===""
+
+    ){
+
+        alert(
+
+            "Please enter Country."
+
+        );
+
+        document
+
+        .getElementById(
+
+            "country"
+
+        )
+
+        .focus();
+
+        return false;
+
+    }
+
+
+
+    if(
+
+        !document
+
+        .getElementById(
+
+            "agree"
+
+        )
+
+        .checked
+
+    ){
+
+        alert(
+
+            "Please accept the declaration."
+
+        );
+
+        return false;
+
+    }
+
+
 
     return true;
 
 }
 
 
-/***********************************************************************
-SUBMIT
-***********************************************************************/
+/**************************************************************************
+SUBMIT SPONSORSHIP
+**************************************************************************/
 
 async function submitSponsorship(event){
 
     event.preventDefault();
 
-    if(
-
-        !validateForm()
-
-    ){
+    if(!validateForm()){
 
         return;
 
     }
 
     const submitButton =
-
         event.target.querySelector(
-
             'button[type="submit"]'
-
         );
 
-    submitButton.disabled=true;
+    submitButton.disabled = true;
 
-    submitButton.innerHTML="Submitting...";
+    submitButton.innerHTML = "Submitting...";
 
     try{
 
-        const formData =
-
-            new FormData();
+        const formData = new FormData();
 
         formData.append(
-
             "action",
-
             "sponsorship"
-
         );
 
         formData.append(
-
             "duration",
-
             document.getElementById(
-
                 "residentDuration"
-
             ).value
-
         );
 
         formData.append(
-
             "amount",
-
             document.getElementById(
-
                 "residentAmount"
-
-            ).value
-
+            ).value.replace(/,/g,"")
         );
 
         formData.append(
-
             "sponsorName",
-
             document.getElementById(
-
                 "sponsorName"
-
             ).value.trim()
-
         );
 
         formData.append(
-
             "email",
-
             document.getElementById(
-
                 "email"
-
             ).value.trim()
-
         );
 
         formData.append(
-
             "countryCode",
-
             document.getElementById(
-
                 "countryCode"
-
             ).value
-
         );
 
         formData.append(
-
             "phone",
-
             document.getElementById(
-
                 "phone"
-
             ).value.trim()
-
         );
 
         formData.append(
-
             "city",
-
             document.getElementById(
-
                 "city"
-
             ).value.trim()
-
         );
 
         formData.append(
-
             "country",
-
             document.getElementById(
-
                 "country"
-
             ).value.trim()
-
         );
 
         formData.append(
-
-            "pan",
-
-            document.getElementById(
-
-                "pan"
-
-            ).value.trim()
-
-        );
-
-        formData.append(
-
             "receipt80G",
-
             document.getElementById(
-
                 "receipt80G"
-
             ).value
-
         );
 
         formData.append(
-
             "recognitionName",
-
             document.getElementById(
-
                 "recognitionName"
-
             ).value.trim()
-
         );
 
         formData.append(
-
             "dedicationType",
-
             document.getElementById(
-
                 "dedicationType"
-
             ).value
-
         );
 
         formData.append(
-
             "dedicationName",
-
             document.getElementById(
-
                 "dedicationName"
-
             ).value.trim()
-
         );
 
         formData.append(
-
             "comments",
-
             document.getElementById(
-
                 "comments"
-
             ).value.trim()
-
         );
 
         const response =
-
             await fetch(
-
                 WEBAPP_URL,
-
                 {
-
                     method:"POST",
-
                     body:formData
-
                 }
+            );
+
+        if(!response.ok){
+
+            throw new Error(
+
+                "Server returned " +
+
+                response.status
 
             );
 
-        const result =
+        }
 
+        const result =
             await response.json();
 
-        if(
-
-            result.success
-
-        ){
+        if(result.success){
 
             showSuccessDialog(
 
-              result.referenceId
+                result.sponsorshipId ||
+
+                result.referenceId
 
             );
 
@@ -409,7 +635,9 @@ async function submitSponsorship(event){
 
             alert(
 
-                result.message
+                result.message ||
+
+                "Unable to submit sponsorship."
 
             );
 
@@ -423,7 +651,9 @@ async function submitSponsorship(event){
 
         alert(
 
-            "Unable to submit sponsorship request."
+            "Unable to connect to SaraDharma Sponsorship Service.\n\n"
+
+            + error.message
 
         );
 
@@ -442,12 +672,9 @@ async function submitSponsorship(event){
 }
 
 
-/***********************************************************************
+/**************************************************************************
 SUCCESS DIALOG
-***********************************************************************/
-
-let successTimer=null;
-
+**************************************************************************/
 
 function showSuccessDialog(referenceNo){
 
@@ -455,7 +682,7 @@ function showSuccessDialog(referenceNo){
 
         "successReference"
 
-    ).innerHTML=
+    ).innerHTML =
 
         referenceNo;
 
@@ -467,22 +694,32 @@ function showSuccessDialog(referenceNo){
 
     document.body.style.overflow="hidden";
 
-    successTimer=setTimeout(
+    successTimer =
 
-        closeSuccessDialog,
+        setTimeout(
 
-        8000
+            closeSuccessDialog,
 
-    );
+            8000
+
+        );
 
 }
 
+
+/**************************************************************************
+CLOSE SUCCESS DIALOG
+**************************************************************************/
 
 function closeSuccessDialog(){
 
     if(successTimer){
 
-        clearTimeout(successTimer);
+        clearTimeout(
+
+            successTimer
+
+        );
 
     }
 
@@ -493,6 +730,17 @@ function closeSuccessDialog(){
     ).style.display="none";
 
     document.body.style.overflow="auto";
+
+    resetForm();
+
+}
+
+
+/**************************************************************************
+RESET FORM
+**************************************************************************/
+
+function resetForm(){
 
     document.getElementById(
 
@@ -512,6 +760,34 @@ function closeSuccessDialog(){
 
     ).value="";
 
+    document
+
+        .querySelectorAll(
+
+            'input[name="residentDuration"]'
+
+        )
+
+        .forEach(function(r){
+
+            r.checked=false;
+
+        });
+
+    document
+
+        .querySelectorAll(
+
+            'input[name="facilityItem"]'
+
+        )
+
+        .forEach(function(r){
+
+            r.checked=false;
+
+        });
+
     window.scrollTo({
 
         top:0,
@@ -521,3 +797,4 @@ function closeSuccessDialog(){
     });
 
 }
+
