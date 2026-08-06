@@ -11,7 +11,125 @@ Purpose
 Reusable UI components used throughout the website.
 
 **************************************************************************/
+/**************************************************************************
+COMMON HEADER
+**************************************************************************/
 
+.site-header{
+
+    background:#fffdf8;
+
+    border-bottom:1px solid #eadfc8;
+
+}
+
+.header-container{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:18px 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.logo-link{
+
+    text-decoration:none;
+
+}
+
+.site-logo{
+
+    width:90px;
+
+    height:auto;
+
+}
+
+.site-title{
+
+    flex:1;
+
+}
+
+.site-title h1{
+
+    margin:0;
+
+    color:#0d4b2f;
+
+    font-size:46px;
+
+    font-family:Georgia,serif;
+
+}
+
+.site-tagline{
+
+    margin-top:8px;
+
+    letter-spacing:4px;
+
+    color:#7a5a22;
+
+    font-size:18px;
+
+}
+
+.site-subtitle{
+
+    margin-top:8px;
+
+    color:#666;
+
+    font-size:16px;
+
+}
+
+@media(max-width:768px){
+
+.header-container{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.site-logo{
+
+    width:70px;
+
+}
+
+.site-title h1{
+
+    font-size:34px;
+
+}
+
+.site-tagline{
+
+    letter-spacing:2px;
+
+    font-size:15px;
+
+}
+
+.site-subtitle{
+
+    font-size:14px;
+
+}
+
+}
 
 /*************************************************************
 CONTAINER
