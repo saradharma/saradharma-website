@@ -347,7 +347,35 @@ RESPONSIVE
 
 }
 
+/* ==========================================================
+Selection Cards
+========================================================== */
 
+.selectable-card{
+
+cursor:pointer;
+
+transition:all .25s ease;
+
+}
+
+.selectable-card:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 10px 24px rgba(0,0,0,.10);
+
+}
+
+.selectable-card.active{
+
+border:3px solid var(--primary);
+
+background:#fff8ef;
+
+box-shadow:0 12px 30px rgba(198,106,0,.18);
+
+}
 
 
 
