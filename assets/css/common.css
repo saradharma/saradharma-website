@@ -627,5 +627,116 @@ RESPONSIVE
 
 }
 
+/**************************************************************************
+COMMON FOOTER
+**************************************************************************/
+
+.site-footer{
+
+    background:#23452b;
+
+    color:#ffffff;
+
+    margin-top:60px;
+
+}
+
+.footer-container{
+
+    max-width:1300px;
+
+    margin:auto;
+
+    padding:45px 20px;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(260px,1fr));
+
+    gap:40px;
+
+}
+
+.footer-column h3{
+
+    margin-top:0;
+
+    color:#F7D68A;
+
+}
+
+.footer-column p{
+
+    line-height:1.8;
+
+    color:#eeeeee;
+
+}
+
+.footer-column ul{
+
+    list-style:none;
+
+    margin:0;
+
+    padding:0;
+
+}
+
+.footer-column li{
+
+    margin:10px 0;
+
+}
+
+.footer-column a{
+
+    color:#ffffff;
+
+    text-decoration:none;
+
+}
+
+.footer-column a:hover{
+
+    color:#F7D68A;
+
+}
+
+.footer-tagline{
+
+    margin-top:20px;
+
+    font-style:italic;
+
+    color:#F7D68A;
+
+}
+
+.footer-bottom{
+
+    border-top:1px solid rgba(255,255,255,.15);
+
+    text-align:center;
+
+    padding:18px;
+
+    font-size:14px;
+
+    color:#dddddd;
+
+}
+
+@media(max-width:768px){
+
+.footer-container{
+
+    text-align:center;
+
+}
+
+}
+
 
 
