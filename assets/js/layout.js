@@ -1,15 +1,67 @@
+/**************************************************************************
+ *
+ * SaraDharma Community
+ *
+ * Version : 5.1
+ * File    : layout.js
+ *
+ * Purpose :
+ * Common Header, Navigation and Footer used by all pages.
+ *
+ **************************************************************************/
+
+
+/**************************************************************************
+HEADER
+**************************************************************************/
+
 const header = `
 
-<header>
+<header class="site-header">
 
-<div class="container">
-    <!-- img src="assets/images/logo.png" alt="SaraDharma Logo" class="logo">
-    <h1>SaraDharma</h1>
-    <p class="tagline">Nourish Body • Nurture Mind • Live in Harmony</p -->
-  </div>
+    <div class="header-container">
+
+        <a href="index.html" class="logo-link">
+
+            <img
+                src="assets/images/logo.png"
+                alt="SaraDharma Community"
+                class="logo">
+
+        </a>
+
+        <div class="site-title">
+
+            <h1>
+
+                SaraDharma Community
+
+            </h1>
+
+            <div class="site-motto">
+
+                HELP • ONE • ANOTHER
+
+            </div>
+
+            <div class="site-tagline">
+
+                Nourish Body • Nurture Mind • Live in Harmony
+
+            </div>
+
+        </div>
+
+    </div>
+
 </header>
 
 `;
+
+
+/**************************************************************************
+NAVIGATION
+**************************************************************************/
 
 const navigation = `
 
@@ -17,32 +69,159 @@ const navigation = `
 
 <ul>
 
-<li><a href="index.html">Home</a></li>
+<li>
 
-<li><a href="vision.html">Vision</a></li>
+<a href="index.html">
 
-<li><a href="facilities.html">Facilities</a></li>
+Home
 
-<li><a href="residency.html">Residency</a></li>
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="vision.html">
+
+Vision
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="facilities.html">
+
+Facilities
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="residency.html">
+
+Residency
+
+</a>
+
+</li>
+
+
 
 <li class="dropdown">
 
-<a href="location.html">Location</a>
+<a href="location.html">
+
+Location
+
+</a>
 
 <ul class="dropdown-menu">
 
-<li><a href="life-in-halasuru.html">Life in Halasuru</a></li>
+<li>
+
+<a href="life-in-halasuru.html">
+
+Life in Halasuru
+
+</a>
+
+</li>
 
 </ul>
 
 </li>
 
-<li><a href="registration.html">Registration</a></li>
 
-<li><a href="sponsorship.html">Sponsorship</a></li>
 
-<li><a href="donate.html">Donate</a></li>
-<li><a href="contact.html">Contact</a></li>
+<li>
+
+<a href="registration.html">
+
+Registration
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="sponsorship.html">
+
+Sponsorship
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="donate.html">
+
+Donate
+
+</a>
+
+</li>
+
+
+
+<li class="dropdown">
+
+<a href="contact.html">
+
+Contact
+
+</a>
+
+<ul class="dropdown-menu">
+
+<li>
+
+<a href="contact.html">
+
+Contact Us
+
+</a>
+
+</li>
+
+<li>
+
+<a href="faq.html">
+
+FAQ
+
+</a>
+
+</li>
+
+<li>
+
+<a href="employment.html">
+
+Employment
+
+</a>
+
+</li>
+
+</ul>
+
+</li>
 
 </ul>
 
@@ -50,104 +229,286 @@ const navigation = `
 
 `;
 
+
+/**************************************************************************
+FOOTER
+**************************************************************************/
+
 const footer = `
 
-<footer>
+<footer class="site-footer">
 
- <div class="footer-container">
-        <img src="assets/images/logo.png" class="logo" alt="SaraDharma Logo">
-       
+<div class="footer-container">
 
-        <h2 class="footer-title">
+    <img
+        src="assets/images/logo.png"
+        class="logo"
+        alt="SaraDharma Logo">
 
-            SaraDharma
+    <h2 class="footer-title">
 
-        </h2>
+        SaraDharma Community
 
-        <p class="footer-tagline">
+    </h2>
 
-            Nourish Body • Nurture Mind • Live in Harmony
+    <p class="footer-tagline">
 
-        </p>
+        Nourish Body • Nurture Mind • Live in Harmony
 
-        <p class="footer-motto">
+    </p>
 
-            Living with Purpose • Growing in Harmony • Helping One Another
+    <p class="footer-motto">
 
-        </p>
+        Living with Purpose •
+        Growing in Harmony •
+        Helping One Another
 
-        <div class="footer-divider"></div>
+    </p>
 
-        <p class="footer-message">
+    <div class="footer-divider"></div>
 
-            A Residential Wellness Community inspired by timeless
-            values where older adults experience dignity,
-            companionship, holistic well-being,
-            and the joy of helping one another.
+    <p class="footer-message">
 
-        </p>
+        A Residential Wellness Community
+        inspired by timeless values where
+        older adults experience dignity,
+        companionship,
+        holistic well-being,
+        and the joy of helping one another.
 
-        <div class="footer-divider"></div>
+    </p>
 
-        <p class="footer-prayer">
+    <div class="footer-divider"></div>
 
-            <strong>Sree Guruvayoorappan Sahayam</strong>
+    <p class="footer-prayer">
 
-            <br><br>
+        <strong>
 
-            Hara Hara Shankara<br>
+        Sree Guruvayoorappan Sahayam
 
-            Jaya Jaya Shankara
+        </strong>
 
-        </p>
+        <br><br>
 
-        <div class="footer-divider"></div>
+        Hara Hara Shankara
+
+        <br>
+
+        Jaya Jaya Shankara
+
+    </p>
+
+    <div class="footer-divider"></div>
+
+</div>
 
 </footer>
 
 `;
 
+
+/**************************************************************************
+COPYRIGHT
+**************************************************************************/
+
 const copyright = `
+
 <div class="copyright">
 
- © 2026 SaraDharma Community<br>
+© 2026 SaraDharma Community
 
-            All Rights Reserved.
+<br>
+
+All Rights Reserved.
+
 </div>
+
 `;
 
+/**************************************************************************
+INITIALIZE COMMON LAYOUT
+**************************************************************************/
 
+document.addEventListener(
 
+    "DOMContentLoaded",
 
-document.addEventListener("DOMContentLoaded", () => {
+    function(){
 
-    const headerDiv = document.getElementById("header");
-    if (headerDiv) {
-        headerDiv.innerHTML = header;
-    }
+        /**************************************************************
+        HEADER
+        **************************************************************/
 
-    const navigationDiv = document.getElementById("navigation");
-    if (navigationDiv) {
-        navigationDiv.innerHTML = navigation;
-    }
+        const headerDiv =
 
-    const footerDiv = document.getElementById("footer");
-    if (footerDiv) {
-        footerDiv.innerHTML = footer + copyright;
-    }
+            document.getElementById(
 
-    // Highlight current page
-    const current = window.location.pathname.split("/").pop();
+                "header"
 
-    document.querySelectorAll(".navbar a").forEach(link => {
+            );
 
-        if (link.getAttribute("href") === current) {
+        if(headerDiv){
 
-            link.classList.add("active");
+            headerDiv.innerHTML = header;
 
         }
 
-    });
 
-});
+
+        /**************************************************************
+        NAVIGATION
+        **************************************************************/
+
+        const navigationDiv =
+
+            document.getElementById(
+
+                "navigation"
+
+            );
+
+        if(navigationDiv){
+
+            navigationDiv.innerHTML = navigation;
+
+        }
+
+
+
+        /**************************************************************
+        FOOTER
+        **************************************************************/
+
+        const footerDiv =
+
+            document.getElementById(
+
+                "footer"
+
+            );
+
+        if(footerDiv){
+
+            footerDiv.innerHTML =
+
+                footer +
+
+                copyright;
+
+        }
+
+
+
+        /**************************************************************
+        ACTIVE MENU
+        **************************************************************/
+
+        let current =
+
+            window.location.pathname
+
+            .split("/")
+
+            .pop();
+
+        if(
+
+            current===""
+
+            ||
+
+            current===undefined
+
+        ){
+
+            current="index.html";
+
+        }
+
+
+
+        document
+
+        .querySelectorAll(
+
+            ".main-nav a"
+
+        )
+
+        .forEach(function(link){
+
+            const href =
+
+                link.getAttribute(
+
+                    "href"
+
+                );
+
+            if(
+
+                href===current
+
+            ){
+
+                link.classList.add(
+
+                    "active"
+
+                );
+
+            }
+
+        });
+
+
+
+        /**************************************************************
+        OPEN PARENT DROPDOWN
+        **************************************************************/
+
+        document
+
+        .querySelectorAll(
+
+            ".dropdown"
+
+        )
+
+        .forEach(function(dropdown){
+
+            if(
+
+                dropdown.querySelector(
+
+                    ".active"
+
+                )
+
+            ){
+
+                dropdown.classList.add(
+
+                    "current"
+
+                );
+
+            }
+
+        });
+
+
+
+        /**************************************************************
+        MOBILE NAVIGATION
+        (Reserved for Version 6)
+        **************************************************************/
+
+
+
+    }
+
+);
+
+
 
