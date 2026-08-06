@@ -231,8 +231,7 @@ PART 1 END
 CONFIGURATION
 **************************************************************************/
 
-const WEBAPP_URL =
-"https://script.google.com/macros/s/AKfycbzQVWji2VOvG8omxm9KsUApNz_LS5Go73WmqCQ62qkTk5NlWhhjWcBxw0dzgdQVcg_W/exec";
+
 
 let successTimer = null;
 
