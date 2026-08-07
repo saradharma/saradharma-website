@@ -18,7 +18,6 @@
 CONFIGURATION
 **************************************************************************/
 
-const WEBAPP_URL ="https://script.google.com/macros/s/AKfycbw18QRd_utxUO4QRPiBxaataBMdX1jrDpPG1Sp-tLKglFRj-OOvVUjruQoKcLwNcN0GYg/exec";
 
 let successTimer = null;
 
@@ -691,7 +690,7 @@ async function submitSponsorship(event){
 
         const response = await fetch(
 
-            WEBAPP_URL,
+            SaraDharma.WEBAPP_URL,
 
             {
 
