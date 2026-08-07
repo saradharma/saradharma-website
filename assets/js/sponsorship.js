@@ -708,9 +708,9 @@ async function submitSponsorship(event){
             await response.json();
 
         if(result.success){
-
+             console.log(result);
             showSuccessDialog(
-                console.log(result);
+                
                 result.sponsorshipId
 
             );
