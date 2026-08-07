@@ -711,7 +711,7 @@ async function submitSponsorship(event){
              console.log(result);
             showSuccessDialog(
                 
-                result.sponsorshipId
+                result.referenceId
 
             );
 
