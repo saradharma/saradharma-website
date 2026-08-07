@@ -13,7 +13,6 @@
  CONFIGURATION
 ***********************************************************************/
 
-const WEBAPP_URL = "https://script.google.com/macros/s/AKfycbw18QRd_utxUO4QRPiBxaataBMdX1jrDpPG1Sp-tLKglFRj-OOvVUjruQoKcLwNcN0GYg/exec"
 
 const MIN_MESSAGE_LENGTH = 10;
 
@@ -663,7 +662,7 @@ form.addEventListener(
 
             await fetch(
 
-                WEBAPP_URL,
+                SaraDharma.WEBAPP_URL,
 
                 {
 
