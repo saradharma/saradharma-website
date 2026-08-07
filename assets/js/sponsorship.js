@@ -710,7 +710,7 @@ async function submitSponsorship(event){
         if(result.success){
 
             showSuccessDialog(
-
+                console.log(result);
                 result.sponsorshipId
 
             );
