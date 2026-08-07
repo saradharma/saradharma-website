@@ -639,98 +639,73 @@ RESPONSIVE
 COMMON FOOTER
 **************************************************************************/
 
+/* ==========================================================
+Footer
+========================================================== */
+
 .site-footer{
 
-    background:#23452b;
+    background:#3f2b1d;
 
     color:#ffffff;
 
-    margin-top:60px;
+    padding:24px 20px 12px;
 
 }
 
-.footer-container{
+.footer-row{
 
-    max-width:1300px;
+    display:flex;
 
-    margin:auto;
+    align-items:center;
 
-    padding:45px 20px;
+    justify-content:space-between;
 
-    display:grid;
+    gap:30px;
 
-    grid-template-columns:
-        repeat(auto-fit,minmax(260px,1fr));
-
-    gap:40px;
+    flex-wrap:wrap;
 
 }
 
-.footer-column h3{
+.footer-logo img{
 
-    margin-top:0;
-
-    color:#F7D68A;
+    height:64px;
 
 }
 
-.footer-column p{
+.footer-item{
 
-    line-height:1.8;
+    flex:1;
 
-    color:#eeeeee;
-
-}
-
-.footer-column ul{
-
-    list-style:none;
-
-    margin:0;
-
-    padding:0;
-
-}
-
-.footer-column li{
-
-    margin:10px 0;
-
-}
-
-.footer-column a{
-
-    color:#ffffff;
-
-    text-decoration:none;
-
-}
-
-.footer-column a:hover{
-
-    color:#F7D68A;
-
-}
-
-.footer-tagline{
-
-    margin-top:20px;
-
-    font-style:italic;
-
-    color:#F7D68A;
-
-}
-
-.footer-bottom{
-
-    border-top:1px solid rgba(255,255,255,.15);
+    min-width:180px;
 
     text-align:center;
 
-    padding:18px;
+    line-height:1.6;
 
-    font-size:14px;
+    font-size:15px;
+
+}
+
+.footer-item strong{
+
+    color:#f4d27a;
+
+    font-size:16px;
+
+}
+
+.footer-copyright{
+
+    margin-top:20px;
+
+    padding-top:15px;
+
+    border-top:1px solid rgba(255,255,255,.20);
+
+    text-align:center;
+
+    font-size:13px;
 
     color:#dddddd;
 
