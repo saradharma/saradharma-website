@@ -238,70 +238,46 @@ const footer = `
 
 <footer class="site-footer">
 
-<div class="footer-container">
+    <div class="footer-row">
 
-    <img
-        src="assets/images/logo.png"
-        class="logo"
-        alt="SaraDharma Logo">
+        <div class="footer-logo">
 
-    <h2 class="footer-title">
+            <img
+                src="assets/images/logo.png"
+                alt="SaraDharma Community">
 
-        SaraDharma Community
+        </div>
 
-    </h2>
+        <div class="footer-item">
 
-    <p class="footer-tagline">
+            <strong>Living with Purpose</strong><br>
+            Care • Dignity • Community
 
-        Nourish Body • Nurture Mind • Live in Harmony
+        </div>
 
-    </p>
+        <div class="footer-item">
 
-    <p class="footer-motto">
+            <strong>Nourish Body</strong><br>
+            Nurture Mind • Live in Harmony
 
-        Living with Purpose •
-        Growing in Harmony •
-        Helping One Another
+        </div>
 
-    </p>
+        <div class="footer-item">
 
-    <div class="footer-divider"></div>
+            <strong>Sree Guru Bhagavatpada</strong><br>
+            Adi Shankaracharya
 
-    <p class="footer-message">
+        </div>
 
-        A Residential Wellness Community
-        inspired by timeless values where
-        older adults experience dignity,
-        companionship,
-        holistic well-being,
-        and the joy of helping one another.
+    </div>
 
-    </p>
+    <div class="footer-copyright">
 
-    <div class="footer-divider"></div>
+        © 2026 SaraDharma Community • Bengaluru, Karnataka, India
 
-    <p class="footer-prayer">
+    </div>
 
-        <strong>
-
-        Sree Guruvayoorappan Sahayam
-
-        </strong>
-
-        <br><br>
-
-        Hara Hara Shankara
-
-        <br>
-
-        Jaya Jaya Shankara
-
-    </p>
-
-    <div class="footer-divider"></div>
-
-</div>
-
+</footer>
 </footer>
 
 `;
