@@ -22,53 +22,7 @@ window.SaraDharma = {
 
 };
 
-/**************************************************************************
-HEADER logo listing removed
-*************************************************************************
 
-const header = `
-
-<header class="site-header">
-
-    <div class="header-container">
-
-        <a href="index.html" class="logo-link">
-
-            <img
-                src="assets/images/logo.png"
-                alt="SaraDharma Community"
-                class="logo">
-
-        </a>
-
-        <div class="site-title">
-
-            <h1>
-
-                SaraDharma Community
-
-            </h1>
-
-            <div class="site-motto">
-
-                HELP • ONE • ANOTHER
-
-            </div>
-
-            <div class="site-tagline">
-
-                Nourish Body • Nurture Mind • Live in Harmony
-
-            </div>
-
-        </div>
-
-    </div>
-
-</header>
-
-`;
-**/
 
 /**************************************************************************
 NAVIGATION
@@ -77,9 +31,6 @@ NAVIGATION
 const navigation = `
 
 <nav class="main-nav">
-
-
-
 
 <ul>
 <li class="nav-brand">
