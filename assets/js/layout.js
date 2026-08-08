@@ -77,7 +77,12 @@ NAVIGATION
 const navigation = `
 
 <nav class="main-nav">
-<div class="nav-brand">
+
+
+
+
+<ul>
+<li class="nav-brand">
 
     <a href="index.html">
 
@@ -86,15 +91,16 @@ const navigation = `
             alt="SaraDharma"
             class="nav-logo">
 
-    </a>
+    
 
     <span class="nav-title">
 
         SaraDharma
 
     </span>
+    </a>
 
-</div>
+</li>
 
 
 <ul class="nav-menu">
