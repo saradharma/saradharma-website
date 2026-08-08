@@ -23,8 +23,8 @@ window.SaraDharma = {
 };
 
 /**************************************************************************
-HEADER
-**************************************************************************/
+HEADER logo listing removed
+*************************************************************************
 
 const header = `
 
@@ -68,7 +68,7 @@ const header = `
 </header>
 
 `;
-
+**/
 
 /**************************************************************************
 NAVIGATION
@@ -77,8 +77,27 @@ NAVIGATION
 const navigation = `
 
 <nav class="main-nav">
+<div class="nav-brand">
 
-<ul>
+    <a href="index.html">
+
+        <img
+            src="assets/images/logo.png"
+            alt="SaraDharma"
+            class="nav-logo">
+
+    </a>
+
+    <span class="nav-title">
+
+        SaraDharma
+
+    </span>
+
+</div>
+
+
+<ul class="nav-menu">
 
 <li>
 
@@ -326,7 +345,7 @@ document.addEventListener(
         HEADER
         **************************************************************/
 
-        const headerDiv =
+       /* const headerDiv =
 
             document.getElementById(
 
@@ -338,7 +357,7 @@ document.addEventListener(
 
             headerDiv.innerHTML = header;
 
-        }
+        }  */
 
 
 
