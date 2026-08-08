@@ -558,6 +558,14 @@ Navigation Brand
 
 }
 
+.main-nav ul{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
 .nav-brand{
 
     display:flex;
@@ -568,11 +576,42 @@ Navigation Brand
 
 }
 
+.nav-brand a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    text-decoration:none;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .nav-logo{
 
-    width:36px;
+    width:34px;
 
-    height:36px;
+    height:34px;
 
     object-fit:contain;
 
@@ -582,11 +621,14 @@ Navigation Brand
 
     color:#ffffff;
 
-    font-size:24px;
+    font-size:22px;
 
     font-weight:700;
 
     white-space:nowrap;
+
+    letter-spacing:.5px;
+
 
 }
 
