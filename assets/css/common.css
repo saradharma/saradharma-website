@@ -542,7 +542,65 @@ COMING SOON
 }
 
 
+/**************************************************************************
+Navigation Brand
+**************************************************************************/
 
+.main-nav{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 20px;
+
+}
+
+.nav-brand{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.nav-logo{
+
+    width:36px;
+
+    height:36px;
+
+    object-fit:contain;
+
+}
+
+.nav-title{
+
+    color:#ffffff;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+}
+
+.nav-menu{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+    flex:1;
+
+}
 /*************************************************************
 HELP GRID
 *************************************************************/
