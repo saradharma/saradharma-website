@@ -52,7 +52,7 @@ const navigation = `
     </a>
 
 </li>
-
+</ul>
 
 <ul class="nav-menu">
 
@@ -190,7 +190,7 @@ Contact Us
 
 <a href="faq.html">
 
-FAQ
+FAQQ
 
 </a>
 
@@ -211,7 +211,7 @@ Employment
 </li>
 
 </ul>
-</ul>
+
 </nav>
 
 `;
