@@ -294,10 +294,13 @@ const footer = `
 
         <div class="footer-item">
 
-            <strong>Sree Guru Bhagavatpada</strong><br>
-            Adi Shankaracharya
+           <strong>Sree Guruvayoorappan Sahayam</strong><br>
 
-        </div>
+            Hara Hara Shankara<br>
+
+            Jaya Jaya Shankara
+
+            </div>
 
     </div>
 
@@ -308,7 +311,6 @@ const footer = `
     </div>
 
 </footer>
-</footer>
 
 `;
 
@@ -317,7 +319,7 @@ const footer = `
 COPYRIGHT
 **************************************************************************/
 
-const copyright = `
+/** const copyright = `
 
 <div class="copyright">
 
@@ -329,7 +331,7 @@ All Rights Reserved.
 
 </div>
 
-`;
+`;  **/
 
 /**************************************************************************
 INITIALIZE COMMON LAYOUT
@@ -395,11 +397,8 @@ document.addEventListener(
 
         if(footerDiv){
 
-            footerDiv.innerHTML =
-
-                footer +
-
-                copyright;
+            footerDiv.innerHTML = footer;
+    
 
         }
 
