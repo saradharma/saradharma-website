@@ -100,7 +100,7 @@ const navigation = `
 
         <a href="location.html">
 
-            Location ▼
+            Location
 
         </a>
 
@@ -162,7 +162,7 @@ const navigation = `
 
         <a href="contact.html">
 
-            Contact ▼
+            Contact
 
         </a>
 
