@@ -558,11 +558,19 @@ Navigation Brand
 
 }
 
-.main-nav ul{
+.main-nav .nav-menu{
 
     display:flex;
 
     align-items:center;
+
+    width:100%;
+
+    list-style:none;
+
+    margin:0;
+
+    padding:0 20px;
 
 }
 
@@ -614,17 +622,83 @@ Navigation Brand
 
 }
 
-.nav-menu{
 
-    display:flex;
+/**************************************************************************
+Dropdown Menu
+**************************************************************************/
 
-    align-items:center;
+.main-nav .dropdown{
 
-    justify-content:flex-end;
-
-    flex:1;
+    position:relative;
 
 }
+
+.main-nav .dropdown-menu{
+
+    display:none;
+
+    position:absolute;
+
+    top:100%;
+
+    left:0;
+
+    min-width:220px;
+
+    margin:0;
+
+    padding:10px 0;
+
+    list-style:none;
+
+    background:#ffffff;
+
+    border-radius:0 0 10px 10px;
+
+    box-shadow:0 8px 24px rgba(0,0,0,.18);
+
+    z-index:999;
+
+}
+
+.main-nav .dropdown-menu li{
+
+    width:100%;
+
+}
+
+.main-nav .dropdown-menu a{
+
+    display:block;
+
+    padding:12px 20px;
+
+    color:#333;
+
+    text-decoration:none;
+
+    white-space:nowrap;
+
+}
+
+.main-nav .dropdown-menu a:hover{
+
+    background:#f7efe4;
+
+    color:var(--primary);
+
+}
+
+.main-nav .dropdown:hover .dropdown-menu{
+
+    display:block;
+
+}
+
+
+
+
+
 /*************************************************************
 HELP GRID
 *************************************************************/
