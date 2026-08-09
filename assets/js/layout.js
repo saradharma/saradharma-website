@@ -16,7 +16,7 @@ GLOBAL CONFIGURATION
 window.SaraDharma = {
 
     WEBAPP_URL :
-    "https://script.google.com/macros/s/AKfycby42zN83mXgL9mkvUmRJ3LfttibBpjINFAu14V2KAfteAu0jGTmUOZjtK8nEnz5__G5bg/exec",
+    "https://script.google.com/macros/s/AKfycbzSF8mZIes8iimZ7z1eHlyndvLCQHJed98tb5eXKdHRFQ7JiHFndTa3ZXPhSQLdLi4kAA/exec",
 
     VERSION : "5.2"
 
