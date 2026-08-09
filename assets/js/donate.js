@@ -347,11 +347,14 @@ function validateDonationForm(){
 
 
 
+
 /**************************************************************************
 SUBMIT DONATION
 **************************************************************************/
 
-async function submitDonation(){
+async function submitDonation(event){
+
+    event.preventDefault();
 
     if(
 
@@ -363,73 +366,133 @@ async function submitDonation(){
 
     }
 
-    const data = {
+    const submitButton =
 
-        category :
+        document.getElementById(
+
+            "submitButton"
+
+        );
+
+    submitButton.disabled = true;
+
+    submitButton.innerHTML =
+
+        "Submitting...";
+
+    try{
+
+        const formData =
+
+            new FormData();
+
+        formData.append(
+
+            "action",
+
+            "donation"
+
+        );
+
+        formData.append(
+
+            "category",
 
             document.getElementById(
 
                 "donationPurpose"
 
-            ).value,
+            ).value
 
-        amount :
+        );
+
+        formData.append(
+
+            "amount",
 
             document.getElementById(
 
                 "donationAmount"
 
-            ).value,
+            ).value
 
-        donorName :
+        );
+
+        formData.append(
+
+            "donorName",
 
             document.getElementById(
 
                 "donorName"
 
-            ).value.trim(),
+            ).value.trim()
 
-        email :
+        );
+
+        formData.append(
+
+            "email",
 
             document.getElementById(
 
                 "donorEmail"
 
-            ).value.trim(),
+            ).value.trim()
 
-        phone :
+        );
+
+        formData.append(
+
+            "phone",
 
             document.getElementById(
 
                 "donorPhone"
 
-            ).value.trim(),
+            ).value.trim()
 
-        address :
+        );
+
+        formData.append(
+
+            "address",
 
             document.getElementById(
 
                 "donorAddress"
 
-            ).value.trim(),
+            ).value.trim()
 
-        country :
+        );
+
+        formData.append(
+
+            "country",
 
             document.getElementById(
 
                 "donorCountry"
 
-            ).value,
+            ).value
 
-        panNumber :
+        );
+
+        formData.append(
+
+            "panNumber",
 
             document.getElementById(
 
                 "panNumber"
 
-            ).value.trim(),
+            ).value.trim()
 
-        receiptRequired :
+        );
+
+        formData.append(
+
+            "receiptRequired",
 
             document.getElementById(
 
@@ -437,42 +500,43 @@ async function submitDonation(){
 
             ).value
 
-    };
+        );
 
+        formData.append(
 
-    try{
+            "paymentMethod",
+
+            "SIMULATED"
+
+        );
+
+        formData.append(
+
+            "paymentStatus",
+
+            "SIMULATED"
+
+        );
+
+        formData.append(
+
+            "paymentId",
+
+            ""
+
+        );
 
         const response =
 
             await fetch(
 
-                window.SaraDharma.WEBAPP_URL,
+                SaraDharma.WEBAPP_URL,
 
                 {
 
-                    method : "POST",
+                    method:"POST",
 
-                    headers : {
-
-                        "Content-Type":
-
-                        "application/json"
-
-                    },
-
-                    body :
-
-                        JSON.stringify({
-
-                            action :
-
-                                "donation",
-
-                            data :
-
-                                data
-
-                        })
+                    body:formData
 
                 }
 
@@ -482,23 +546,21 @@ async function submitDonation(){
 
             await response.json();
 
-        console.log(
-
-            result
-
-        );
-
         if(
 
             result.success
 
         ){
 
+            console.log(
+
+                result
+
+            );
+
             showSuccessDialog(
 
-                result.referenceId,
-
-                "Donation Request Submitted Successfully"
+                result.referenceId
 
             );
 
@@ -506,11 +568,9 @@ async function submitDonation(){
 
         else{
 
-            alert(
+            throw new Error(
 
-                result.message ||
-
-                "Unable to submit your donation."
+                result.message
 
             );
 
@@ -520,210 +580,25 @@ async function submitDonation(){
 
     catch(error){
 
-        console.error(
-
-            error
-
-        );
-
         alert(
 
-            "Unable to contact the server."
+            error.message
 
         );
 
     }
 
-}/**************************************************************************
-SUBMIT DONATION
-**************************************************************************/
+    finally{
 
-async function submitDonation(){
+        submitButton.disabled = false;
 
-    if(
+        submitButton.innerHTML =
 
-        !validateDonationForm()
-
-    ){
-
-        return;
-
-    }
-
-    const data = {
-
-        category :
-
-            document.getElementById(
-
-                "donationPurpose"
-
-            ).value,
-
-        amount :
-
-            document.getElementById(
-
-                "donationAmount"
-
-            ).value,
-
-        donorName :
-
-            document.getElementById(
-
-                "donorName"
-
-            ).value.trim(),
-
-        email :
-
-            document.getElementById(
-
-                "donorEmail"
-
-            ).value.trim(),
-
-        phone :
-
-            document.getElementById(
-
-                "donorPhone"
-
-            ).value.trim(),
-
-        address :
-
-            document.getElementById(
-
-                "donorAddress"
-
-            ).value.trim(),
-
-        country :
-
-            document.getElementById(
-
-                "donorCountry"
-
-            ).value,
-
-        panNumber :
-
-            document.getElementById(
-
-                "panNumber"
-
-            ).value.trim(),
-
-        receiptRequired :
-
-            document.getElementById(
-
-                "receiptRequired"
-
-            ).value
-
-    };
-
-
-    try{
-
-        const response =
-
-            await fetch(
-
-                window.SaraDharma.WEBAPP_URL,
-
-                {
-
-                    method : "POST",
-
-                    headers : {
-
-                        "Content-Type":
-
-                        "application/json"
-
-                    },
-
-                    body :
-
-                        JSON.stringify({
-
-                            action :
-
-                                "donation",
-
-                            data :
-
-                                data
-
-                        })
-
-                }
-
-            );
-
-        const result =
-
-            await response.json();
-
-        console.log(
-
-            result
-
-        );
-
-        if(
-
-            result.success
-
-        ){
-
-            showSuccessDialog(
-
-                result.referenceId,
-
-                "Donation Request Submitted Successfully"
-
-            );
-
-        }
-
-        else{
-
-            alert(
-
-                result.message ||
-
-                "Unable to submit your donation."
-
-            );
-
-        }
-
-    }
-
-    catch(error){
-
-        console.error(
-
-            error
-
-        );
-
-        alert(
-
-            "Unable to contact the server."
-
-        );
+            "Donate Now";
 
     }
 
 }
-
-
 
 /**************************************************************************
 CLEAR DONATION FORM
