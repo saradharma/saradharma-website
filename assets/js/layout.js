@@ -27,189 +27,180 @@ window.SaraDharma = {
 /**************************************************************************
 NAVIGATION
 **************************************************************************/
+/**************************************************************************
+NAVIGATION
+**************************************************************************/
 
 const navigation = `
 
 <nav class="main-nav">
 
-<ul>
-<li class="nav-brand">
-
-    <a href="index.html">
-
-        <img
-            src="assets/images/logo.png"
-            alt="SaraDharma"
-            class="nav-logo">
-
-    
-
-    <span class="nav-title">
-
-        SaraDharma
-
-    </span>
-    </a>
-
-</li>
-
-</ul>
-
 <ul class="nav-menu">
 
-<li>
+    <!-- Brand -->
 
-<a href="index.html">
+    <li class="nav-brand">
 
-Home
+        <a href="index.html">
 
-</a>
+            <img
+                src="assets/images/logo.png"
+                alt="SaraDharma"
+                class="nav-logo">
 
-</li>
+            <span class="nav-title">
 
+                SaraDharma Home
 
+            </span>
 
-<li>
+        </a>
 
-<a href="vision.html">
+    </li>
 
-Vision
+    <!-- Vision -->
 
-</a>
+    <li>
 
-</li>
+        <a href="vision.html">
 
+            Vision
 
+        </a>
 
-<li>
+    </li>
 
-<a href="facilities.html">
+    <!-- Facilities -->
 
-Facilities
+    <li>
 
-</a>
+        <a href="facilities.html">
 
-</li>
+            Facilities
 
+        </a>
 
+    </li>
 
-<li>
+    <!-- Residency -->
 
-<a href="residency.html">
+    <li>
 
-Residency
+        <a href="residency.html">
 
-</a>
+            Residency
 
-</li>
+        </a>
 
+    </li>
 
+    <!-- Location -->
 
-<li class="dropdown">
+    <li class="dropdown">
 
-<a href="location.html">
+        <a href="location.html">
 
-Location
+            Location ▼
 
-</a>
+        </a>
 
-<ul class="dropdown-menu">
+        <ul class="dropdown-menu">
 
-<li>
+            <li>
 
-<a href="life-in-halasuru.html">
+                <a href="life-in-halasuru.html">
 
-Life in Halasuru
+                    Life in Halasuru
 
-</a>
+                </a>
 
-</li>
+            </li>
 
-</ul>
+        </ul>
 
-</li>
+    </li>
 
+    <!-- Registration -->
 
+    <li>
 
-<li>
+        <a href="registration.html">
 
-<a href="registration.html">
+            Registration
 
-Registration
+        </a>
 
-</a>
+    </li>
 
-</li>
+    <!-- Sponsorship -->
 
+    <li>
 
+        <a href="sponsorship.html">
 
-<li>
+            Sponsorship
 
-<a href="sponsorship.html">
+        </a>
 
-Sponsorship
+    </li>
 
-</a>
+    <!-- Donate -->
 
-</li>
+    <li>
 
+        <a href="donate.html">
 
+            Donate
 
-<li>
+        </a>
 
-<a href="donate.html">
+    </li>
 
-Donate
+    <!-- Contact -->
 
-</a>
+    <li class="dropdown">
 
-</li>
+        <a href="contact.html">
 
+            Contact ▼
 
+        </a>
 
-<li class="dropdown">
+        <ul class="dropdown-menu">
 
-<a href="contact.html">
+            <li>
 
-Contact
+                <a href="contact.html">
 
-</a>
+                    Contact Us
 
-<ul class="dropdown-menu">
+                </a>
 
-<li>
+            </li>
 
-<a href="contact.html">
+            <li>
 
-Contact Us
+                <a href="faq.html">
 
-</a>
+                    FAQ
 
-</li>
+                </a>
 
-<li>
+            </li>
 
-<a href="faq.html">
+            <li>
 
-FAQQ
+                <a href="employment.html">
 
-</a>
+                    Employment
 
-</li>
+                </a>
 
-<li>
+            </li>
 
-<a href="employment.html">
+        </ul>
 
-Employment
-
-</a>
-
-</li>
-
-</ul>
-
-</li>
+    </li>
 
 </ul>
 
