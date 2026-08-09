@@ -295,7 +295,8 @@ Donation Details
 
 <form
 id="donationForm"
-autocomplete="off">
+onsubmit="submitDonation(event)">
+
 
 <div class="form-row">
 
@@ -647,9 +648,9 @@ Cancel
 </button>
 
 <button
-type="button"
-class="primary-button"
-onclick="submitDonation()">
+id="submitButton"
+
+type="submit">
 
 Donate Now
 
@@ -797,9 +798,11 @@ Cancel
 </button>
 
 <button
-type="button"
-class="primary-button"
-onclick="submitDonation()">
+id="submitButton"
+type="submit"
+
+class="primary-button">
+
 
 Donate Now
 
