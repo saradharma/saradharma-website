@@ -705,6 +705,119 @@ Dropdown Menu
 
 }
 
+/**************************************************************************
+Donation Cards
+**************************************************************************/
+
+.selection-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(280px,1fr));
+
+    gap:24px;
+
+    margin-top:30px;
+
+}
+
+.selection-card{
+
+    background:#ffffff;
+
+    border:2px solid #eadfc8;
+
+    border-radius:12px;
+
+    padding:25px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    text-align:center;
+
+}
+
+.selection-card:hover{
+
+    border-color:var(--primary);
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.12);
+
+}
+
+.selection-icon{
+
+    font-size:42px;
+
+    margin-bottom:15px;
+
+}
+
+.selection-amount{
+
+    margin-top:20px;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+}
+
+/**************************************************************************
+Payment
+**************************************************************************/
+
+.payment-grid{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(auto-fit,minmax(320px,1fr));
+
+    gap:24px;
+
+    margin-top:25px;
+
+}
+
+.payment-card{
+
+    background:#fafafa;
+
+    border:1px solid #dddddd;
+
+    border-radius:10px;
+
+    padding:25px;
+
+}
+
+.upi-qr{
+
+    width:220px;
+
+    max-width:100%;
+
+    display:block;
+
+    margin:20px auto;
+
+}
+
+.payment-note{
+
+    color:#666;
+
+    font-size:.9rem;
+
+}
 
 
 
