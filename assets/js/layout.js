@@ -53,6 +53,7 @@ const navigation = `
 
 </li>
 
+</ul>
 
 <ul class="nav-menu">
 
@@ -211,7 +212,7 @@ Employment
 </li>
 
 </ul>
-</ul>
+
 </nav>
 
 `;
