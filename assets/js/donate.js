@@ -637,27 +637,56 @@ function clearDonationForm(){
 SUCCESS DIALOG
 **************************************************************************/
 
-function showSuccessDialog(
+/**************************************************************************
+SUCCESS DIALOG
+**************************************************************************/
 
-    donationId,
+function showSuccessDialog(donationId){
 
-    message
+    const overlay =
+        document.getElementById(
+            "successOverlay"
+        );
 
-){
+    const reference =
+        document.getElementById(
+            "successReference"
+        );
 
-   /**  alert(
+    if(!overlay){
 
-        message +
+        console.error(
+            "successOverlay element not found."
+        );
 
-        "\n\nDonation Reference : " +
+        return;
 
-        donationId +
+    }
 
-        "\n\nThank you for supporting SaraDharma Community."
+    if(reference){
 
-    ); **/
+        reference.textContent =
+            donationId || "-";
 
-    clearDonationForm();
+    }
+
+    overlay.style.display = "flex";
+
+}
+
+
+function closeSuccessDialog(){
+
+    const overlay =
+        document.getElementById(
+            "successOverlay"
+        );
+
+    if(overlay){
+
+        overlay.style.display = "none";
+
+    }
 
 }
 
