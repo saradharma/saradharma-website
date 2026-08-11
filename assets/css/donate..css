@@ -1,0 +1,1380 @@
+/* ==========================================================
+   SaraDharma Community
+   DONATION PAGE STYLES
+   Part 1 — Page Foundation + Donation Purpose Cards
+========================================================== */
+
+
+/* ==========================================================
+   DONATION PAGE FOUNDATION
+========================================================== */
+
+.donation-page {
+    width: 100%;
+}
+
+.donation-page .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+
+/* ==========================================================
+   DONATION INTRODUCTION
+========================================================== */
+
+.donation-page .page-card {
+    margin-bottom: 24px;
+}
+
+.donation-page .page-card h2 {
+    margin-bottom: 12px;
+}
+
+.donation-page .page-card p {
+    line-height: 1.7;
+}
+
+
+/* ==========================================================
+   DONATION PURPOSE SECTION
+========================================================== */
+
+#donationSelection {
+    margin-bottom: 24px;
+}
+
+#donationSelection h2 {
+    margin-bottom: 8px;
+}
+
+#donationSelection > p {
+    margin-bottom: 20px;
+}
+
+
+/* ==========================================================
+   DONATION PURPOSE GRID
+========================================================== */
+
+.selection-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(220px, 1fr)
+        );
+
+    gap: 18px;
+
+    width: 100%;
+}
+
+
+/* ==========================================================
+   DONATION PURPOSE CARD
+========================================================== */
+
+.selection-card {
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    text-align: center;
+
+    min-height: 250px;
+
+    padding: 24px 20px;
+
+    background: #ffffff;
+
+    border: 2px solid transparent;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 14px
+        rgba(0, 0, 0, 0.08);
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+
+    box-sizing: border-box;
+}
+
+
+/* ==========================================================
+   CARD HOVER
+========================================================== */
+
+.selection-card:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 7px 20px
+        rgba(0, 0, 0, 0.12);
+
+    border-color:
+        var(--primary, #C66A00);
+}
+
+
+/* ==========================================================
+   CARD SELECTED STATE
+========================================================== */
+
+.selection-card.selected {
+
+    border-color:
+        var(--primary, #C66A00);
+
+    box-shadow:
+        0 7px 20px
+        rgba(198, 106, 0, 0.18);
+
+    background:
+        #fffaf4;
+}
+
+
+/* ==========================================================
+   DONATION PURPOSE ICON
+========================================================== */
+
+.selection-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 58px;
+
+    height: 58px;
+
+    margin-bottom: 12px;
+
+    font-size: 32px;
+
+    line-height: 1;
+
+    border-radius: 50%;
+
+    background:
+        #faf3e8;
+}
+
+
+/* ==========================================================
+   CARD TITLE
+========================================================== */
+
+.selection-card h3 {
+
+    margin: 6px 0 10px;
+
+    font-size: 20px;
+
+    line-height: 1.25;
+
+    color:
+        var(--primary, #C66A00);
+}
+
+
+/* ==========================================================
+   CARD DESCRIPTION
+========================================================== */
+
+.selection-card p {
+
+    margin: 0;
+
+    font-size: 14px;
+
+    line-height: 1.55;
+
+    color:
+        var(--text, #333333);
+
+    flex: 1;
+}
+
+
+/* ==========================================================
+   DONATION AMOUNT
+========================================================== */
+
+.selection-amount {
+
+    margin-top: 16px;
+
+    padding: 7px 16px;
+
+    border-radius: 20px;
+
+    background:
+        #f3eadb;
+
+    color:
+        var(--primary, #C66A00);
+
+    font-size: 17px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* ==========================================================
+   RESPONSIVE — TABLET
+========================================================== */
+
+@media (max-width: 900px) {
+
+    .selection-grid {
+
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+    }
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE — MOBILE
+========================================================== */
+
+@media (max-width: 600px) {
+
+    .donation-page .container {
+
+        padding:
+            0 14px;
+
+    }
+
+    .selection-grid {
+
+        grid-template-columns:
+            1fr;
+
+        gap: 14px;
+
+    }
+
+    .selection-card {
+
+        min-height: 220px;
+
+    }
+
+}
+
+
+/* ==========================================================
+   DONATION SUMMARY / FORM AREA
+   Part 2
+========================================================== */
+
+
+/* ==========================================================
+   SELECTED DONATION SUMMARY
+========================================================== */
+
+#donationSummary {
+    margin-top: 24px;
+    margin-bottom: 24px;
+}
+
+
+/* ==========================================================
+   DONATION FORM LAYOUT
+========================================================== */
+
+.donation-form {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+}
+
+
+/* ==========================================================
+   DONATION TWO-COLUMN LAYOUT
+========================================================== */
+
+.donation-payment-layout {
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 2fr)
+        minmax(280px, 1fr);
+
+    gap: 24px;
+
+    width: 100%;
+
+    align-items: stretch;
+
+}
+
+
+/* ==========================================================
+   DONOR DETAILS CARD
+========================================================== */
+
+.donor-details-card {
+
+    background: #ffffff;
+
+    border-radius: 14px;
+
+    padding: 26px;
+
+    box-shadow:
+        0 4px 14px
+        rgba(0, 0, 0, 0.08);
+
+    box-sizing: border-box;
+}
+
+
+/* ==========================================================
+   DONOR DETAILS HEADING
+========================================================== */
+
+.donor-details-card h2 {
+
+    margin-top: 0;
+
+    margin-bottom: 20px;
+
+    color:
+        var(--primary, #C66A00);
+
+}
+
+
+/* ==========================================================
+   DONATION FORM GRID
+========================================================== */
+
+.donation-form-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+
+}
+
+
+/* ==========================================================
+   FULL WIDTH FORM FIELD
+========================================================== */
+
+.donation-form-grid .full-width {
+
+    grid-column:
+        1 / -1;
+
+}
+
+
+/* ==========================================================
+   FORM LABELS
+========================================================== */
+
+.donation-form label {
+
+    display: block;
+
+    margin-bottom: 7px;
+
+    color:
+        var(--primary, #C66A00);
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+}
+
+
+/* ==========================================================
+   REQUIRED MARK
+========================================================== */
+
+.donation-form .required {
+
+    color: #b00020;
+
+    margin-left: 3px;
+
+}
+
+
+/* ==========================================================
+   TEXT INPUTS / SELECTS
+========================================================== */
+
+.donation-form input[type="text"],
+.donation-form input[type="email"],
+.donation-form input[type="tel"],
+.donation-form input[type="number"],
+.donation-form select,
+.donation-form textarea {
+
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 14px;
+
+    border:
+        1px solid #cfcfcf;
+
+    border-radius: 7px;
+
+    background: #ffffff;
+
+    color:
+        var(--text, #333333);
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    line-height: 1.4;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+/* ==========================================================
+   TEXTAREA
+========================================================== */
+
+.donation-form textarea {
+
+    min-height: 110px;
+
+    resize: vertical;
+
+}
+
+
+/* ==========================================================
+   FORM FIELD FOCUS
+========================================================== */
+
+.donation-form input:focus,
+.donation-form select:focus,
+.donation-form textarea:focus {
+
+    outline: none;
+
+    border-color:
+        var(--primary, #C66A00);
+
+    box-shadow:
+        0 0 0 3px
+        rgba(198, 106, 0, 0.12);
+
+}
+
+
+/* ==========================================================
+   PHONE GROUP
+========================================================== */
+
+.donation-phone-group {
+
+    display: grid;
+
+    grid-template-columns:
+        145px minmax(0, 1fr);
+
+    gap: 10px;
+
+}
+
+
+/* ==========================================================
+   AMOUNT DISPLAY
+========================================================== */
+
+#donationAmount {
+
+    font-weight: 700;
+
+    color:
+        var(--primary, #C66A00);
+
+}
+
+
+/* ==========================================================
+   PAYMENT CARD
+========================================================== */
+
+.payment-card {
+
+    background: #ffffff;
+
+    border-radius: 14px;
+
+    padding: 26px;
+
+    box-shadow:
+        0 4px 14px
+        rgba(0, 0, 0, 0.08);
+
+    text-align: center;
+
+    box-sizing: border-box;
+
+}
+
+
+/* ==========================================================
+   PAYMENT CARD HEADING
+========================================================== */
+
+.payment-card h2 {
+
+    margin-top: 0;
+
+    margin-bottom: 18px;
+
+    color:
+        var(--primary, #C66A00);
+
+}
+
+
+/* ==========================================================
+   PAYMENT METHODS
+========================================================== */
+
+.payment-methods {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    margin-top: 16px;
+
+}
+
+
+/* ==========================================================
+   PAYMENT METHOD ITEM
+========================================================== */
+
+.payment-method {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px 14px;
+
+    border:
+        1px solid #e0e0e0;
+
+    border-radius: 8px;
+
+    background: #fafafa;
+
+    text-align: left;
+
+    cursor: pointer;
+
+}
+
+
+/* ==========================================================
+   PAYMENT METHOD RADIO
+========================================================== */
+
+.payment-method input[type="radio"] {
+
+    width: 18px;
+
+    height: 18px;
+
+    margin: 0;
+
+    flex: 0 0 auto;
+
+}
+
+
+/* ==========================================================
+   UPI SECTION
+========================================================== */
+
+.upi-section {
+
+    margin-top: 20px;
+
+    padding-top: 20px;
+
+    border-top:
+        1px solid #e5e5e5;
+
+}
+
+
+/* ==========================================================
+   UPI HEADING
+========================================================== */
+
+.upi-section h3 {
+
+    margin-top: 0;
+
+    margin-bottom: 12px;
+
+    color:
+        var(--primary, #C66A00);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 24px;
+
+}
+
+
+/* ==========================================================
+   UPI QR CODE
+========================================================== */
+
+.upi-qr {
+
+    display: block;
+
+    width: 220px;
+
+    max-width: 100%;
+
+    height: auto;
+
+    margin:
+        10px auto 16px;
+
+    border:
+        1px solid #dddddd;
+
+}
+
+
+/* ==========================================================
+   UPI ID
+========================================================== */
+
+.upi-id {
+
+    margin-top: 10px;
+
+    font-size: 16px;
+
+    line-height: 1.6;
+
+}
+
+
+/* ==========================================================
+   UPI ID VALUE
+========================================================== */
+
+.upi-id strong {
+
+    display: block;
+
+    margin-top: 4px;
+
+    font-size: 18px;
+
+    color:
+        var(--text, #333333);
+
+}
+
+
+/* ==========================================================
+   PAYMENT NOTE
+========================================================== */
+
+.payment-note {
+
+    margin-top: 18px;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    color: #666666;
+
+}
+
+
+/* ==========================================================
+   DONATION SUBMIT AREA
+========================================================== */
+
+.donation-submit-area {
+
+    margin-top: 24px;
+
+    text-align: center;
+
+}
+
+
+/* ==========================================================
+   PRIMARY DONATION BUTTON
+========================================================== */
+
+.donation-submit-button {
+
+    display: inline-block;
+
+    min-width: 220px;
+
+    padding: 13px 28px;
+
+    border: none;
+
+    border-radius: 28px;
+
+    background:
+        var(--primary, #C66A00);
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+
+}
+
+
+/* ==========================================================
+   BUTTON HOVER
+========================================================== */
+
+.donation-submit-button:hover {
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 5px 12px
+        rgba(0, 0, 0, 0.16);
+
+}
+
+
+/* ==========================================================
+   BUTTON DISABLED
+========================================================== */
+
+.donation-submit-button:disabled {
+
+    opacity: 0.6;
+
+    cursor: not-allowed;
+
+    transform: none;
+
+    box-shadow: none;
+
+}
+
+
+/* ==========================================================
+   ERROR MESSAGE
+========================================================== */
+
+.donation-error {
+
+    margin-top: 6px;
+
+    color: #b00020;
+
+    font-size: 13px;
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE — TABLET
+========================================================== */
+
+@media (max-width: 900px) {
+
+    .donation-payment-layout {
+
+        grid-template-columns: 1fr;
+
+    }
+
+}
+
+
+/* ==========================================================
+   RESPONSIVE — MOBILE
+========================================================== */
+
+@media (max-width: 600px) {
+
+    .donor-details-card,
+    .payment-card {
+
+        padding: 20px;
+
+    }
+
+    .donation-form-grid {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .donation-form-grid .full-width {
+
+        grid-column: auto;
+
+    }
+
+    .donation-phone-group {
+
+        grid-template-columns: 1fr;
+
+        gap: 8px;
+
+    }
+
+    .donation-submit-button {
+
+        width: 100%;
+
+        min-width: 0;
+
+    }
+
+}
+
+/* ==========================================================
+   DONATION DECLARATION + SUCCESS DIALOG
+   Part 3
+========================================================== */
+
+
+/* ==========================================================
+   DONATION DECLARATION
+========================================================== */
+
+.checkbox-row {
+
+    width: 100%;
+
+    margin:
+        22px 0;
+
+    box-sizing: border-box;
+
+}
+
+
+/* ==========================================================
+   CHECKBOX + TEXT — SAME LINE
+========================================================== */
+
+.checkbox-label {
+
+    display: flex;
+
+    flex-direction: row;
+
+    align-items: center;
+
+    justify-content: flex-start;
+
+    gap: 12px;
+
+    width: 100%;
+
+    margin: 0;
+
+    padding: 0;
+
+    color:
+        var(--text, #333333);
+
+    font-size: 16px;
+
+    font-weight: normal;
+
+    line-height: 1.5;
+
+    text-align: left;
+
+    cursor: pointer;
+
+}
+
+
+/* ==========================================================
+   DECLARATION CHECKBOX
+========================================================== */
+
+.checkbox-label input[type="checkbox"] {
+
+    appearance: auto;
+
+    width: 22px;
+
+    height: 22px;
+
+    min-width: 22px;
+
+    min-height: 22px;
+
+    margin: 0;
+
+    padding: 0;
+
+    flex:
+        0 0 22px;
+
+    cursor: pointer;
+
+}
+
+
+/* ==========================================================
+   DECLARATION TEXT
+========================================================== */
+
+.checkbox-label span {
+
+    display: inline;
+
+    margin: 0;
+
+    padding: 0;
+
+    color:
+        var(--text, #333333);
+
+    font-size: 16px;
+
+    font-weight: normal;
+
+    line-height: 1.5;
+
+    text-align: left;
+
+}
+
+
+/* ==========================================================
+   CHECKBOX FOCUS
+========================================================== */
+
+.checkbox-label input[type="checkbox"]:focus {
+
+    outline:
+        2px solid
+        var(--primary, #C66A00);
+
+    outline-offset: 2px;
+
+}
+
+
+/* ==========================================================
+   SUCCESS OVERLAY
+========================================================== */
+
+.success-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    display: none;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 20px;
+
+    box-sizing: border-box;
+
+    background:
+        rgba(0, 0, 0, 0.45);
+
+}
+
+
+/* ==========================================================
+   SUCCESS DIALOG
+========================================================== */
+
+.success-dialog {
+
+    width: 100%;
+
+    max-width: 480px;
+
+    padding: 34px 30px;
+
+    box-sizing: border-box;
+
+    background: #ffffff;
+
+    border-radius: 16px;
+
+    text-align: center;
+
+    box-shadow:
+        0 12px 40px
+        rgba(0, 0, 0, 0.22);
+
+    animation:
+        successDialogIn
+        0.25s ease-out;
+
+}
+
+
+/* ==========================================================
+   SUCCESS ICON
+========================================================== */
+
+.success-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 64px;
+
+    height: 64px;
+
+    margin:
+        0 auto 16px;
+
+    border-radius: 50%;
+
+    background:
+        #5E8B4A;
+
+    color: #ffffff;
+
+    font-size: 38px;
+
+    font-weight: 700;
+
+    line-height: 1;
+
+}
+
+
+/* ==========================================================
+   SUCCESS TITLE
+========================================================== */
+
+.success-dialog h2 {
+
+    margin:
+        0 0 12px;
+
+    color:
+        #5E8B4A;
+
+    font-size: 28px;
+
+    line-height: 1.2;
+
+}
+
+
+/* ==========================================================
+   SUCCESS MESSAGE
+========================================================== */
+
+.success-dialog p {
+
+    margin:
+        8px 0;
+
+    color:
+        var(--text, #333333);
+
+    font-size: 16px;
+
+    line-height: 1.6;
+
+}
+
+
+/* ==========================================================
+   SUCCESS REFERENCE BOX
+========================================================== */
+
+.success-reference {
+
+    margin:
+        22px 0;
+
+    padding:
+        14px 18px;
+
+    border:
+        1px solid #d9e4d2;
+
+    border-radius: 10px;
+
+    background:
+        #f4f8f1;
+
+}
+
+
+/* ==========================================================
+   SUCCESS REFERENCE LABEL
+========================================================== */
+
+.success-reference strong {
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    color:
+        #5E8B4A;
+
+    font-size: 14px;
+
+}
+
+
+/* ==========================================================
+   SUCCESS REFERENCE NUMBER
+========================================================== */
+
+#successReference {
+
+    color:
+        var(--text, #333333);
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    letter-spacing: 0.4px;
+
+}
+
+
+/* ==========================================================
+   SUCCESS NOTE
+========================================================== */
+
+.success-note {
+
+    margin:
+        14px 0 22px !important;
+
+    color:
+        #666666 !important;
+
+    font-size: 14px !important;
+
+}
+
+
+/* ==========================================================
+   SUCCESS CLOSE BUTTON
+========================================================== */
+
+.success-dialog .primary-button {
+
+    display: inline-block;
+
+    min-width: 120px;
+
+    padding:
+        11px 24px;
+
+    border: none;
+
+    border-radius: 24px;
+
+    background:
+        var(--primary, #C66A00);
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+
+}
+
+
+.success-dialog .primary-button:hover {
+
+    transform:
+        translateY(-1px);
+
+    box-shadow:
+        0 4px 10px
+        rgba(0, 0, 0, 0.16);
+
+}
+
+
+/* ==========================================================
+   SUCCESS DIALOG ANIMATION
+========================================================== */
+
+@keyframes successDialogIn {
+
+    from {
+
+        opacity: 0;
+
+        transform:
+            translateY(-12px)
+            scale(0.97);
+
+    }
+
+    to {
+
+        opacity: 1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+
+/* ==========================================================
+   SUCCESS DIALOG — MOBILE
+========================================================== */
+
+@media (max-width: 600px) {
+
+    .success-overlay {
+
+        padding: 14px;
+
+    }
+
+    .success-dialog {
+
+        padding:
+            28px 20px;
+
+    }
+
+    .success-dialog h2 {
+
+        font-size: 24px;
+
+    }
+
+    .success-icon {
+
+        width: 56px;
+
+        height: 56px;
+
+        font-size: 32px;
+
+    }
+
+    .checkbox-label {
+
+        align-items: flex-start;
+
+        gap: 10px;
+
+    }
+
+    .checkbox-label input[type="checkbox"] {
+
+        margin-top: 2px;
+
+    }
+
+}
+
