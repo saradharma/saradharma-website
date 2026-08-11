@@ -645,7 +645,7 @@ function showSuccessDialog(
 
 ){
 
-    alert(
+   /**  alert(
 
         message +
 
@@ -655,7 +655,7 @@ function showSuccessDialog(
 
         "\n\nThank you for supporting SaraDharma Community."
 
-    );
+    ); **/
 
     clearDonationForm();
 
