@@ -663,7 +663,62 @@ Donate Now
 </section>
 
 </main>
+<!-- ==========================================================
+     DONATION SUCCESS DIALOG
+=========================================================== -->
 
+<div
+    id="successOverlay"
+    class="success-overlay"
+    style="display:none;"
+>
+
+    <div class="success-dialog">
+
+        <div class="success-icon">
+            ✓
+        </div>
+
+        <h2>
+            Thank You!
+        </h2>
+
+        <p>
+            Your donation has been received successfully.
+        </p>
+
+        <div class="success-reference">
+
+            <strong>
+                Donation Reference
+            </strong>
+
+            <div id="successReference">
+                -
+            </div>
+
+        </div>
+
+        <p class="success-note">
+            A confirmation email has been sent to your email address.
+        </p>
+
+        <button
+            type="button"
+            class="primary-button"
+            onclick="closeSuccessDialog()"
+        >
+            Close
+        </button>
+
+    </div>
+
+</div>
+
+
+
+
+      
 <div id="footer"></div>
 
 <script src="assets/js/layout.js"></script>
