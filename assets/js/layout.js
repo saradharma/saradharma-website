@@ -403,7 +403,17 @@ document.addEventListener(
                 href===current
 
             ){
-
+                /*
+                 * Do not highlight the SaraDharma Home brand.
+                 * The brand is the Home link, but should always
+                 * remain integrated with the brown navigation bar.
+                 */
+            
+                if(
+                    link.closest(".nav-brand")
+                ){
+                    return;
+                }
                 link.classList.add(
 
                     "active"
