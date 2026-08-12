@@ -927,98 +927,67 @@
    Match Registration Form
 ========================================================== */
 
-.checkbox-row {
+/*==========================================================
+  DONATION DECLARATION CHECKBOX
+  Same styling as Registration
+==========================================================*/
 
-    width: 100%;
+.checkbox-row{
 
-    margin-top: 12px;
+    width:100%;
 
-    margin-bottom: 20px;
-
-}
-
-
-.checkbox-label {
-
-    display: flex !important;
-
-    flex-direction: row !important;
-
-    align-items: flex-start !important;
-
-    justify-content: flex-start !important;
-
-    gap: 14px;
-
-    width: 100%;
-
-    margin: 0 !important;
-
-    padding: 0 !important;
-
-    cursor: pointer;
-
-    color: #444;
-
-    font-size: 1rem !important;
-
-    line-height: 1.7;
-
-    font-weight: 500 !important;
-
-    text-align: left !important;
+    margin-top:12px;
 
 }
 
 
-.checkbox-label input[type="checkbox"] {
+.checkbox-label{
 
-    appearance: auto;
+    display:flex;
 
-    -webkit-appearance: auto;
+    align-items:flex-start;
 
-    width: 20px !important;
+    gap:14px;
 
-    height: 20px !important;
+    cursor:pointer;
 
-    min-width: 20px !important;
+    color:#444;
 
-    min-height: 20px !important;
+    font-size:1rem;
 
-    margin: 4px 0 0 0 !important;
+    line-height:1.7;
 
-    padding: 0 !important;
-
-    flex-shrink: 0;
-
-    accent-color: var(--primary);
-
-    cursor: pointer;
+    font-weight:500;
 
 }
 
 
-.checkbox-label span {
+.checkbox-label input[type="checkbox"]{
 
-    display: block;
+    width:20px;
 
-    flex: 1;
+    height:20px;
 
-    margin: 0 !important;
+    margin-top:4px;
 
-    padding: 0 !important;
+    flex-shrink:0;
 
-    color: #444;
-
-    font-size: 1rem !important;
-
-    line-height: 1.7;
-
-    font-weight: 500 !important;
-
-    text-align: left !important;
+    accent-color:var(--primary);
 
 }
+
+
+.checkbox-label span{
+
+    flex:1;
+
+}
+
+
+
+
+
+
 
    
 
