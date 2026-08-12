@@ -711,18 +711,18 @@ function startRazorpayPayment(){
 COPY UPI ID
 **************************************************************************/
 
+/**************************************************************************
+ * COPY UPI ID
+ **************************************************************************/
+
 function copyUpiId(){
 
     navigator.clipboard.writeText(
-
-        "your-upi@bank"
-
+        "vishrantam@kbl"
     );
 
     alert(
-
         "UPI ID copied to clipboard."
-
     );
 
 }
