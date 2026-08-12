@@ -922,109 +922,105 @@
    DONATION DECLARATION
 ========================================================== */
 
+/* ==========================================================
+   DONATION DECLARATION CHECKBOX
+   Match Registration Form
+========================================================== */
+
 .checkbox-row {
 
     width: 100%;
 
-    margin:
-        22px 0;
+    margin-top: 12px;
 
-    box-sizing: border-box;
+    margin-bottom: 20px;
 
 }
 
-
-/* ==========================================================
-   CHECKBOX + TEXT — SAME LINE
-========================================================== */
 
 .checkbox-label {
 
-    display: flex;
+    display: flex !important;
 
-    flex-direction: row;
+    flex-direction: row !important;
 
-    align-items: center;
+    align-items: flex-start !important;
 
-    justify-content: flex-start;
+    justify-content: flex-start !important;
 
-    gap: 12px;
+    gap: 14px;
 
     width: 100%;
 
-    margin: 0;
+    margin: 0 !important;
 
-    padding: 0;
-
-    color:
-        var(--text, #333333);
-
-    font-size: 16px;
-
-    font-weight: normal;
-
-    line-height: 1.5;
-
-    text-align: left;
+    padding: 0 !important;
 
     cursor: pointer;
 
+    color: #444;
+
+    font-size: 1rem !important;
+
+    line-height: 1.7;
+
+    font-weight: 500 !important;
+
+    text-align: left !important;
+
 }
 
-
-/* ==========================================================
-   DECLARATION CHECKBOX
-========================================================== */
 
 .checkbox-label input[type="checkbox"] {
 
     appearance: auto;
 
-    width: 22px;
+    -webkit-appearance: auto;
 
-    height: 22px;
+    width: 20px !important;
 
-    min-width: 22px;
+    height: 20px !important;
 
-    min-height: 22px;
+    min-width: 20px !important;
 
-    margin: 0;
+    min-height: 20px !important;
 
-    padding: 0;
+    margin: 4px 0 0 0 !important;
 
-    flex:
-        0 0 22px;
+    padding: 0 !important;
+
+    flex-shrink: 0;
+
+    accent-color: var(--primary);
 
     cursor: pointer;
 
 }
 
 
-/* ==========================================================
-   DECLARATION TEXT
-========================================================== */
-
 .checkbox-label span {
 
-    display: inline;
+    display: block;
 
-    margin: 0;
+    flex: 1;
 
-    padding: 0;
+    margin: 0 !important;
 
-    color:
-        var(--text, #333333);
+    padding: 0 !important;
 
-    font-size: 16px;
+    color: #444;
 
-    font-weight: normal;
+    font-size: 1rem !important;
 
-    line-height: 1.5;
+    line-height: 1.7;
 
-    text-align: left;
+    font-weight: 500 !important;
+
+    text-align: left !important;
 
 }
 
+   
 
 /* ==========================================================
    CHECKBOX FOCUS
