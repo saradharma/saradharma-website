@@ -613,7 +613,7 @@ Navigation Brand
 .main-nav .nav-brand a,
 .main-nav .nav-brand a.active,
 .main-nav .nav-brand a:hover,
-.main-nav .nav-brand a:focus{{
+.main-nav .nav-brand a:focus{
     background:transparent !important;
     color:#ffffff !important;
     transform:none !important;
