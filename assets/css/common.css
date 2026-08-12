@@ -605,6 +605,20 @@ Navigation Brand
 }
 
 
+/* ==========================================================
+   NAVIGATION BRAND
+   SaraDharma Home must blend with the navigation bar
+   ========================================================== */
+
+.main-nav .nav-brand a,
+.main-nav .nav-brand a.active,
+.main-nav .nav-brand a:hover,
+.main-nav .nav-brand a:focus{{
+    background:transparent !important;
+    color:#ffffff !important;
+    transform:none !important;
+}
+
 .nav-logo{
 
     width:38px;
