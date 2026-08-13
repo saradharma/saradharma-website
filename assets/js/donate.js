@@ -696,13 +696,254 @@ RAZORPAY
 (Placeholder for Production)
 **************************************************************************/
 
-function startRazorpayPayment(){
+/**************************************************************************
+ * START RAZORPAY PAYMENT
+ *
+ * TEST MODE
+ *
+ * This stage:
+ *
+ * Donate Now
+ *      ↓
+ * Create Razorpay Order
+ *      ↓
+ * Open Razorpay Checkout
+ *
+ * No donation is saved yet.
+ * No email is sent yet.
+ * Payment verification comes next.
+ **************************************************************************/
 
-    alert(
+async function startRazorpayPayment(){
 
-        "Razorpay integration will be enabled after the production website is published."
+    const amount =
+        Number(
+            document
+                .getElementById(
+                    "donationAmount"
+                )
+                .value
+        );
 
-    );
+
+    const donorName =
+        document
+            .getElementById(
+                "donorName"
+            )
+            .value
+            .trim();
+
+
+    const donorEmail =
+        document
+            .getElementById(
+                "donorEmail"
+            )
+            .value
+            .trim();
+
+
+    const donorPhone =
+        document
+            .getElementById(
+                "donorPhone"
+            )
+            .value
+            .trim();
+
+
+    try{
+
+        const formData =
+            new FormData();
+
+
+        formData.append(
+            "action",
+            "razorpayOrder"
+        );
+
+
+        formData.append(
+            "amount",
+            amount
+        );
+
+
+        const response =
+            await fetch(
+
+                SaraDharma.WEBAPP_URL,
+
+                {
+                    method : "POST",
+                    body : formData
+                }
+
+            );
+
+
+        const result =
+            await response.json();
+
+
+        if(
+            !result.success
+        ){
+
+            throw new Error(
+                result.message
+            );
+
+        }
+
+
+        console.log(
+            "Razorpay Order:",
+            result
+        );
+
+
+        const options = {
+
+            key :
+                result.keyId,
+
+            amount :
+                result.amount,
+
+            currency :
+                result.currency,
+
+            name :
+                "SaraDharma Community",
+
+            description :
+                "Donation - "
+                +
+                document
+                    .getElementById(
+                        "donationPurpose"
+                    )
+                    .value,
+
+            order_id :
+                result.orderId,
+
+
+            prefill : {
+
+                name :
+                    donorName,
+
+                email :
+                    donorEmail,
+
+                contact :
+                    donorPhone
+
+            },
+
+
+            notes : {
+
+                donationReference :
+                    result.referenceId
+
+            },
+
+
+            theme : {
+
+                color :
+                    "#B46A1F"
+
+            },
+
+
+            handler :
+                function(paymentResponse){
+
+                    console.log(
+                        "Razorpay Test Payment Response:",
+                        paymentResponse
+                    );
+
+
+                    alert(
+
+                        "Razorpay test payment response received.\n\n"
+                        +
+                        "Payment ID: "
+                        +
+                        paymentResponse.razorpay_payment_id
+
+                    );
+
+                },
+
+
+            modal : {
+
+                ondismiss :
+                    function(){
+
+                        console.log(
+                            "Razorpay Checkout closed."
+                        );
+
+                    }
+
+            }
+
+        };
+
+
+        const razorpay =
+            new Razorpay(
+                options
+            );
+
+
+        razorpay.on(
+            "payment.failed",
+            function(response){
+
+                console.error(
+                    "Razorpay Payment Failed:",
+                    response.error
+                );
+
+
+                alert(
+
+                    "Payment failed.\n\n"
+                    +
+                    response.error.description
+
+                );
+
+            }
+        );
+
+
+        razorpay.open();
+
+    }
+
+    catch(error){
+
+        console.error(
+            error
+        );
+
+
+        alert(
+            error.message
+        );
+
+    }
 
 }
 
