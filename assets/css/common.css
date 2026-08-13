@@ -1229,4 +1229,165 @@ Footer
 }
 
 
+/* ==========================================================
+   SaraDharma - FINAL RESPONSIVE NAVIGATION FIX
+   ========================================================== */
+
+.main-nav {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow: visible;
+    padding: 0 8px;
+}
+
+.main-nav > ul {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* SaraDharma Home */
+.main-nav .nav-brand {
+    flex: 0 1 auto;
+    min-width: 0;
+    margin: 0;
+}
+
+.main-nav .nav-brand a {
+    display: flex;
+    align-items: center;
+    min-width: 0;
+    white-space: nowrap;
+    padding-left: 6px;
+    padding-right: 8px;
+}
+
+/* Remove logo from navigation */
+.main-nav .nav-logo {
+    display: none;
+}
+
+/* Smaller SaraDharma Home */
+.main-nav .nav-title {
+    display: block;
+    font-size: clamp(0.85rem, 1.15vw, 1.25rem);
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
+    letter-spacing: 0;
+}
+
+/* All navigation items */
+.main-nav > ul > li:not(.nav-brand) {
+    flex: 0 1 auto;
+    min-width: 0;
+}
+
+.main-nav > ul > li > a {
+    display: block;
+    padding: clamp(9px, 1vw, 16px) clamp(5px, 1vw, 15px);
+    font-size: clamp(0.72rem, 0.9vw, 0.95rem);
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+
+/* ==========================================================
+   1200px and below
+   ========================================================== */
+
+@media (max-width: 1200px) {
+
+    .main-nav {
+        padding: 0 5px;
+    }
+
+    .main-nav .nav-title {
+        font-size: 1rem;
+    }
+
+    .main-nav > ul > li > a {
+        padding-left: 6px;
+        padding-right: 6px;
+        font-size: 0.82rem;
+    }
+}
+
+
+/* ==========================================================
+   1000px and below
+   ========================================================== */
+
+@media (max-width: 1000px) {
+
+    .main-nav .nav-title {
+        font-size: 0.9rem;
+    }
+
+    .main-nav > ul > li > a {
+        padding-left: 5px;
+        padding-right: 5px;
+        font-size: 0.76rem;
+    }
+}
+
+
+/* ==========================================================
+   850px and below
+   ========================================================== */
+
+@media (max-width: 850px) {
+
+    .main-nav > ul {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .main-nav .nav-brand {
+        width: 100%;
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    .main-nav .nav-brand a {
+        justify-content: center;
+    }
+
+    .main-nav > ul > li:not(.nav-brand) > a {
+        padding: 8px 7px;
+        font-size: 0.78rem;
+    }
+}
+
+
+/* ==========================================================
+   700px and below
+   ========================================================== */
+
+@media (max-width: 700px) {
+
+    .main-nav > ul {
+        flex-wrap: wrap;
+    }
+
+    .main-nav > ul > li:not(.nav-brand) {
+        flex: 0 0 auto;
+    }
+
+    .main-nav > ul > li > a {
+        padding: 7px 8px;
+        font-size: 0.75rem;
+    }
+}
+
+
 
