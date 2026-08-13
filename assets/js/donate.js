@@ -351,249 +351,73 @@ function validateDonationForm(){
 /**************************************************************************
 SUBMIT DONATION
 **************************************************************************/
+/**************************************************************************
+ * SUBMIT DONATION
+ *
+ * TEST PAYMENT FLOW
+ *
+ * Donate Now
+ *     ↓
+ * Validate
+ *     ↓
+ * Razorpay Checkout
+ *
+ * Donation is NOT saved until payment verification is implemented.
+ **************************************************************************/
 
 async function submitDonation(event){
 
     event.preventDefault();
 
+
     if(
-
         !validateDonationForm()
-
     ){
 
         return;
 
     }
 
+
     const submitButton =
-
         document.getElementById(
-
             "submitButton"
-
         );
 
-    submitButton.disabled = true;
+
+    submitButton.disabled =
+        true;
+
 
     submitButton.innerHTML =
+        "Opening Payment...";
 
-        "Submitting...";
 
     try{
 
-        const formData =
-
-            new FormData();
-
-        formData.append(
-
-            "action",
-
-            "donation"
-
-        );
-
-        formData.append(
-
-            "category",
-
-            document.getElementById(
-
-                "donationPurpose"
-
-            ).value
-
-        );
-
-        formData.append(
-
-            "amount",
-
-            document.getElementById(
-
-                "donationAmount"
-
-            ).value
-
-        );
-
-        formData.append(
-
-            "donorName",
-
-            document.getElementById(
-
-                "donorName"
-
-            ).value.trim()
-
-        );
-
-        formData.append(
-
-            "email",
-
-            document.getElementById(
-
-                "donorEmail"
-
-            ).value.trim()
-
-        );
-
-        formData.append(
-
-            "phone",
-
-            document.getElementById(
-
-                "donorPhone"
-
-            ).value.trim()
-
-        );
-
-        formData.append(
-
-            "address",
-
-            document.getElementById(
-
-                "donorAddress"
-
-            ).value.trim()
-
-        );
-
-        formData.append(
-
-            "country",
-
-            document.getElementById(
-
-                "donorCountry"
-
-            ).value
-
-        );
-
-        formData.append(
-
-            "panNumber",
-
-            document.getElementById(
-
-                "panNumber"
-
-            ).value.trim()
-
-        );
-
-        formData.append(
-
-            "receiptRequired",
-
-            document.getElementById(
-
-                "receiptRequired"
-
-            ).value
-
-        );
-
-        formData.append(
-
-            "paymentMethod",
-
-            "SIMULATED"
-
-        );
-
-        formData.append(
-
-            "paymentStatus",
-
-            "SIMULATED"
-
-        );
-
-        formData.append(
-
-            "paymentId",
-
-            ""
-
-        );
-
-        const response =
-
-            await fetch(
-
-                SaraDharma.WEBAPP_URL,
-
-                {
-
-                    method:"POST",
-
-                    body:formData
-
-                }
-
-            );
-
-        const result =
-
-            await response.json();
-
-        if(
-
-            result.success
-
-        ){
-
-            console.log(
-
-                result
-
-            );
-
-            showSuccessDialog(
-
-                result.referenceId
-
-            );
-
-        }
-
-        else{
-
-            throw new Error(
-
-                result.message
-
-            );
-
-        }
+        await startRazorpayPayment();
 
     }
 
     catch(error){
 
+        console.error(
+            error
+        );
+
         alert(
-
             error.message
-
         );
 
     }
 
     finally{
 
-        submitButton.disabled = false;
+        submitButton.disabled =
+            false;
+
 
         submitButton.innerHTML =
-
             "Donate Now";
 
     }
