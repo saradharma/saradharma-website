@@ -504,7 +504,6 @@ async function startRazorpayPayment(){
             "razorpay_order"
         );
 
-
         formData.append(
             "category",
             category
