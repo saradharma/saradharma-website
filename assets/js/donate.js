@@ -479,10 +479,7 @@ async function startRazorpayPayment(){
             ).value;
 
 
-        const panNumber =
-            document.getElementById(
-                "panNumber"
-            ).value.trim();
+        
 
 
         const receiptRequired =
@@ -495,109 +492,34 @@ async function startRazorpayPayment(){
          * BUILD ORDER REQUEST
          ******************************************************************/
 
-        const formData =
-            new FormData();
+          const result =
+    await requestRazorpayOrderJsonp({
 
+        category:
+            category,
 
-        formData.append(
-            "action",
-            "razorpay_order"
-        );
+        amount:
+            amount,
 
-        formData.append(
-            "category",
-            category
-        );
+        donorName:
+            donorName,
 
+        email:
+            email,
 
-        formData.append(
-            "amount",
-            amount
-        );
+        phone:
+            phone,
 
+        address:
+            address,
 
-        formData.append(
-            "donorName",
-            donorName
-        );
+        country:
+            country,
 
-
-        formData.append(
-            "email",
-            email
-        );
-
-
-        formData.append(
-            "phone",
-            phone
-        );
-
-
-        formData.append(
-            "address",
-            address
-        );
-
-
-        formData.append(
-            "country",
-            country
-        );
-
-
-        formData.append(
-            "panNumber",
-            panNumber
-        );
-
-
-        formData.append(
-            "receiptRequired",
+        receiptRequired:
             receiptRequired
-        );
 
-
-        /******************************************************************
-         * ASK SARADHARMA SERVER TO CREATE RAZORPAY ORDER
-         ******************************************************************/
-
-        const response =
-            await fetch(
-
-                SaraDharma.WEBAPP_URL,
-
-                {
-
-                    method :
-                        "POST",
-
-                    body :
-                        formData
-
-                }
-
-            );
-
-
-        if(
-            !response.ok
-        ){
-
-            throw new Error(
-
-                "Server returned HTTP "
-                +
-                response.status
-
-            );
-
-        }
-
-
-        const result =
-            await response.json();
-
+    });
 
         if(
             !result.success
@@ -816,6 +738,191 @@ async function startRazorpayPayment(){
     }
 
 }
+
+/**************************************************************************
+ * REQUEST RAZORPAY ORDER USING JSONP
+ **************************************************************************/
+
+function requestRazorpayOrderJsonp(data){
+
+    return new Promise(
+        function(resolve, reject){
+
+            const callbackName =
+                "razorpayOrderCallback_" +
+                Date.now();
+
+
+            let script = null;
+
+
+            window[callbackName] =
+                function(result){
+
+                    delete window[callbackName];
+
+
+                    if(
+                        script &&
+                        script.parentNode
+                    ){
+
+                        script.parentNode.removeChild(
+                            script
+                        );
+
+                    }
+
+
+                    if(
+                        !result ||
+                        !result.success
+                    ){
+
+                        reject(
+
+                            new Error(
+                                result &&
+                                result.message
+                                    ? result.message
+                                    : "Unable to create Razorpay order."
+                            )
+
+                        );
+
+                        return;
+
+                    }
+
+
+                    console.log(
+                        "Razorpay order created:",
+                        result
+                    );
+
+
+                    resolve(result);
+
+                };
+
+
+            const url =
+                SaraDharma.WEBAPP_URL
+                +
+                "?action=razorpayorder"
+                +
+                "&amount="
+                +
+                encodeURIComponent(
+                    data.amount
+                )
+                +
+                "&category="
+                +
+                encodeURIComponent(
+                    data.category
+                )
+                +
+                "&donorName="
+                +
+                encodeURIComponent(
+                    data.donorName
+                )
+                +
+                "&email="
+                +
+                encodeURIComponent(
+                    data.email
+                )
+                +
+                "&phone="
+                +
+                encodeURIComponent(
+                    data.phone
+                )
+                +
+                "&address="
+                +
+                encodeURIComponent(
+                    data.address
+                )
+                +
+                "&country="
+                +
+                encodeURIComponent(
+                    data.country
+                )
+                +
+                "&receiptRequired="
+                +
+                encodeURIComponent(
+                    data.receiptRequired
+                )
+                +
+                "&callback="
+                +
+                encodeURIComponent(
+                    callbackName
+                );
+
+
+            script =
+                document.createElement(
+                    "script"
+                );
+
+
+            script.src = url;
+
+            script.async = true;
+
+
+            script.onerror =
+                function(){
+
+                    delete window[callbackName];
+
+
+                    if(
+                        script &&
+                        script.parentNode
+                    ){
+
+                        script.parentNode.removeChild(
+                            script
+                        );
+
+                    }
+
+
+                    reject(
+
+                        new Error(
+                            "Unable to contact the SaraDharma payment server."
+                        )
+
+                    );
+
+                };
+
+
+            document.head.appendChild(
+                script
+            );
+
+        }
+    );
+
+}
+
+
+
+
+
+
+
+
+
 
 
 /**************************************************************************
