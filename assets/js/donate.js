@@ -632,16 +632,18 @@ async function startRazorpayPayment(){
              **************************************************************/
 
             handler :
-                function(
-                    paymentResponse
-                ){
-
+                function(paymentResponse){
+            
+                    console.log(
+                        "Razorpay Payment Response:",
+                        paymentResponse
+                    );
+            
                     handleRazorpaySuccess(
                         paymentResponse
                     );
-
+            
                 },
-
 
             /**************************************************************
              * MODAL
