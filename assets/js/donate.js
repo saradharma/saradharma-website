@@ -917,7 +917,202 @@ function requestRazorpayOrderJsonp(data){
 
 
 
+/**************************************************************************
+ * REQUEST RAZORPAY PAYMENT VERIFICATION USING JSONP
+ *
+ * Sends only the three Razorpay verification values.
+ *
+ * No donor information.
+ * No PAN.
+ * No Razorpay secret.
+ **************************************************************************/
 
+function requestRazorpayVerificationJsonp(
+    data
+){
+
+    return new Promise(
+
+        function(
+            resolve,
+            reject
+        ){
+
+            const callbackName =
+                "razorpayVerifyCallback_" +
+                Date.now();
+
+
+            let script = null;
+
+
+            /******************************************************************
+             * JSONP CALLBACK
+             ******************************************************************/
+
+            window[callbackName] =
+                function(result){
+
+                    delete window[
+                        callbackName
+                    ];
+
+
+                    if(
+                        script
+                        &&
+                        script.parentNode
+                    ){
+
+                        script.parentNode.removeChild(
+                            script
+                        );
+
+                    }
+
+
+                    if(
+                        !result
+                        ||
+                        !result.success
+                    ){
+
+                        reject(
+
+                            new Error(
+
+                                result
+                                &&
+                                result.message
+
+                                    ? result.message
+
+                                    : "Payment verification failed."
+
+                            )
+
+                        );
+
+                        return;
+
+                    }
+
+
+                    resolve(
+                        result
+                    );
+
+                };
+
+
+            /******************************************************************
+             * BUILD VERIFICATION URL
+             ******************************************************************/
+
+            const url =
+
+                SaraDharma.WEBAPP_URL
+
+                +
+
+                "?action=razorpayverify"
+
+                +
+
+                "&razorpay_payment_id="
+
+                +
+
+                encodeURIComponent(
+                    data.razorpay_payment_id
+                )
+
+                +
+
+                "&razorpay_order_id="
+
+                +
+
+                encodeURIComponent(
+                    data.razorpay_order_id
+                )
+
+                +
+
+                "&razorpay_signature="
+
+                +
+
+                encodeURIComponent(
+                    data.razorpay_signature
+                )
+
+                +
+
+                "&callback="
+
+                +
+
+                encodeURIComponent(
+                    callbackName
+                );
+
+
+            /******************************************************************
+             * CREATE JSONP SCRIPT
+             ******************************************************************/
+
+            script =
+                document.createElement(
+                    "script"
+                );
+
+
+            script.src =
+                url;
+
+
+            script.onerror =
+                function(){
+
+                    delete window[
+                        callbackName
+                    ];
+
+
+                    if(
+                        script
+                        &&
+                        script.parentNode
+                    ){
+
+                        script.parentNode.removeChild(
+                            script
+                        );
+
+                    }
+
+
+                    reject(
+
+                        new Error(
+                            "Unable to contact SaraDharma payment verification server."
+                        )
+
+                    );
+
+                };
+
+
+            document.head.appendChild(
+                script
+            );
+
+        }
+
+    );
+
+}
 
 
 
@@ -996,16 +1191,18 @@ function loadRazorpayCheckout(){
 
 }
 
-
 /**************************************************************************
  * HANDLE RAZORPAY SUCCESS
  *
- * IMPORTANT:
+ * Razorpay has returned:
  *
- * This function does NOT save the donation yet.
+ *     razorpay_payment_id
+ *     razorpay_order_id
+ *     razorpay_signature
  *
- * It will be completed after we add the server-side signature
- * verification endpoint.
+ * These are sent to the SaraDharma server for verification.
+ *
+ * The browser NEVER verifies the signature.
  **************************************************************************/
 
 async function handleRazorpaySuccess(
@@ -1035,48 +1232,188 @@ async function handleRazorpaySuccess(
     }
 
 
-    /*
-     * We intentionally stop here for this stage.
-     *
-     * The next server-side function will:
-     *
-     * 1. Receive razorpay_payment_id
-     * 2. Receive razorpay_order_id
-     * 3. Receive razorpay_signature
-     * 4. Retrieve the REAL order from PendingPayments
-     * 5. Generate HMAC-SHA256 using RAZORPAY_KEY_SECRET
-     * 6. Verify the signature
-     * 7. Confirm payment status
-     * 8. Save the donation
-     * 9. Send donor/admin emails
-     *
-     * This prevents an unverified browser response from being
-     * treated as a successful donation.
-     */
+    try{
+
+        /******************************************************************
+         * CHECK THAT RAZORPAY RETURNED ALL THREE VALUES
+         ******************************************************************/
+
+        if(
+            !paymentResponse
+            ||
+            !paymentResponse.razorpay_payment_id
+            ||
+            !paymentResponse.razorpay_order_id
+            ||
+            !paymentResponse.razorpay_signature
+        ){
+
+            throw new Error(
+                "Razorpay did not return the complete payment verification data."
+            );
+
+        }
 
 
-    alert(
+        /******************************************************************
+         * SEND PAYMENT RESPONSE TO SERVER
+         *
+         * IMPORTANT:
+         *
+         * We use JSONP here.
+         *
+         * We do NOT use fetch().
+         *
+         * We send ONLY:
+         *
+         *     payment_id
+         *     order_id
+         *     signature
+         *
+         * No PAN.
+         * No donor information.
+         ******************************************************************/
 
-        "Razorpay Test payment completed.\n\n"
-        +
-        "Payment ID : "
-        +
-        paymentResponse.razorpay_payment_id
-        +
-        "\n\n"
-        +
-        "Verification will be connected in the next step."
+        const result =
+            await requestRazorpayVerificationJsonp({
 
-    );
+                razorpay_payment_id :
+                    paymentResponse.razorpay_payment_id,
+
+                razorpay_order_id :
+                    paymentResponse.razorpay_order_id,
+
+                razorpay_signature :
+                    paymentResponse.razorpay_signature
+
+            });
 
 
-    if(paymentButton){
+        /******************************************************************
+         * SERVER VERIFIED PAYMENT
+         ******************************************************************/
 
-        paymentButton.disabled =
-            false;
+        if(
+            !result
+            ||
+            !result.success
+        ){
 
-        paymentButton.innerHTML =
-            "Pay using Razorpay";
+            throw new Error(
+
+                result &&
+                result.message
+
+                    ? result.message
+
+                    : "Payment verification failed."
+
+            );
+
+        }
+
+
+        console.log(
+            "Razorpay payment verified:",
+            result
+        );
+
+
+        /******************************************************************
+         * PAYMENT SUCCESS
+         ******************************************************************/
+
+        alert(
+
+            "Payment Successful!\n\n"
+
+            +
+
+            "Payment ID : "
+
+            +
+
+            paymentResponse.razorpay_payment_id
+
+            +
+
+            "\n\n"
+
+            +
+
+            "Donation Reference : "
+
+            +
+
+            (
+                result.referenceId
+                    || "N/A"
+            )
+
+            +
+
+            "\n\n"
+
+            +
+
+            "Your donation has been recorded successfully."
+
+        );
+
+
+        /******************************************************************
+         * RESET BUTTON
+         ******************************************************************/
+
+        if(paymentButton){
+
+            paymentButton.disabled =
+                false;
+
+            paymentButton.innerHTML =
+                "Pay using Razorpay";
+
+        }
+
+    }
+
+
+    catch(error){
+
+        console.error(
+            "Razorpay verification error:",
+            error
+        );
+
+
+        alert(
+
+            "Payment verification failed.\n\n"
+
+            +
+
+            error.message
+
+            +
+
+            "\n\n"
+
+            +
+
+            "Please contact SaraDharma if your bank account was charged."
+
+        );
+
+
+        if(paymentButton){
+
+            paymentButton.disabled =
+                false;
+
+            paymentButton.innerHTML =
+                "Pay using Razorpay";
+
+        }
 
     }
 
