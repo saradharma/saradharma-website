@@ -348,45 +348,54 @@ function validateDonationForm(){
 
 
 
-/**************************************************************************
-SUBMIT DONATION
-**************************************************************************/
-/**************************************************************************
- * SUBMIT DONATION
- *
- * TEST PAYMENT FLOW
- *
- * Donate Now
- *     ↓
- * Validate
- *     ↓
- * Razorpay Checkout
- *
- * Donation is NOT saved until payment verification is implemented.
- **************************************************************************/
 
 /**************************************************************************
  * SUBMIT DONATION
  *
- * RAZORPAY TEST MODE
+ * Razorpay is now the payment path.
  *
- * Stage 1:
- *
- * Donate Now
- *      ↓
- * Validate form
- *      ↓
- * Create Razorpay Test Order
- *      ↓
- * Open Razorpay Checkout
- *
- * Donation is NOT saved at this stage.
  **************************************************************************/
 
-async function submitDonation(event){
+async function submitDonation(
+    event
+){
 
     event.preventDefault();
 
+
+    /*
+     * Do not save a donation directly.
+     *
+     * Start Razorpay payment instead.
+     */
+
+    await startRazorpayPayment();
+
+}
+/**************************************************************************
+ * RAZORPAY TEST MODE
+ *
+ * Purpose:
+ * Create a Razorpay Test Mode order and open Razorpay Checkout.
+ *
+ * IMPORTANT:
+ *
+ * The Razorpay Key Secret is NEVER present in this file.
+ *
+ * Only the Razorpay Key ID returned by the server is sent to Checkout.
+ *
+ **************************************************************************/
+
+
+/**************************************************************************
+ * START RAZORPAY PAYMENT
+ **************************************************************************/
+
+async function startRazorpayPayment(){
+
+    /*
+     * Validate the donation form first.
+     */
 
     if(
         !validateDonationForm()
@@ -397,25 +406,393 @@ async function submitDonation(event){
     }
 
 
-    const submitButton =
+    const paymentButton =
         document.getElementById(
-            "submitButton"
+            "razorpayButton"
         );
 
 
-    submitButton.disabled =
-        true;
+    if(!paymentButton){
+
+        alert(
+            "Razorpay payment button was not found."
+        );
+
+        return;
+
+    }
 
 
-    submitButton.innerHTML =
-        "Opening Payment...";
+    paymentButton.disabled = true;
+
+    paymentButton.innerHTML =
+        "Creating Payment...";
 
 
     try{
 
-        await startRazorpayPayment();
+        /******************************************************************
+         * COLLECT DONATION DATA
+         ******************************************************************/
+
+        const category =
+            document.getElementById(
+                "donationPurpose"
+            ).value;
+
+
+        const amount =
+            Number(
+                document.getElementById(
+                    "donationAmount"
+                ).value
+            );
+
+
+        const donorName =
+            document.getElementById(
+                "donorName"
+            ).value.trim();
+
+
+        const email =
+            document.getElementById(
+                "donorEmail"
+            ).value.trim();
+
+
+        const phone =
+            document.getElementById(
+                "donorPhone"
+            ).value.trim();
+
+
+        const address =
+            document.getElementById(
+                "donorAddress"
+            ).value.trim();
+
+
+        const country =
+            document.getElementById(
+                "donorCountry"
+            ).value;
+
+
+        const panNumber =
+            document.getElementById(
+                "panNumber"
+            ).value.trim();
+
+
+        const receiptRequired =
+            document.getElementById(
+                "receiptRequired"
+            ).value;
+
+
+        /******************************************************************
+         * BUILD ORDER REQUEST
+         ******************************************************************/
+
+        const formData =
+            new FormData();
+
+
+        formData.append(
+            "action",
+            "razorpay_order"
+        );
+
+
+        formData.append(
+            "category",
+            category
+        );
+
+
+        formData.append(
+            "amount",
+            amount
+        );
+
+
+        formData.append(
+            "donorName",
+            donorName
+        );
+
+
+        formData.append(
+            "email",
+            email
+        );
+
+
+        formData.append(
+            "phone",
+            phone
+        );
+
+
+        formData.append(
+            "address",
+            address
+        );
+
+
+        formData.append(
+            "country",
+            country
+        );
+
+
+        formData.append(
+            "panNumber",
+            panNumber
+        );
+
+
+        formData.append(
+            "receiptRequired",
+            receiptRequired
+        );
+
+
+        /******************************************************************
+         * ASK SARADHARMA SERVER TO CREATE RAZORPAY ORDER
+         ******************************************************************/
+
+        const response =
+            await fetch(
+
+                SaraDharma.WEBAPP_URL,
+
+                {
+
+                    method :
+                        "POST",
+
+                    body :
+                        formData
+
+                }
+
+            );
+
+
+        if(
+            !response.ok
+        ){
+
+            throw new Error(
+
+                "Server returned HTTP "
+                +
+                response.status
+
+            );
+
+        }
+
+
+        const result =
+            await response.json();
+
+
+        if(
+            !result.success
+        ){
+
+            throw new Error(
+                result.message ||
+                "Unable to create Razorpay order."
+            );
+
+        }
+
+
+        /******************************************************************
+         * STORE PAYMENT INFORMATION TEMPORARILY IN BROWSER
+         *
+         * This is NOT trusted payment information.
+         *
+         * The server remains the authority.
+         ******************************************************************/
+
+        window.SaraDharmaRazorpay =
+            {
+
+                donationId :
+                    result.referenceId,
+
+                orderId :
+                    result.orderId,
+
+                amount :
+                    result.amount,
+
+                currency :
+                    result.currency,
+
+                keyId :
+                    result.keyId
+
+            };
+
+
+        /******************************************************************
+         * OPEN RAZORPAY CHECKOUT
+         ******************************************************************/
+
+        await loadRazorpayCheckout();
+
+
+        const options = {
+
+            key :
+                result.keyId,
+
+            amount :
+                result.amount,
+
+            currency :
+                result.currency,
+
+            name :
+                "SaraDharma Community",
+
+            description :
+                category,
+
+            order_id :
+                result.orderId,
+
+
+            /**************************************************************
+             * PREFILL DONOR INFORMATION
+             **************************************************************/
+
+            prefill : {
+
+                name :
+                    donorName,
+
+                email :
+                    email,
+
+                contact :
+                    phone
+
+            },
+
+
+            /**************************************************************
+             * NOTES
+             **************************************************************/
+
+            notes : {
+
+                donation_id :
+                    result.referenceId
+
+            },
+
+
+            /**************************************************************
+             * PAYMENT SUCCESS
+             *
+             * IMPORTANT:
+             *
+             * At this stage we DO NOT save the donation.
+             *
+             * We will send these three values to the server for
+             * signature verification in the next step.
+             **************************************************************/
+
+            handler :
+                function(
+                    paymentResponse
+                ){
+
+                    handleRazorpaySuccess(
+                        paymentResponse
+                    );
+
+                },
+
+
+            /**************************************************************
+             * MODAL
+             **************************************************************/
+
+            modal : {
+
+                ondismiss :
+                    function(){
+
+                        paymentButton.disabled =
+                            false;
+
+                        paymentButton.innerHTML =
+                            "Pay using Razorpay";
+
+                    }
+
+            }
+
+        };
+
+
+        const razorpay =
+            new Razorpay(
+                options
+            );
+
+
+        razorpay.on(
+            "payment.failed",
+            function(
+                response
+            ){
+
+                console.error(
+                    "Razorpay payment failed:",
+                    response
+                );
+
+
+                alert(
+
+                    "Payment was not completed.\n\n"
+                    +
+                    (
+                        response.error &&
+                        response.error.description
+                        ?
+                        response.error.description
+                        :
+                        "Please try again."
+                    )
+
+                );
+
+
+                paymentButton.disabled =
+                    false;
+
+                paymentButton.innerHTML =
+                    "Pay using Razorpay";
+
+            }
+        );
+
+
+        razorpay.open();
+
 
     }
+
 
     catch(error){
 
@@ -427,411 +804,50 @@ async function submitDonation(event){
 
         alert(
             error.message ||
-            "Unable to start payment."
+            "Unable to start Razorpay payment."
         );
 
-    }
 
-    finally{
-
-        submitButton.disabled =
+        paymentButton.disabled =
             false;
 
-
-        submitButton.innerHTML =
-            "Donate Now";
+        paymentButton.innerHTML =
+            "Pay using Razorpay";
 
     }
 
 }
 
+
 /**************************************************************************
- * START RAZORPAY PAYMENT
+ * LOAD RAZORPAY CHECKOUT
  *
- * RAZORPAY TEST MODE
- *
- * Uses JSONP to avoid the browser CORS problem encountered when
- * calling the Apps Script Web App with fetch().
+ * Loads Razorpay's official checkout.js only when required.
  **************************************************************************/
 
-function startRazorpayPayment(){
+function loadRazorpayCheckout(){
 
     return new Promise(
-        function(resolve, reject){
+        function(
+            resolve,
+            reject
+        ){
 
-            const amount =
-                Number(
-                    document
-                        .getElementById(
-                            "donationAmount"
-                        )
-                        .value
-                );
-
-
-            const donorName =
-                document
-                    .getElementById(
-                        "donorName"
-                    )
-                    .value
-                    .trim();
-
-
-            const donorEmail =
-                document
-                    .getElementById(
-                        "donorEmail"
-                    )
-                    .value
-                    .trim();
-
-
-            const donorPhone =
-                document
-                    .getElementById(
-                        "donorPhone"
-                    )
-                    .value
-                    .trim();
-
-
-            const purpose =
-                document
-                    .getElementById(
-                        "donationPurpose"
-                    )
-                    .value;
-
+            /*
+             * Already loaded.
+             */
 
             if(
-                !Number.isFinite(amount)
-                ||
-                amount <= 0
+                typeof Razorpay !==
+                "undefined"
             ){
 
-                reject(
-                    new Error(
-                        "Invalid donation amount."
-                    )
-                );
+                resolve();
 
                 return;
 
             }
 
-
-            /*
-             * Create a unique callback name.
-             */
-
-            const callbackName =
-                "razorpayOrderCallback_"
-                +
-                Date.now();
-
-
-            /*
-             * Global callback.
-             *
-             * Apps Script will return:
-             *
-             * callbackName({...});
-             */
-
-            window[callbackName] =
-                function(result){
-
-                    /*
-                     * Remove the global callback
-                     * after receiving the response.
-                     */
-
-                    delete window[
-                        callbackName
-                    ];
-
-
-                    /*
-                     * Remove the script element.
-                     */
-
-                    if(
-                        script.parentNode
-                    ){
-
-                        script.parentNode
-                            .removeChild(
-                                script
-                            );
-
-                    }
-
-
-                    /*
-                     * Check response.
-                     */
-
-                    if(
-                        !result
-                        ||
-                        !result.success
-                    ){
-
-                        reject(
-
-                            new Error(
-
-                                result &&
-                                result.message
-
-                                    ? result.message
-
-                                    : "Unable to create Razorpay order."
-
-                            )
-
-                        );
-
-                        return;
-
-                    }
-
-
-                    console.log(
-                        "Razorpay Order:",
-                        result
-                    );
-
-
-                    /*
-                     * Make sure Razorpay Checkout
-                     * library is available.
-                     */
-
-                    if(
-                        typeof Razorpay
-                        ===
-                        "undefined"
-                    ){
-
-                        reject(
-
-                            new Error(
-                                "Razorpay Checkout library is not loaded."
-                            )
-
-                        );
-
-                        return;
-
-                    }
-
-
-                    /*
-                     * Razorpay Checkout options.
-                     */
-
-                    const options = {
-
-                        key:
-                            result.keyId,
-
-
-                        amount:
-                            result.amount,
-
-
-                        currency:
-                            result.currency,
-
-
-                        name:
-                            "SaraDharma Community",
-
-
-                        description:
-                            "Donation - "
-                            +
-                            purpose,
-
-
-                        order_id:
-                            result.orderId,
-
-
-                        prefill: {
-
-                            name:
-                                donorName,
-
-                            email:
-                                donorEmail,
-
-                            contact:
-                                donorPhone
-
-                        },
-
-
-                        notes: {
-
-                            donationReference:
-                                result.receipt
-
-                        },
-
-
-                        theme: {
-
-                            color:
-                                "#B46A1F"
-
-                        },
-
-
-                        handler:
-                            function(
-                                paymentResponse
-                            ){
-
-                                console.log(
-                                    "Razorpay Test Payment Response:",
-                                    paymentResponse
-                                );
-
-
-                                /*
-                                 * TEMPORARY TEST ONLY.
-                                 *
-                                 * We will replace this with
-                                 * server-side signature verification
-                                 * in the next stage.
-                                 */
-
-                                alert(
-
-                                    "Razorpay Test Payment Response received.\n\n"
-                                    +
-                                    "Payment ID: "
-                                    +
-                                    paymentResponse
-                                        .razorpay_payment_id
-
-                                );
-
-                            },
-
-
-                        modal: {
-
-                            ondismiss:
-                                function(){
-
-                                    console.log(
-                                        "Razorpay Checkout closed."
-                                    );
-
-                                }
-
-                        }
-
-                    };
-
-
-                    /*
-                     * Create Razorpay Checkout.
-                     */
-
-                    const razorpay =
-                        new Razorpay(
-                            options
-                        );
-
-
-                    /*
-                     * Handle failed payment.
-                     */
-
-                    razorpay.on(
-
-                        "payment.failed",
-
-                        function(response){
-
-                            console.error(
-                                "Razorpay Payment Failed:",
-                                response.error
-                            );
-
-
-                            alert(
-
-                                "Payment failed.\n\n"
-                                +
-                                (
-                                    response.error
-                                    &&
-                                    response.error.description
-
-                                        ? response.error.description
-
-                                        : "Payment was not successful."
-
-                                )
-
-                            );
-
-                        }
-
-                    );
-
-
-                    /*
-                     * Open Razorpay Checkout.
-                     */
-
-                    razorpay.open();
-
-
-                    resolve();
-
-                };
-
-
-            /*
-             * Build Apps Script JSONP URL.
-             */
-
-            const url =
-                SaraDharma.WEBAPP_URL
-                +
-                "?action=razorpayorder"
-                +
-                "&amount="
-                +
-                encodeURIComponent(
-                    amount
-                )
-                +
-                "&callback="
-                +
-                encodeURIComponent(
-                    callbackName
-                );
-
-
-            console.log(
-                "Razorpay Order URL:",
-                url
-            );
-
-
-            /*
-             * Create script element.
-             *
-             * This avoids fetch/CORS.
-             */
 
             const script =
                 document.createElement(
@@ -840,41 +856,24 @@ function startRazorpayPayment(){
 
 
             script.src =
-                url;
+                "https://checkout.razorpay.com/v1/checkout.js";
 
 
-            script.async =
-                true;
+            script.onload =
+                function(){
 
+                    resolve();
 
-            /*
-             * Handle network/script errors.
-             */
+                };
+
 
             script.onerror =
                 function(){
 
-                    delete window[
-                        callbackName
-                    ];
-
-
-                    if(
-                        script.parentNode
-                    ){
-
-                        script.parentNode
-                            .removeChild(
-                                script
-                            );
-
-                    }
-
-
                     reject(
 
                         new Error(
-                            "Unable to contact the SaraDharma payment server."
+                            "Unable to load Razorpay Checkout."
                         )
 
                     );
@@ -882,15 +881,9 @@ function startRazorpayPayment(){
                 };
 
 
-            /*
-             * Add script to page.
-             */
-
-            document
-                .head
-                .appendChild(
-                    script
-                );
+            document.head.appendChild(
+                script
+            );
 
         }
     );
@@ -898,10 +891,90 @@ function startRazorpayPayment(){
 }
 
 
+/**************************************************************************
+ * HANDLE RAZORPAY SUCCESS
+ *
+ * IMPORTANT:
+ *
+ * This function does NOT save the donation yet.
+ *
+ * It will be completed after we add the server-side signature
+ * verification endpoint.
+ **************************************************************************/
+
+async function handleRazorpaySuccess(
+    paymentResponse
+){
+
+    console.log(
+        "Razorpay payment response:",
+        paymentResponse
+    );
 
 
+    const paymentButton =
+        document.getElementById(
+            "razorpayButton"
+        );
 
 
+    if(paymentButton){
+
+        paymentButton.disabled =
+            true;
+
+        paymentButton.innerHTML =
+            "Verifying Payment...";
+
+    }
+
+
+    /*
+     * We intentionally stop here for this stage.
+     *
+     * The next server-side function will:
+     *
+     * 1. Receive razorpay_payment_id
+     * 2. Receive razorpay_order_id
+     * 3. Receive razorpay_signature
+     * 4. Retrieve the REAL order from PendingPayments
+     * 5. Generate HMAC-SHA256 using RAZORPAY_KEY_SECRET
+     * 6. Verify the signature
+     * 7. Confirm payment status
+     * 8. Save the donation
+     * 9. Send donor/admin emails
+     *
+     * This prevents an unverified browser response from being
+     * treated as a successful donation.
+     */
+
+
+    alert(
+
+        "Razorpay Test payment completed.\n\n"
+        +
+        "Payment ID : "
+        +
+        paymentResponse.razorpay_payment_id
+        +
+        "\n\n"
+        +
+        "Verification will be connected in the next step."
+
+    );
+
+
+    if(paymentButton){
+
+        paymentButton.disabled =
+            false;
+
+        paymentButton.innerHTML =
+            "Pay using Razorpay";
+
+    }
+
+}
 
 
 /**************************************************************************
@@ -937,9 +1010,7 @@ function clearDonationForm(){
 }
 
 
-/**************************************************************************
-SUCCESS DIALOG
-**************************************************************************/
+
 
 /**************************************************************************
 SUCCESS DIALOG
@@ -1252,9 +1323,7 @@ async function startRazorpayPayment(){
 }
 
 
-/**************************************************************************
-COPY UPI ID
-**************************************************************************/
+
 
 /**************************************************************************
  * COPY UPI ID
@@ -1273,5 +1342,31 @@ function copyUpiId(){
 }
 
 
+/**************************************************************************
+ * RAZORPAY BUTTON INITIALIZATION
+ **************************************************************************/
 
+document.addEventListener(
+    "DOMContentLoaded",
+    function(){
+
+        const razorpayButton =
+            document.getElementById(
+                "razorpayButton"
+            );
+
+
+        if(
+            razorpayButton
+        ){
+
+            razorpayButton.addEventListener(
+                "click",
+                startRazorpayPayment
+            );
+
+        }
+
+    }
+);
 
