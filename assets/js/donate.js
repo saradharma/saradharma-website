@@ -1324,43 +1324,113 @@ async function handleRazorpaySuccess(
         /******************************************************************
          * PAYMENT SUCCESS
          ******************************************************************/
+         /******************************************************************
+ * FINAL PAYMENT SUCCESS MESSAGE
+ ******************************************************************/
 
-        alert(
+let successMessage =
 
-            "Payment Successful!\n\n"
+    "Payment Successful!\n\n"
 
-            +
+    +
 
-            "Payment ID : "
+    "Donation Reference : "
 
-            +
+    +
 
-            paymentResponse.razorpay_payment_id
+    (
+        result.referenceId
+            || "N/A"
+    )
 
-            +
+    +
 
-            "\n\n"
+    "\n\n"
 
-            +
+    +
 
-            "Donation Reference : "
+    "Payment ID : "
 
-            +
+    +
 
-            (
-                result.referenceId
-                    || "N/A"
-            )
+    (
+        paymentResponse.razorpay_payment_id
+            || "N/A"
+    )
 
-            +
+    +
 
-            "\n\n"
+    "\n\n"
 
-            +
+    +
 
-            "Your donation has been recorded successfully."
+    "Your donation has been recorded successfully.";
 
-        );
+
+/******************************************************************
+ * RECEIPT STATUS
+ ******************************************************************/
+
+if(
+    result.receiptEmailed
+){
+
+    successMessage +=
+
+        "\n\n"
+
+        +
+
+        "Your donation receipt has been emailed to you."
+
+        +
+
+        "\n\n"
+
+        +
+
+        "Thank you for supporting SaraDharma Community.";
+
+}
+
+else if(
+    result.receiptGenerated
+){
+
+    successMessage +=
+
+        "\n\n"
+
+        +
+
+        "Your donation receipt was generated, "
+        +
+        "but could not be emailed.";
+
+}
+
+else{
+
+    successMessage +=
+
+        "\n\n"
+
+        +
+
+        "Your donation receipt could not be generated. "
+        +
+        "Please contact SaraDharma.";
+
+}
+
+
+/******************************************************************
+ * SHOW FINAL MESSAGE
+ ******************************************************************/
+
+alert(
+    successMessage
+);
 
 
         /******************************************************************
