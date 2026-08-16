@@ -552,7 +552,30 @@ No
 <h2>
 
 Payment Method
+<!-- ==========================================================
+     DONATION DECLARATION
+=========================================================== -->
 
+<div class="checkbox-row">
+
+    <label class="checkbox-label">
+
+        <input
+            type="checkbox"
+            id="donationDeclaration"
+            required>
+
+        <span>
+            I certify that the information provided above is correct
+            and I voluntarily wish to make this donation to
+            Vishrantam Foundation.
+        </span>
+
+    </label>
+
+</div>
+
+      
 </h2>
 
 <div class="payment-grid">
@@ -584,15 +607,10 @@ Pay using Razorpay
 
 </button>
 
-<p class="payment-note">
-
-Available after production deployment.
-
-</p>
-
 </div>
 
-
+<!-- ==========================================================
+        Commented as this is now done through Razorppay
 <div class="payment-card">
 
 <h3>
@@ -622,60 +640,7 @@ Scan the QR code or use the UPI ID above to make your donation.
 </p>
 
 </div>
-
-</div>
-
-
-<!-- ==========================================================
-     DECLARATION
 =========================================================== -->
-
-<div class="checkbox-row">
-
-<label class="checkbox-label">
-
-<input
-type="checkbox"
-id="donationDeclaration"
-required>
-
-<span>
-
-I certify that the information provided above is correct and
-I voluntarily wish to make this donation to
-SaraDharma Community.
-
-</span>
-
-</label>
-
-</div>
-
-
-<!-- ==========================================================
-     BUTTONS
-=========================================================== -->
-
-<div class="button-row">
-
-<button
-type="button"
-class="secondary-button"
-onclick="cancelDonation()">
-
-Cancel
-
-</button>
-
-<button
-id="submitButton"
-
-type="submit">
-
-Donate Now
-
-</button>
-
 </div>
 
 </form>
@@ -683,6 +648,8 @@ Donate Now
 </section>
 
 </main>
+
+
 <!-- ==========================================================
      DONATION SUCCESS DIALOG
 =========================================================== -->
@@ -700,11 +667,11 @@ Donate Now
         </div>
 
         <h2>
-            Thank You!
+            Payment Successful!
         </h2>
 
         <p>
-            Your donation has been received successfully.
+            Your donation has been recorded successfully.
         </p>
 
         <div class="success-reference">
@@ -719,23 +686,37 @@ Donate Now
 
         </div>
 
-        <p class="success-note">
-            A confirmation email has been sent to your email address.
+        <p>
+            <strong>
+                Payment ID
+            </strong>
+        </p>
+
+        <p id="successPaymentId">
+            -
+        </p>
+
+        <p
+            id="successReceiptMessage"
+            class="success-note">
+        </p>
+
+        <p>
+            Thank you for supporting SaraDharma Community.
         </p>
 
         <button
             type="button"
             class="primary-button"
-            onclick="closeSuccessDialog()"
-        >
+            onclick="closeSuccessDialog()">
+
             Close
+
         </button>
 
     </div>
 
 </div>
-
-
 
 
       
