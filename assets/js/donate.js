@@ -1321,118 +1321,21 @@ async function handleRazorpaySuccess(
         );
 
 
-        /******************************************************************
-         * PAYMENT SUCCESS
-         ******************************************************************/
-         /******************************************************************
- * FINAL PAYMENT SUCCESS MESSAGE
- ******************************************************************/
-
-let successMessage =
-
-    "Payment Successful!\n\n"
-
-    +
-
-    "Donation Reference : "
-
-    +
-
-    (
-        result.referenceId
-            || "N/A"
-    )
-
-    +
-
-    "\n\n"
-
-    +
-
-    "Payment ID : "
-
-    +
-
-    (
-        paymentResponse.razorpay_payment_id
-            || "N/A"
-    )
-
-    +
-
-    "\n\n"
-
-    +
-
-    "Your donation has been recorded successfully.";
-
-
+   
+ 
 /******************************************************************
- * RECEIPT STATUS
+ * PAYMENT SUCCESS
+ *
+ * Payment has been verified by the SaraDharma server.
+ * Show the standard SaraDharma success dialog.
  ******************************************************************/
 
-if(
-    result.receiptEmailed
-){
-
-    successMessage +=
-
-        "\n\n"
-
-        +
-
-        "Your donation receipt has been emailed to you."
-
-        +
-
-        "\n\n"
-
-        +
-
-        "Thank you for supporting SaraDharma Community.";
-
-}
-
-else if(
+showSuccessDialog(
+    result.referenceId,
+    paymentResponse.razorpay_payment_id,
+    result.receiptEmailed,
     result.receiptGenerated
-){
-
-    successMessage +=
-
-        "\n\n"
-
-        +
-
-        "Your donation receipt was generated, "
-        +
-        "but could not be emailed.";
-
-}
-
-else{
-
-    successMessage +=
-
-        "\n\n"
-
-        +
-
-        "Your donation receipt could not be generated. "
-        +
-        "Please contact SaraDharma.";
-
-}
-
-
-/******************************************************************
- * SHOW FINAL MESSAGE
- ******************************************************************/
-
-alert(
-    successMessage
 );
-
-
         /******************************************************************
          * RESET BUTTON
          ******************************************************************/
@@ -1530,8 +1433,16 @@ function clearDonationForm(){
 /**************************************************************************
 SUCCESS DIALOG
 **************************************************************************/
+/**************************************************************************
+ * DONATION SUCCESS DIALOG
+ **************************************************************************/
 
-function showSuccessDialog(donationId){
+function showSuccessDialog(
+    donationId,
+    paymentId,
+    receiptEmailed,
+    receiptGenerated
+){
 
     const overlay =
         document.getElementById(
@@ -1543,6 +1454,17 @@ function showSuccessDialog(donationId){
             "successReference"
         );
 
+    const payment =
+        document.getElementById(
+            "successPaymentId"
+        );
+
+    const receiptMessage =
+        document.getElementById(
+            "successReceiptMessage"
+        );
+
+
     if(!overlay){
 
         console.error(
@@ -1553,6 +1475,7 @@ function showSuccessDialog(donationId){
 
     }
 
+
     if(reference){
 
         reference.textContent =
@@ -1560,7 +1483,43 @@ function showSuccessDialog(donationId){
 
     }
 
-    overlay.style.display = "flex";
+
+    if(payment){
+
+        payment.textContent =
+            paymentId || "-";
+
+    }
+
+
+    if(receiptMessage){
+
+        if(receiptEmailed){
+
+            receiptMessage.textContent =
+                "Your donation receipt has been emailed to you.";
+
+        }
+
+        else if(receiptGenerated){
+
+            receiptMessage.textContent =
+                "Your donation receipt was generated, but could not be emailed.";
+
+        }
+
+        else{
+
+            receiptMessage.textContent =
+                "Your donation receipt could not be generated. Please contact SaraDharma.";
+
+        }
+
+    }
+
+
+    overlay.style.display =
+        "flex";
 
 }
 
