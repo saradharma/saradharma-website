@@ -1,0 +1,935 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Residency | SaraDharma</title>
+<meta name="description" content="Residential living options at SaraDharma">
+
+  <link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/common.css">
+  
+
+<style>
+/* ==========================================================
+   SaraDharma Residency – moved Facilities content
+   ========================================================== */
+
+.section-title{
+    text-align:center;
+    color:#1F4E2C;
+    font-size:2.3rem;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.section-intro{
+    max-width:920px;
+    margin:0 auto 45px;
+    text-align:center;
+    font-size:1.08rem;
+    line-height:1.9;
+    color:#555;
+}
+
+.gold-divider{
+    width:140px;
+    margin:60px auto;
+    border:none;
+    border-top:3px solid #D8B15A;
+}
+
+/* SaraDharma Difference */
+.difference-section{
+    margin:70px 0;
+}
+
+.difference-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:28px;
+    margin-top:40px;
+}
+
+.difference-card{
+    background:#fff;
+    border-radius:20px;
+    padding:30px;
+    box-shadow:0 12px 28px rgba(0,0,0,.08);
+    border-top:6px solid #2F5D3A;
+    transition:.3s;
+}
+
+.difference-card:hover{
+    transform:translateY(-6px);
+}
+
+.difference-card h3{
+    color:#1F4E2C;
+    margin-bottom:18px;
+    font-size:1.35rem;
+}
+
+.difference-card ul{
+    padding-left:22px;
+    line-height:1.9;
+    color:#555;
+}
+
+.highlight-box{
+    margin-top:45px;
+    padding:35px;
+    background:linear-gradient(135deg,#1F4E2C,#356B45);
+    border-radius:22px;
+    color:white;
+    text-align:center;
+}
+
+.highlight-box h2{
+    color:#fff;
+    margin-bottom:20px;
+}
+
+.highlight-box p{
+    font-size:1.05rem;
+    line-height:1.9;
+    max-width:900px;
+    margin:auto;
+}
+
+/* A Day at SaraDharma */
+.life-grid{
+    display:grid;
+    grid-template-columns:repeat(6,minmax(0,1fr));
+    gap:18px;
+    margin-top:40px;
+}
+
+.life-card{
+    background:#fff;
+    border-radius:18px;
+    padding:22px 16px;
+    box-shadow:0 10px 25px rgba(0,0,0,.08);
+    transition:.3s;
+    text-align:center;
+    border-bottom:5px solid #D8B15A;
+}
+
+.life-card:hover{
+    transform:translateY(-8px);
+}
+
+.life-icon{
+    font-size:2.5rem;
+    margin-bottom:15px;
+    color:#2F5D3A;
+}
+
+.life-card h3{
+    color:#1F4E2C;
+    margin-bottom:12px;
+    font-size:1.15rem;
+}
+
+.life-card p{
+    color:#555;
+    line-height:1.7;
+    font-size:.95rem;
+}
+
+/* Resident Care & Support */
+.support-section{
+    margin:70px 0;
+}
+
+.support-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:28px;
+    margin-top:40px;
+}
+
+.support-card{
+    background:#fff;
+    padding:30px;
+    border-radius:20px;
+    box-shadow:0 12px 30px rgba(0,0,0,.08);
+    border-left:6px solid #2F5D3A;
+    transition:.3s;
+}
+
+.support-card:hover{
+    transform:translateY(-6px);
+}
+
+.support-card h3{
+    color:#1F4E2C;
+    margin-bottom:18px;
+    font-size:1.35rem;
+}
+
+.support-card ul{
+    margin:0;
+    padding-left:22px;
+    line-height:1.9;
+    color:#555;
+}
+
+.assurance-box{
+    margin-top:45px;
+    background:#F7FBF6;
+    border:2px solid #D8B15A;
+    border-radius:22px;
+    padding:35px;
+    text-align:center;
+}
+
+.assurance-box h2{
+    color:#1F4E2C;
+    margin-bottom:20px;
+}
+
+.assurance-box p{
+    max-width:900px;
+    margin:auto;
+    line-height:1.9;
+    color:#555;
+    font-size:1.05rem;
+}
+
+/* Accommodation Options */
+.accommodation-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:30px;
+    margin-top:45px;
+}
+
+.room-card{
+    background:#fff;
+    border-radius:22px;
+    overflow:hidden;
+    box-shadow:0 12px 28px rgba(0,0,0,.08);
+    transition:.3s;
+}
+
+.room-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 18px 36px rgba(0,0,0,.12);
+}
+
+.room-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.room-content{
+    padding:26px;
+}
+
+.room-content h3{
+    color:#1F4E2C;
+    margin-bottom:15px;
+}
+
+.room-content ul{
+    padding-left:20px;
+    line-height:1.9;
+    color:#555;
+}
+
+.residency-button{
+    margin-top:45px;
+    text-align:center;
+}
+
+@media(max-width:1200px){
+    .life-grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+    }
+}
+
+@media(max-width:900px){
+    .difference-grid,
+    .support-grid,
+    .accommodation-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:700px){
+    .life-grid{
+        grid-template-columns:1fr;
+    }
+
+    .section-title{
+        font-size:1.9rem;
+    }
+}
+</style>
+
+</head>
+<body>
+
+
+<div id="navigation"></div>
+
+<section class="hero">
+<img src="assets/images/residencyBanner.png" alt="SaraDharma Banner">
+</section>
+
+<main class="container">
+
+<section style="text-align:center">
+<!-- img src="assets/images/residency.png" alt="Residency" style="width:180px;height:180px;border-radius:50%;border:5px solid #D9B56B;object-fit:cover;" -->
+<h2>Residency</h2>
+<p>
+SaraDharma offers a peaceful residential environment designed for older adults
+who value independence, companionship, comfort and holistic well-being.
+</p>
+</section>
+
+<section>
+<h2>Room Features</h2>
+<ul>
+<li>Comfortable reclining bed </li>
+<li>Storage loft, book shelf</li>
+<li>Computer desk</li>
+<li>Attached bathroom with hot and cold water</li>
+<li>Wash basin and Mirror</li>
+<li>Grab  bars around bathroom</li>
+<li>Sofa cum bed </li>
+<li>Natural light and ventilation</li>
+<li>Television and Wi‑Fi connectivity</li>
+<li>Attandent call facility</li>
+<li>Housekeeping and maintenance support</li>
+</ul>
+</section>
+
+<section>
+<h2>Who Can Apply?</h2>
+<p>
+Residency is intended primarily for senior citizens seeking a safe, caring and
+value-based community. Subject to availability and the admission process,
+SaraDharma may also consider couples,  co-living partners and other individuals whose needs align with the community's mission.
+</p>
+</section>
+
+<section>
+<h2>Life at SaraDharma</h2>
+<p>
+Residents are encouraged to participate in yoga, meditation, devotional
+activities, gardening, reading, community events and voluntary service. Our
+goal is to foster meaningful relationships and purposeful living.
+</p>
+<p style="margin-top:20px">
+<a class="button" href="registration.html">Apply for Residency</a>
+</p>
+</section>
+
+
+<hr class="gold-divider">
+<!-- ==========================================================
+     THE SARADHARMA DIFFERENCE
+=========================================================== -->
+
+<section class="difference-section">
+
+<h2 class="section-title">
+
+The SaraDharma Difference
+
+</h2>
+
+<p class="section-intro">
+
+We intentionally remain a boutique residential wellness community,
+believing that genuine care is best delivered through meaningful
+relationships rather than large institutional settings.
+
+</p>
+
+<div class="difference-grid">
+
+<div class="difference-card">
+
+<h3>
+
+Why Only 40 Residents?
+
+</h3>
+
+<ul>
+
+<li>Every resident is personally known.</li>
+
+<li>Greater individual attention.</li>
+
+<li>Peaceful community atmosphere.</li>
+
+<li>Meaningful friendships develop naturally.</li>
+
+<li>Staff understand each resident's needs.</li>
+
+<li>Residents never feel anonymous.</li>
+
+</ul>
+
+</div>
+
+<div class="difference-card">
+
+<h3>
+
+A Community, Not an Institution
+
+</h3>
+
+<ul>
+
+<li>Warm family-like environment.</li>
+
+<li>Shared meals and celebrations.</li>
+
+<li>Respect for individual dignity.</li>
+
+<li>Encouragement of independence.</li>
+
+<li>Holistic wellness programmes.</li>
+
+<li>Strong sense of belonging.</li>
+
+</ul>
+
+</div>
+
+<div class="difference-card">
+
+<h3>
+
+Designed for Healthy Ageing
+
+</h3>
+
+<ul>
+
+<li>Comfortable living spaces.</li>
+
+<li>Accessible architecture.</li>
+
+<li>Nutritious vegetarian meals.</li>
+
+<li>Daily physical activity.</li>
+
+<li>Meditation and spiritual enrichment.</li>
+
+<li>Supportive social engagement.</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="highlight-box">
+
+<h2>
+
+Small by Design. Rich in Relationships.
+
+</h2>
+
+<p>
+
+At SaraDharma, we believe quality of life is enhanced when residents
+live in a close-knit community where every individual is valued,
+respected and cared for. By intentionally limiting our community to
+approximately forty residents, we create an environment that nurtures
+friendship, dignity, trust and personal attention while maintaining
+high standards of comfort, wellness and compassionate care.
+
+</p>
+
+</div>
+
+</section>
+
+<hr class="gold-divider">
+
+<!-- ==========================================================
+     PART 5 STARTS HERE
+=========================================================== -->
+
+
+
+<hr class="gold-divider">
+<!-- ==========================================================
+     DAILY LIFE AT SARADHARMA
+=========================================================== -->
+
+<section class="facility-section">
+
+<h2 class="section-title">
+
+A Day at SaraDharma
+
+</h2>
+
+<p class="section-intro">
+
+Life at SaraDharma follows a gentle rhythm that encourages wellness,
+companionship and purposeful living. Every day offers opportunities to
+remain active, engaged and connected with others.
+
+</p>
+
+<div class="life-grid">
+
+<div class="life-card">
+
+<div class="life-icon">🌅</div>
+
+<h3>
+
+Healthy Beginnings
+
+</h3>
+
+<p>
+
+Residents begin the day with fresh air,
+walking, yoga or meditation,
+followed by a nutritious vegetarian breakfast.
+
+</p>
+
+</div>
+
+<div class="life-card">
+
+<div class="life-icon">🥗</div>
+
+<h3>
+
+Healthy Meals
+
+</h3>
+
+<p>
+
+Fresh vegetarian meals are prepared daily,
+bringing residents together around the dining
+table in a warm community atmosphere.
+
+</p>
+
+</div>
+
+<div class="life-card">
+
+<div class="life-icon">🌿</div>
+
+<h3>
+
+Meaningful Activities
+
+</h3>
+
+<p>
+
+Gardening, reading, discussions,
+cultural programs and voluntary
+activities keep every day interesting.
+
+</p>
+
+</div>
+
+<div class="life-card">
+
+<div class="life-icon">🧘</div>
+
+<h3>
+
+Wellness
+
+</h3>
+
+<p>
+
+Yoga, meditation,
+exercise and peaceful reflection
+support healthy ageing.
+
+</p>
+
+</div>
+
+<div class="life-card">
+
+<div class="life-icon">❤️</div>
+
+<h3>
+
+Companionship
+
+</h3>
+
+<p>
+
+Residents develop lasting friendships
+through shared meals,
+celebrations and everyday interactions.
+
+</p>
+
+</div>
+
+<div class="life-card">
+
+<div class="life-icon">🌙</div>
+
+<h3>
+
+Peaceful Evenings
+
+</h3>
+
+<p>
+
+Quiet evenings provide time for relaxation,
+family conversations,
+music or spiritual reflection.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<hr class="gold-divider">
+
+<!-- ==========================================================
+     PART 6 STARTS HERE
+=========================================================== -->
+
+
+<hr class="gold-divider">
+<!-- ==========================================================
+     RESIDENT CARE & SUPPORT
+=========================================================== -->
+
+<section class="support-section">
+
+<h2 class="section-title">
+
+Resident Care & Support
+
+</h2>
+
+<p class="section-intro">
+
+At SaraDharma, care extends beyond comfortable accommodation. We
+provide an environment where residents receive compassionate support,
+maintain independence and enjoy peace of mind while living with dignity.
+
+</p>
+
+<div class="support-grid">
+
+<div class="support-card">
+
+<h3>
+
+Health & Wellness
+
+</h3>
+
+<ul>
+
+<li>Periodic health check-ups</li>
+
+<li>Medication reminders</li>
+
+<li>Tele-consultation support</li>
+
+<li>Medical coordination</li>
+
+<li>Emergency assistance</li>
+
+<li>Wellness monitoring</li>
+
+</ul>
+
+</div>
+
+<div class="support-card">
+
+<h3>
+
+Daily Living Support
+
+</h3>
+
+<ul>
+
+<li>Housekeeping services</li>
+
+<li>Laundry assistance</li>
+
+<li>Nutritious vegetarian meals</li>
+
+<li>Maintenance support</li>
+
+<li>Comfortable common areas</li>
+
+<li>Friendly staff assistance</li>
+
+</ul>
+
+</div>
+
+<div class="support-card">
+
+<h3>
+
+Social & Emotional Well-being
+
+</h3>
+
+<ul>
+
+<li>Community gatherings</li>
+
+<li>Festival celebrations</li>
+
+<li>Spiritual activities</li>
+
+<li>Reading & discussion groups</li>
+
+<li>Volunteer opportunities</li>
+
+<li>Meaningful companionship</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<div class="assurance-box">
+
+<h2>
+
+Supporting Independence with Compassion
+
+</h2>
+
+<p>
+
+Our goal is to help every resident remain as independent as possible
+while knowing that thoughtful support is always available when needed.
+This balance of personal freedom, community living and compassionate
+care creates a reassuring environment for both residents and their
+families.
+
+</p>
+
+</div>
+
+</section>
+
+<hr class="gold-divider">
+
+<!-- ==========================================================
+     PART 7 STARTS HERE
+=========================================================== -->
+
+
+<hr class="gold-divider">
+<!-- ==========================================================
+     ACCOMMODATION OPTIONS
+=========================================================== -->
+
+<section class="facility-section">
+
+<h2 class="section-title">
+
+Accommodation Options
+
+</h2>
+
+<p class="section-intro">
+
+Residents have different lifestyles and preferences. SaraDharma offers
+comfortable accommodation options designed to provide privacy,
+companionship and a true sense of home.
+
+</p>
+
+<div class="accommodation-grid">
+
+<!-- ========================================= -->
+
+<div class="room-card">
+
+<img src="assets/images/gallery-room.png"
+alt="Private Room">
+
+<div class="room-content">
+
+<h3>
+
+Single Occupancy
+
+</h3>
+
+<ul>
+
+<li>Private spacious room</li>
+
+<li>Reclining bed</li>
+
+<li>Attached bathroom</li>
+
+<li>Television</li>
+
+<li>Wi-Fi connectivity</li>
+
+<li>Intercom facility</li>
+
+<li>Natural lighting</li>
+
+<li>Comfortable furnishings</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+
+<div class="room-card">
+
+<img src="assets/images/gallery-room.png"
+alt="Double Room">
+
+<div class="room-content">
+
+<h3>
+
+Couple Accommodation
+
+</h3>
+
+<ul>
+
+<li>Designed for couples</li>
+
+<li>Spacious interiors</li>
+
+<li>Attached bathroom</li>
+
+<li>Comfortable seating area</li>
+
+<li>Television & Wi-Fi</li>
+
+<li>Peaceful environment</li>
+
+<li>Senior-friendly layout</li>
+
+<li>Beautiful natural ventilation</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<!-- ========================================= -->
+
+<div class="room-card">
+
+<img src="assets/images/gallery-room.png"
+alt="Shared Room">
+
+<div class="room-content">
+
+<h3>
+
+Shared Accommodation
+
+</h3>
+
+<ul>
+
+<li>Shared by two or three residents</li>
+
+<li>Comfortable personal space</li>
+
+<li>Attached bathroom</li>
+
+<li>Community atmosphere</li>
+
+<li>Television</li>
+
+<li>Wi-Fi access</li>
+
+<li>Natural light</li>
+
+<li>Thoughtfully designed interiors</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="residency-button">
+
+<p>
+
+For floor plans, room details and residency information,
+please visit our dedicated Residency page.
+
+</p>
+
+<p>
+
+<a class="button" href="residency.html">
+
+Explore Residency Options
+
+</a>
+
+</p>
+
+</div>
+
+</section>
+
+<hr class="gold-divider">
+
+<!-- ==========================================================
+     PART 8 STARTS HERE
+=========================================================== -->
+
+
+
+</main>
+<div id="footer"></div>
+
+<script src="assets/js/layout.js"></script>
+
+
+<script src="assets/js/site.js"></script>
+
+</body>
+</html>
