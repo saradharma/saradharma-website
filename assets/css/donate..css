@@ -953,9 +953,9 @@
 
     color:#444;
 
-    font-size:1rem;
+    font-size:0.95rem;
 
-    line-height:1.7;
+    line-height:1.55;
 
     font-weight:500;
 
@@ -964,15 +964,16 @@
 
 .checkbox-label input[type="checkbox"]{
 
-    width:20px;
+    width:28px;
 
-    height:20px;
+    height:28px;
 
-    margin-top:4px;
+    margin-top:2px;
 
     flex-shrink:0;
 
-    accent-color:var(--primary);
+    accent-color:#1769D1;
+    border:2px solid #1769D1;
 
 }
 
