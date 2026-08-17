@@ -280,6 +280,63 @@ details p{
 
 }
 
+/*==========================================================
+  DONATION DECLARATION CHECKBOX
+  Same styling as Registration
+==========================================================*/
+
+.checkbox-row{
+
+    width:100%;
+
+    margin-top:12px;
+
+}
+
+
+.checkbox-label{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:14px;
+
+    cursor:pointer;
+
+    color:#444;
+
+    font-size:0.95rem;
+
+    line-height:1.55;
+
+    font-weight:500;
+
+}
+
+
+.checkbox-label input[type="checkbox"]{
+
+    width:28px;
+
+    height:28px;
+
+    margin-top:2px;
+
+    flex-shrink:0;
+
+    accent-color:#1769D1;
+   
+    border:2px solid #1769D1;
+
+}
+
+
+.checkbox-label span{
+
+    flex:1;
+
+}
 
 
 /*************************************************************
