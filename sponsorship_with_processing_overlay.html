@@ -1,0 +1,1669 @@
+<!-- ==========================================================
+PART 1 START
+SaraDharma Community
+Version 5.3
+File : sponsorship.html
+========================================================== -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>
+
+Sponsor SaraDharma Community
+
+</title>
+
+<meta
+      name="description"
+      content="Sponsor a desrving Resident or Community Infrastructure.">
+
+<link
+      rel="stylesheet"
+      href="assets/css/theme.css">
+
+<link
+      rel="stylesheet"
+      href="assets/css/common.css">
+
+<link
+      rel="stylesheet"
+      href="assets/css/sponsorship.css">
+
+<style>
+/* Razorpay sponsorship payment / success UI */
+.razorpay-sponsorship-panel{margin:28px 0 10px;padding:24px 26px;border:1px solid #ddd;border-radius:18px;background:#fff;text-align:center;box-shadow:0 8px 22px rgba(0,0,0,.06)}
+.razorpay-sponsorship-panel h3{margin:0 0 8px;color:#2F5D3A;font-size:1.35rem}
+.razorpay-sponsorship-panel p{margin:0 0 18px;color:#555;line-height:1.7}
+.razorpay-button{min-width:230px}
+.success-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:99999;padding:20px}
+.success-dialog{width:min(620px,96vw);max-height:90vh;overflow:auto;background:#fff;border-radius:24px;padding:38px 34px;text-align:center;box-shadow:0 25px 70px rgba(0,0,0,.25)}
+.success-icon{width:120px;height:120px;border-radius:50%;background:#4CAF50;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:76px;line-height:1}
+.success-dialog h2{color:#567D3D;font-size:2.4rem;margin:0 0 14px}
+.success-dialog p{font-size:1.08rem;line-height:1.75;color:#333}
+.success-reference{background:#f7f7f7;border-radius:16px;padding:20px;margin:24px 0;font-size:1.05rem}
+.success-reference strong{font-size:1.35rem;word-break:break-word}
+@media(max-width:600px){.success-dialog{padding:30px 20px}.success-icon{width:95px;height:95px;font-size:60px}.success-dialog h2{font-size:2rem}}
+
+/* Sponsorship declaration checkbox */
+.checkbox-row{margin-top:24px;}
+.checkbox-row label{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+    cursor:pointer;
+    color:#444;
+    font-size:.95rem;
+    line-height:1.55;
+    font-weight:500;
+}
+.checkbox-row input[type="checkbox"]{
+    width:28px;
+    height:28px;
+    min-width:28px;
+    margin-top:2px;
+    flex-shrink:0;
+    accent-color:#1769D1;
+    cursor:pointer;
+}
+
+/* Razorpay processing overlay */
+.payment-processing-overlay{
+    position:fixed;
+    inset:0;
+    z-index:100000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,.55);
+    padding:20px;
+}
+.payment-processing-dialog{
+    width:min(440px,92vw);
+    box-sizing:border-box;
+    background:#fff;
+    border-radius:16px;
+    padding:32px 28px;
+    text-align:center;
+    box-shadow:0 12px 40px rgba(0,0,0,.25);
+}
+.payment-processing-dialog h2{
+    margin:18px 0 10px;
+    color:#333;
+    font-size:1.45rem;
+}
+.payment-processing-dialog p{
+    margin:8px 0;
+    color:#555;
+    line-height:1.6;
+}
+.payment-processing-dialog .processing-warning{
+    font-size:.92rem;
+    color:#666;
+    margin-top:14px;
+}
+.processing-spinner{
+    width:46px;
+    height:46px;
+    margin:0 auto;
+    border:5px solid #e5e5e5;
+    border-top-color:#C66A00;
+    border-radius:50%;
+    animation:saradharmaSponsorshipSpin .9s linear infinite;
+}
+.processing-status{
+    margin-top:18px;
+    font-weight:600;
+    color:#C66A00;
+}
+@keyframes saradharmaSponsorshipSpin{
+    to{transform:rotate(360deg);}
+}
+
+</style>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+</head>
+
+<body>
+
+
+
+<!-- ==========================================================
+COMMON LAYOUT
+========================================================== -->
+
+
+
+<div id="navigation"></div>
+
+
+
+<!-- ==========================================================
+PAGE BANNER
+========================================================== -->
+
+<section class="hero-banner">
+
+<img
+
+src="assets/images/sponsorbanner.png"
+
+alt="Sponsor SaraDharma Community"
+
+class="hero-image">
+
+</section>
+
+
+
+<main>
+
+<section class="container">
+
+
+
+<!-- ==========================================================
+INTRODUCTION
+========================================================== -->
+
+<section class="page-card">
+
+<h1>
+
+Sponsor SaraDharma Community
+
+</h1>
+
+<p>
+
+Your generosity helps deserving older adults enjoy a safe,
+healthy and spiritually enriching life.
+
+Choose the type of sponsorship below to begin.
+
+</p>
+
+</section>
+<!-- ==========================================================
+SPONSORSHIP TYPE
+========================================================== -->
+
+<section class="page-card">
+
+<h2>
+
+Choose Sponsorship Type
+
+</h2>
+
+<p>
+
+Please select one of the following.
+
+</p>
+
+
+
+<div class="selection-grid">
+
+
+
+<!-- ======================================================
+RESIDENT SPONSORSHIP
+====================================================== -->
+
+<div
+
+id="residentSelector"
+
+class="selection-card selectable-card"
+
+data-type="resident">
+
+<div class="selection-icon">
+
+👤
+
+</div>
+
+<h3>
+
+Resident Sponsorship
+
+</h3>
+
+<p>
+
+Sponsor a deserving elderly resident
+for a selected duration.
+
+</p>
+
+</div>
+
+
+
+<!-- ======================================================
+INFRASTRUCTURE SPONSORSHIP
+====================================================== -->
+
+<div
+
+id="infrastructureSelector"
+
+class="selection-card selectable-card"
+
+data-type="infrastructure">
+
+<div class="selection-icon">
+
+🏠
+
+</div>
+
+<h3>
+
+Facilities & Infrastructure
+
+</h3>
+
+<p>
+
+Sponsor facilities and infrastructure
+that benefit the entire community.
+
+</p>
+
+</div>
+
+
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================================
+RESIDENT SPONSORSHIP
+Hidden until selected
+========================================================== -->
+
+<section
+
+id="residentSection"
+
+class="page-card"
+
+style="display:none;">
+
+<h2>
+
+Resident Sponsorship
+
+</h2>
+
+<p>
+
+Choose the sponsorship duration.
+
+</p>
+
+</p>
+
+
+
+<div class="duration-grid">
+
+
+
+<label class="duration-card">
+
+<input
+
+type="radio"
+
+name="sponsorshipChoice"
+
+value="1 Month"
+
+data-category="Resident Sponsorship"
+
+data-item="1 Month"
+
+data-amount="25000">
+
+<div>
+
+<h3>
+
+1 Month
+
+</h3>
+
+<p>
+
+Resident Sponsorship
+
+</p>
+
+<h4>
+
+₹25,000
+
+</h4>
+
+</div>
+
+</label>
+
+
+
+<label class="duration-card">
+
+<input
+
+type="radio"
+
+name="sponsorshipChoice"
+
+value="3 Months"
+
+data-category="Resident Sponsorship"
+
+data-item="3 Months"
+
+data-amount="75000">
+
+<div>
+
+<h3>
+
+3 Months
+
+</h3>
+
+<p>
+
+Resident Sponsorship
+
+</p>
+
+<h4>
+
+₹75,000
+
+</h4>
+
+</div>
+
+</label>
+
+
+
+<label class="duration-card">
+
+<input
+
+type="radio"
+
+name="sponsorshipChoice"
+
+value="6 Months"
+
+data-category="Resident Sponsorship"
+
+data-item="6 Months"
+
+data-amount="150000">
+
+<div>
+
+<h3>
+
+6 Months
+
+</h3>
+
+<p>
+
+Resident Sponsorship
+
+</p>
+
+<h4>
+
+₹1,50,000
+
+</h4>
+
+</div>
+
+</label>
+
+
+
+<label class="duration-card">
+
+<input
+
+type="radio"
+
+name="sponsorshipChoice"
+
+value="1 Year"
+
+data-category="Resident Sponsorship"
+
+data-item="1 Year"
+
+data-amount="300000">
+
+<div>
+
+<h3>
+
+1 Year
+
+</h3>
+
+<p>
+
+Resident Sponsorship
+
+</p>
+
+<h4>
+
+₹3,00,000
+
+</h4>
+
+</div>
+
+</label>
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================================
+PART 1 END
+========================================================== -->
+
+  <!-- ==========================================================
+PART 2 START
+Infrastructure Sponsorship
+Selected Sponsorship
+Sponsor Information
+========================================================== -->
+
+
+
+<!-- ==========================================================
+INFRASTRUCTURE SPONSORSHIP
+Hidden until selected
+========================================================== -->
+
+<section
+
+id="infrastructureSection"
+
+class="page-card"
+
+style="display:none;">
+
+<h2>
+
+Facilities & Infrastructure Sponsorship
+
+</h2>
+
+<p>
+
+Choose a facility or infrastructure item you would
+like to sponsor.
+
+</p>
+
+
+
+<div class="duration-grid">
+
+
+
+<label class="duration-card">
+
+<input
+
+type="radio"
+
+name="sponsorshipChoice"
+
+value="Single Room Interior"
+
+data-category="Infrastructure Sponsorship"
+
+data-item="Single Room Interior"
+
+data-amount="100000">
+
+<div>
+
+<h3>
+
+Single Room
+
+</h3>
+
+<p>
+
+Interior
+
+</p>
+
+<h4>
+
+₹1,00,000
+
+</h4>
+
+</div>
+
+</label>
+
+
+
+<label class="duration-card">
+
+<input
+
+type="radio"
+
+name="sponsorshipChoice"
+
+value="Double Room Interior"
+
+data-category="Infrastructure Sponsorship"
+
+data-item="Double Room Interior"
+
+data-amount="150000">
+
+<div>
+
+<h3>
+
+Double Room
+
+</h3>
+
+<p>
+
+Interior
+
+</p>
+
+<h4>
+
+₹1,50,000
+
+</h4>
+
+</div>
+
+</label>
+
+
+
+<label class="duration-card">
+
+<input
+
+type="radio"
+
+name="sponsorshipChoice"
+
+value="Exercise Room Equipment"
+
+data-category="Infrastructure Sponsorship"
+
+data-item="Exercise Room Equipment"
+
+data-amount="200000">
+
+<div>
+
+<h3>
+
+Exercise Room
+
+</h3>
+
+<p>
+
+Equipment
+
+</p>
+
+<h4>
+
+₹2,00,000
+
+</h4>
+
+</div>
+
+</label>
+
+
+
+<label class="duration-card">
+
+<input
+
+type="radio"
+
+name="sponsorshipChoice"
+
+value="Nursing Station"
+
+data-category="Infrastructure Sponsorship"
+
+data-item="Nursing Station"
+
+data-amount="200000">
+
+<div>
+
+<h3>
+
+Nursing Station
+
+</h3>
+
+<p>
+
+Medical Care
+
+</p>
+
+<h4>
+
+₹2,00,000
+
+</h4>
+
+</div>
+
+</label>
+
+
+
+<label class="duration-card">
+
+<input
+
+type="radio"
+
+name="sponsorshipChoice"
+
+value="10KW Solar Power"
+
+data-category="Infrastructure Sponsorship"
+
+data-item="10KW Solar Power"
+
+data-amount="400000">
+
+<div>
+
+<h3>
+
+10KW Solar
+
+</h3>
+
+<p>
+
+Power System
+
+</p>
+
+<h4>
+
+₹4,00,000
+
+</h4>
+
+</div>
+
+</label>
+
+
+
+<label class="duration-card">
+
+<input
+
+type="radio"
+
+name="sponsorshipChoice"
+
+value="DG Facility"
+
+data-category="Infrastructure Sponsorship"
+
+data-item="DG Facility"
+
+data-amount="100000">
+
+<div>
+
+<h3>
+
+DG Facility
+
+</h3>
+
+<p>
+
+Power Backup
+
+</p>
+
+<h4>
+
+₹1,00,000
+
+</h4>
+
+</div>
+
+</label>
+
+
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================================
+SELECTED SPONSORSHIP
+Hidden until a selection is made
+========================================================== -->
+
+<section
+
+id="selectedSponsorship"
+
+class="page-card"
+
+style="display:none;">
+
+<h2>
+
+Selected Sponsorship
+
+</h2>
+
+
+
+<div class="summary-grid">
+
+
+
+<div>
+
+<label>
+
+Sponsorship Category
+
+</label>
+
+<input
+
+type="text"
+
+id="sponsorshipCategory"
+
+readonly>
+
+</div>
+
+
+
+<div>
+
+<label>
+
+Selected Option
+
+</label>
+
+<input
+
+type="text"
+
+id="selectedOption"
+
+readonly>
+
+</div>
+
+
+
+<div>
+
+<label>
+
+Contribution Amount (INR)
+
+</label>
+
+<input
+
+type="text"
+
+id="selectedAmount"
+
+readonly>
+
+</div>
+
+
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================================
+SPONSOR INFORMATION
+Hidden until sponsorship is selected
+========================================================== -->
+
+<form
+
+id="sponsorshipForm"
+
+class="page-card"
+
+style="display:none;"
+
+novalidate>
+
+<h2>
+
+Sponsor Information
+
+</h2>
+
+<p>
+
+Please provide your contact details below.
+
+</p>
+
+
+
+<div class="form-grid">
+
+
+
+<div>
+
+<label>
+
+Sponsor Name *
+
+</label>
+
+<input
+
+type="text"
+
+id="sponsorName"
+
+name="sponsorName"
+
+maxlength="80"
+
+required>
+
+</div>
+
+
+
+<div>
+
+<label>
+
+Email Address *
+
+</label>
+
+<input
+
+type="email"
+
+id="email"
+
+name="email"
+
+maxlength="100"
+
+required>
+
+</div>
+
+
+
+<div>
+
+<label>
+
+Country Code *
+
+</label>
+
+<select
+
+id="countryCode"
+
+name="countryCode">
+
+<option value="+91">
+
+🇮🇳 +91 India
+
+</option>
+
+<option value="+1">
+
+🇺🇸 +1 USA
+
+</option>
+
+<option value="+44">
+
+🇬🇧 +44 United Kingdom
+
+</option>
+
+<option value="+61">
+
+🇦🇺 +61 Australia
+
+</option>
+
+<option value="+65">
+
+🇸🇬 +65 Singapore
+
+</option>
+
+<option value="+971">
+
+🇦🇪 +971 UAE
+
+</option>
+
+<option value="+60">
+
+🇲🇾 +60 Malaysia
+
+</option>
+
+<option value="+64">
+
+🇳🇿 +64 New Zealand
+
+</option>
+
+</select>
+
+</div>
+
+
+
+<div>
+
+<label>
+
+Mobile Number *
+
+</label>
+
+<input
+
+type="tel"
+
+id="phone"
+
+name="phone"
+
+maxlength="20"
+
+required>
+
+</div>
+
+
+
+<div>
+
+<label>
+
+City *
+
+</label>
+
+<input
+
+type="text"
+
+id="city"
+
+name="city"
+
+maxlength="60"
+
+required>
+
+</div>
+
+
+
+<div>
+
+<label>
+
+Country *
+
+</label>
+
+<input
+
+type="text"
+
+id="country"
+
+name="country"
+
+maxlength="60"
+
+required>
+
+</div>
+
+
+
+<div>
+
+<label>
+
+Need 80G Receipt?
+
+</label>
+
+<select
+
+id="receipt80G"
+
+name="receipt80G">
+
+<option value="Yes">
+
+Yes
+
+</option>
+
+<option value="No">
+
+No
+
+</option>
+
+</select>
+
+</div>
+
+<!-- ==========================================================
+PART 2 END
+========================================================== -->
+
+
+  <!-- ==========================================================
+PART 3 START
+Recognition
+Comments
+Declaration
+Submit
+Success Dialog
+========================================================== -->
+
+
+
+<!-- ==========================================================
+RECOGNITION
+========================================================== -->
+
+<div>
+
+<label>
+
+Recognition Name
+
+</label>
+
+<input
+
+type="text"
+
+id="recognitionName"
+
+name="recognitionName"
+
+maxlength="80"
+
+placeholder="Name to be displayed on Recognition Plaque">
+
+</div>
+
+
+
+<div>
+
+<label>
+
+Dedication
+
+</label>
+
+<select
+
+id="dedicationType"
+
+name="dedicationType">
+
+<option value="">
+
+None
+
+</option>
+
+<option value="In Honour Of">
+
+In Honour Of
+
+</option>
+
+<option value="In Memory Of">
+
+In Memory Of
+
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="full-width">
+
+<label>
+
+Honouree / Memorial Name
+
+</label>
+
+<input
+
+type="text"
+
+id="dedicationName"
+
+name="dedicationName"
+
+maxlength="80">
+
+</div>
+
+</div>
+
+
+
+<!-- ==========================================================
+COMMENTS
+========================================================== -->
+
+<h2>
+
+Additional Information
+
+</h2>
+
+<p>
+
+If you would like us to know anything regarding
+this sponsorship, please mention it below.
+
+</p>
+
+<textarea
+
+id="comments"
+
+name="comments"
+
+rows="6"
+
+maxlength="1000"
+
+placeholder="Enter your comments here...">
+
+</textarea>
+
+
+
+<!-- ==========================================================
+DECLARATION
+========================================================== -->
+
+<div class="checkbox-row">
+
+<label>
+
+<input
+
+type="checkbox"
+
+id="agree"
+
+required>
+
+I certify that the information provided above is
+correct and I voluntarily wish to make this sponsorship
+to SaraDharma Community.
+
+</label>
+
+</div>
+
+
+
+<!-- ==========================================================
+BUTTONS
+========================================================== -->
+
+<div class="button-row">
+
+<button
+
+type="submit"
+
+id="submitButton"
+
+class="primary-button">
+
+Proceed to Payment
+
+</button>
+
+<button
+
+type="reset"
+
+class="secondary-button">
+
+Clear Form
+
+</button>
+
+</div>
+
+</form>
+
+
+
+<!-- ==========================================================
+SUCCESS DIALOG
+========================================================== -->
+
+<div
+id="successOverlay"
+class="success-overlay"
+style="display:none;">
+
+<div class="success-dialog">
+
+<div class="success-icon">✓</div>
+
+<h2>Payment Successful!</h2>
+
+<p>Your sponsorship has been recorded successfully.</p>
+
+<div class="success-reference">
+
+<strong>SPONSORSHIP REFERENCE</strong>
+<br><br>
+<span id="successReference"></span>
+
+</div>
+
+<div class="success-reference">
+
+<strong>PAYMENT ID</strong>
+<br><br>
+<span id="successPaymentId"></span>
+
+</div>
+
+<p id="successReceiptMessage">
+Your sponsorship receipt has been emailed to you.
+</p>
+
+<p>
+Thank you for supporting SaraDharma Community.
+</p>
+
+<button
+type="button"
+class="primary-button"
+onclick="closeSuccessDialog()">
+Close
+</button>
+
+</div>
+</div>
+
+<!-- ==========================================================
+     RAZORPAY PROCESSING OVERLAY
+=========================================================== -->
+<div id="paymentProcessingOverlay"
+     class="payment-processing-overlay"
+     style="display:none;"
+     aria-hidden="true">
+
+    <div class="payment-processing-dialog">
+        <div class="processing-spinner" aria-hidden="true"></div>
+
+        <h2>Payment received</h2>
+
+        <p>
+            Please wait while we securely verify your payment
+            and prepare your receipt.
+        </p>
+
+        <p class="processing-warning">
+            Please do not close or refresh this page.
+        </p>
+
+        <div class="processing-status">
+            Processing...
+        </div>
+    </div>
+</div>
+
+<!-- ==========================================================
+HOW YOUR SPONSORSHIP HELPS
+========================================================== -->
+
+<section class="page-card">
+
+<h2>
+
+How Your Sponsorship Helps
+
+</h2>
+
+<div class="help-grid">
+
+<div class="help-item">
+
+<div class="help-icon">🏡</div>
+
+<h3>
+
+Comfortable Living
+
+</h3>
+
+<p>
+
+Provides safe, peaceful and comfortable
+accommodation.
+
+</p>
+
+</div>
+
+
+
+<div class="help-item">
+
+<div class="help-icon">🥗</div>
+
+<h3>
+
+Healthy Vegetarian Meals
+
+</h3>
+
+<p>
+
+Freshly prepared nutritious vegetarian meals.
+
+</p>
+
+</div>
+
+
+
+<div class="help-item">
+
+<div class="help-icon">🧘</div>
+
+<h3>
+
+Yoga & Wellness
+
+</h3>
+
+<p>
+
+Yoga, meditation, exercise and holistic wellness.
+
+</p>
+
+</div>
+
+
+
+<div class="help-item">
+
+<div class="help-icon">❤️</div>
+
+<h3>
+
+Healthcare
+
+</h3>
+
+<p>
+
+Medical monitoring, emergency care and wellbeing.
+
+</p>
+
+</div>
+
+
+
+<div class="help-item">
+
+<div class="help-icon">🤝</div>
+
+<h3>
+
+Companionship
+
+</h3>
+
+<p>
+
+Meaningful relationships and community living.
+
+</p>
+
+</div>
+
+
+
+<div class="help-item">
+
+<div class="help-icon">🪔</div>
+
+<h3>
+
+Spiritual Environment
+
+</h3>
+
+<p>
+
+Prayer, meditation, scriptures and cultural activities.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ==========================================================
+PART 3 END
+========================================================== -->
+
+
+
+  <!-- ==========================================================
+PART 4 START
+Contribution
+Footer
+JavaScript
+Closing Tags
+========================================================== -->
+
+
+
+<!-- ==========================================================
+YOUR CONTRIBUTION MAKES A DIFFERENCE
+========================================================== -->
+
+<section class="page-card">
+
+<h2>
+
+Your Contribution Makes A Difference
+
+</h2>
+
+<p>
+
+Every sponsorship directly strengthens the
+SaraDharma Community and helps create a caring,
+healthy and spiritually enriching home for
+older adults.
+
+</p>
+
+<p>
+
+<b>Resident Sponsorship</b> supports an individual
+resident by helping provide accommodation,
+healthy vegetarian meals, healthcare,
+companionship and daily wellbeing.
+
+</p>
+
+<p>
+
+<b>Facilities & Infrastructure Sponsorship</b>
+creates lasting assets that benefit every
+resident for many years to come.
+
+Examples include comfortable rooms,
+exercise facilities, nursing care,
+renewable energy and essential
+community infrastructure.
+
+</p>
+
+<p>
+
+Every contribution, irrespective of its size,
+helps preserve dignity, independence and
+peace of mind for our residents.
+
+</p>
+
+</section>
+
+
+
+
+<!-- ==========================================================
+COMMON FOOTER
+========================================================== -->
+
+<div id="footer"></div>
+
+
+
+</section>
+
+</main>
+
+
+
+<!-- ==========================================================
+JAVASCRIPT
+========================================================== -->
+
+<script src="assets/js/layout.js"></script>
+
+<script src="assets/js/sponsorship.js"></script>
+
+
+
+<!-- ==========================================================
+END OF PAGE
+========================================================== -->
+
+</body>
+
+</html>
+
+<!-- ==========================================================
+PART 4 END
+========================================================== -->
+
