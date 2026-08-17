@@ -1194,6 +1194,70 @@ function loadRazorpayCheckout(){
 }
 
 /**************************************************************************
+ * PAYMENT PROCESSING OVERLAY
+ **************************************************************************/
+
+function showPaymentProcessing(){
+
+    const overlay =
+        document.getElementById(
+            "paymentProcessingOverlay"
+        );
+
+    if(!overlay){
+        console.error(
+            "paymentProcessingOverlay element not found."
+        );
+        return;
+    }
+
+    overlay.style.display = "flex";
+    overlay.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+}
+
+
+/**************************************************************************
+ * HIDE PAYMENT PROCESSING OVERLAY
+ **************************************************************************/
+
+function hidePaymentProcessing(){
+
+    const overlay =
+        document.getElementById(
+            "paymentProcessingOverlay"
+        );
+
+    if(!overlay){
+        return;
+    }
+
+    overlay.style.display = "none";
+    overlay.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/**************************************************************************
  * HANDLE RAZORPAY SUCCESS
  *
  * Razorpay has returned:
@@ -1229,10 +1293,23 @@ async function handleRazorpaySuccess(
             true;
 
         paymentButton.innerHTML =
-            "Verifying Payment...";
+            "Processing...";
 
     }
+    /*
+     * Razorpay has completed the payment.
+     *
+     * From this point onward SaraDharma is:
+     *   1. verifying the payment
+     *   2. saving the donation
+     *   3. generating the receipt
+     *   4. sending the email
+     *
+     * Show the full-screen processing message so the donor
+     * knows the page is still working.
+     */
 
+    showPaymentProcessing();
 
     try{
 
@@ -1329,7 +1406,13 @@ async function handleRazorpaySuccess(
  * Payment has been verified by the SaraDharma server.
  * Show the standard SaraDharma success dialog.
  ******************************************************************/
+/*
+ * Server verification and receipt processing are complete.
+ * Hide the processing overlay before showing the final
+ * SaraDharma success dialog.
+ */
 
+hidePaymentProcessing();
 showSuccessDialog(
     result.referenceId,
     paymentResponse.razorpay_payment_id,
@@ -1354,7 +1437,7 @@ showSuccessDialog(
 
 
     catch(error){
-
+        hidePaymentProcessing();
         console.error(
             "Razorpay verification error:",
             error
