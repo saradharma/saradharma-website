@@ -1053,6 +1053,68 @@ function requestSponsorshipRazorpayVerificationJsonp(
 }
 
 
+
+/**************************************************************************
+ * PAYMENT PROCESSING OVERLAY
+ **************************************************************************/
+
+function showSponsorshipPaymentProcessing(){
+
+    const overlay =
+        document.getElementById(
+            "paymentProcessingOverlay"
+        );
+
+    if(!overlay){
+
+        console.error(
+            "paymentProcessingOverlay element not found."
+        );
+
+        return;
+
+    }
+
+    overlay.style.display =
+        "flex";
+
+    overlay.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+}
+
+
+/**************************************************************************
+ * HIDE PAYMENT PROCESSING OVERLAY
+ **************************************************************************/
+
+function hideSponsorshipPaymentProcessing(){
+
+    const overlay =
+        document.getElementById(
+            "paymentProcessingOverlay"
+        );
+
+    if(!overlay){
+
+        return;
+
+    }
+
+    overlay.style.display =
+        "none";
+
+    overlay.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+}
+
+
+
 /**************************************************************************
 HANDLE VERIFIED RAZORPAY SUCCESS
 **************************************************************************/
@@ -1070,8 +1132,20 @@ async function handleSponsorshipRazorpaySuccess(
         true;
 
     paymentButton.innerHTML =
-        "Verifying Payment...";
+        "Processing...";
 
+/*
+ * Razorpay has completed the payment.
+ *
+ * SaraDharma now verifies the payment,
+ * records the sponsorship, generates the
+ * receipt and sends the email.
+ */
+
+showSponsorshipPaymentProcessing();
+
+
+    
     try{
 
         if(
@@ -1121,7 +1195,9 @@ async function handleSponsorshipRazorpaySuccess(
             "Razorpay sponsorship payment verified:",
             result
         );
+        hideSponsorshipPaymentProcessing();
 
+        
         showSponsorshipSuccessDialog(
             result.referenceId,
             result.paymentId,
@@ -1130,7 +1206,7 @@ async function handleSponsorshipRazorpaySuccess(
 
     }
     catch(error){
-
+          hideSponsorshipPaymentProcessing();
         console.error(
             "Sponsorship payment verification error:",
             error
