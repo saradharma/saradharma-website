@@ -1,0 +1,462 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | SaraDharma</title>
+<meta name="description" content="Contact SaraDharma by WhatsApp, email, phone, or online. Schedule a visit or send us a message.">
+<link rel="stylesheet" href="assets/css/theme.css">
+  <link rel="stylesheet" href="assets/css/common.css">
+  
+<style>
+:root{
+  --sd-green:#064C2F;
+  --sd-green-dark:#033A24;
+  --sd-gold:#D9A441;
+  --sd-cream:#FAF7EF;
+  --sd-border:#E7C98A;
+  --sd-text:#17372A;
+}
+
+.contact-page{padding-bottom:50px}
+
+/* Contact banner */
+.contact-banner{
+  position:relative;
+  overflow:hidden;
+  margin:0 auto 34px;
+  border-radius:0 0 24px 24px;
+  background:linear-gradient(135deg,var(--sd-green-dark),var(--sd-green));
+  color:#fff;
+  box-shadow:0 8px 24px rgba(0,0,0,.12);
+}
+.contact-banner-inner{
+  max-width:1180px;
+  margin:auto;
+  padding:34px 28px 30px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:28px;
+}
+.contact-banner-copy{text-align:left}
+.contact-banner h1{
+  margin:0;
+  font-size:clamp(38px,5vw,64px);
+  letter-spacing:2px;
+  font-family:Georgia,serif;
+}
+.contact-banner p{
+  margin:6px 0 0;
+  font-size:clamp(17px,2vw,23px);
+  font-style:italic;
+}
+.contact-socials{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:13px;
+}
+.social-icon{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#fff;
+  color:var(--sd-green);
+  border:2px solid rgba(255,255,255,.8);
+  text-decoration:none;
+  transition:transform .2s ease,background .2s ease,color .2s ease;
+}
+.social-icon:hover{
+  transform:translateY(-3px);
+  background:#F7E4B4;
+  color:var(--sd-green-dark);
+}
+.social-icon svg{width:25px;height:25px;fill:currentColor}
+.social-icon .x-icon{font-family:Arial,sans-serif;font-weight:700;font-size:25px;line-height:1}
+
+/* Main layout */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:30px;
+  margin:30px 0 42px;
+}
+.card{
+  background:linear-gradient(180deg,#fffdf8,#fff);
+  padding:30px;
+  border:1px solid var(--sd-border);
+  border-radius:18px;
+  box-shadow:0 8px 24px rgba(0,0,0,.07);
+}
+.card h2{
+  color:var(--sd-green);
+  margin-top:0;
+  font-family:Georgia,serif;
+}
+.contact-detail{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:17px 0;
+}
+.detail-icon{
+  width:34px;
+  min-width:34px;
+  height:34px;
+  border-radius:50%;
+  background:#EAF3ED;
+  color:var(--sd-green);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.detail-icon svg{width:18px;height:18px;fill:currentColor}
+.contact-detail strong{display:block;color:var(--sd-green)}
+.contact-detail a{color:var(--sd-green);font-weight:600}
+
+label{
+  display:block;
+  margin:14px 0 7px;
+  font-weight:700;
+  color:var(--sd-green);
+}
+input,textarea{
+  width:100%;
+  box-sizing:border-box;
+  padding:13px 14px;
+  border:1px solid #CFCFCF;
+  border-radius:9px;
+  font:inherit;
+  background:#fff;
+}
+input:focus,textarea:focus{
+  outline:none;
+  border-color:var(--sd-gold);
+  box-shadow:0 0 0 3px rgba(217,164,65,.15);
+}
+textarea{min-height:145px;resize:vertical}
+input:invalid:not(:placeholder-shown){
+  border-color:#C85B4A;
+}
+.form-note{
+  font-size:.9rem;
+  color:#666;
+  margin-top:12px;
+}
+.form-status{
+  display:none;
+  margin:16px 0 0;
+  padding:12px 14px;
+  border-radius:9px;
+  font-weight:600;
+}
+.form-status.success{display:block;background:#EAF6ED;color:#176534}
+.form-status.error{display:block;background:#FCEDEC;color:#9B2C22}
+
+/* Visiting / location */
+.location-card{
+  text-align:center;
+  margin:0 auto 20px;
+}
+.location-card h2{margin-bottom:8px}
+.map-button{
+  display:inline-block;
+  margin-top:8px;
+  padding:11px 22px;
+  border-radius:24px;
+  background:var(--sd-green);
+  color:#fff !important;
+  text-decoration:none;
+  font-weight:700;
+}
+.map-button:hover{background:var(--sd-green-dark)}
+
+.contact-page .button{
+  border:0;
+  cursor:pointer;
+}
+
+/* Processing overlay */
+.contact-processing{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  background:rgba(0,0,0,.45);
+}
+.contact-processing.show{display:flex}
+.processing-box{
+  min-width:250px;
+  padding:28px;
+  text-align:center;
+  background:#fff;
+  border-radius:16px;
+  box-shadow:0 12px 40px rgba(0,0,0,.25);
+}
+.spinner{
+  width:42px;
+  height:42px;
+  margin:0 auto 14px;
+  border:4px solid #ddd;
+  border-top-color:var(--sd-green);
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+@media(max-width:800px){
+  .contact-banner-inner{flex-direction:column;text-align:center}
+  .contact-banner-copy{text-align:center}
+  .contact-grid{grid-template-columns:1fr}
+}
+@media(max-width:520px){
+  .contact-banner-inner{padding:28px 18px}
+  .social-icon{width:43px;height:43px}
+  .card{padding:22px}
+}
+</style>
+</head>
+<body>
+
+
+<div id="navigation"></div>
+
+<section class="contact-banner" aria-label="Contact SaraDharma">
+  <div class="contact-banner-inner">
+    <div class="contact-banner-copy">
+      <h1>CONTACT US</h1>
+      <p>We would be delighted to hear from you</p>
+    </div>
+
+    <div class="contact-socials" aria-label="Contact and social media">
+      <a class="social-icon" href="https://wa.me/919620834492" target="_blank" rel="noopener" aria-label="WhatsApp" title="WhatsApp">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a9.9 9.9 0 0 0-8.55 15L2 22l5.18-1.36A10 10 0 1 0 12 2Zm0 18a8 8 0 0 1-4.08-1.12l-.29-.17-3.07.81.82-2.99-.19-.31A8 8 0 1 1 12 20Zm4.39-5.94c-.24-.12-1.42-.7-1.64-.78-.22-.08-.38-.12-.54.12-.16.24-.62.78-.76.94-.14.16-.28.18-.52.06-.24-.12-1.01-.37-1.92-1.18-.71-.63-1.19-1.41-1.33-1.65-.14-.24-.01-.37.11-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.3-.74-1.78-.2-.47-.4-.41-.54-.42h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2s.86 2.31.98 2.47c.12.16 1.69 2.58 4.1 3.62.57.25 1.01.4 1.36.51.57.18 1.09.15 1.5.09.46-.07 1.42-.58 1.62-1.14.2-.56.2-1.04.14-1.14-.06-.1-.22-.16-.46-.28Z"/></svg>
+      </a>
+
+      <a class="social-icon" href="mailto:info@saradharma.in" aria-label="Email" title="Email">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"/></svg>
+      </a>
+
+      <a class="social-icon" href="tel:+919620834492" aria-label="Phone" title="Phone">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C11.61 21 3 12.39 3 2.99a1 1 0 0 1 1-1H7.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.21Z"/></svg>
+      </a>
+
+      <a class="social-icon" href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-3.31 0-5 1.69-5 5v3H6v4h3v4h4v-4h3l1-4h-4V9c0-.67.33-1 1-1Z"/></svg>
+      </a>
+
+      <a class="social-icon" href="https://x.com/" target="_blank" rel="noopener" aria-label="X" title="X">
+        <span class="x-icon">X</span>
+      </a>
+
+      <a class="social-icon" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 12 16.5 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 12 14.5 2.5 2.5 0 0 0 12 9.5ZM17.5 6.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<main class="container contact-page">
+
+  <section style="text-align:center">
+    <h2>We Are Here to Help</h2>
+    <p>We would be delighted to answer your questions, arrange a visit, or discuss residency and sponsorship opportunities.</p>
+  </section>
+
+  <div class="contact-grid">
+
+    <div class="card">
+      <h2>Contact Information</h2>
+
+      <div class="contact-detail">
+        <span class="detail-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5Z"/></svg>
+        </span>
+        <div><strong>SaraDharma</strong>Halasuru (Ulsoor)<br>Bengaluru, Karnataka, India</div>
+      </div>
+
+      <div class="contact-detail">
+        <span class="detail-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C11.61 21 3 12.39 3 2.99a1 1 0 0 1 1-1H7.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.21Z"/></svg>
+        </span>
+        <div><strong>Phone</strong>
+          <a href="tel:+919620834492">+91-9620834492</a><br>
+          <a href="tel:+19193485434">+1-919-348-5434</a>
+        </div>
+      </div>
+
+      <div class="contact-detail">
+        <span class="detail-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5L4 8V6l8 5 8-5v2Z"/></svg>
+        </span>
+        <div><strong>Email</strong><a href="mailto:info@saradharma.in">info@saradharma.in</a></div>
+      </div>
+
+      <div class="contact-detail">
+        <span class="detail-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm0 3a7 7 0 0 1 6.92 6H12V5Zm0 14a7 7 0 0 1-6.92-6H12v6Zm0-8V5a7 7 0 0 1 6.92 6Z"/></svg>
+        </span>
+        <div><strong>Website</strong><a href="https://saradharma.in" target="_blank" rel="noopener">https://saradharma.in</a></div>
+      </div>
+
+      <div class="contact-detail">
+        <span class="detail-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 1a1 1 0 0 1 1 1v1.06A9 9 0 0 1 20.94 11H22a1 1 0 1 1 0 2h-1.06A9 9 0 0 1 13 20.94V22a1 1 0 1 1-2 0v-1.06A9 9 0 0 1 3.06 13H2a1 1 0 1 1 0-2h1.06A9 9 0 0 1 11 3.06V2a1 1 0 0 1 1-1Zm0 5a6 6 0 1 0 0 12 6 6 0 0 0 0-12Z"/></svg>
+        </span>
+        <div><strong>Visiting Hours</strong>By prior appointment</div>
+      </div>
+
+      <div class="contact-detail">
+        <span class="detail-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-10 10c0 5.52 4.48 10 10 10h5v-2h-5a8 8 0 1 1 8-8v1.5a1.5 1.5 0 0 1-3 0V9h-2v1a4 4 0 1 0 1.16 2.83A3.49 3.49 0 0 0 22 13.5V12A10 10 0 0 0 12 2Zm0 6a4 4 0 1 0 4 4 4 4 0 0 0-4-4Zm0 6a2 2 0 1 1 2-2 2 2 0 0 1-2 2Z"/></svg>
+        </span>
+        <div>
+          <strong>Google Maps</strong>
+          <a class="map-button" href="https://www.google.com/maps/place/SaraDharma+Senior+Care+Living/@12.9771187,77.6293131,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae1700336d2047:0x2068657f0575eaa0!8m2!3d12.9771187!4d77.6293131!16s%2Fg%2F11m6n7f5_d?entry=ttu&g_ep=EgoyMDI2MDgxNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener">View Location</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Send Us a Message</h2>
+
+      <form id="contactForm" novalidate>
+        <label for="contactName">Your name *</label>
+        <input id="contactName" name="name" type="text" autocomplete="name" required>
+
+        <label for="contactEmail">Your email *</label>
+        <input id="contactEmail" name="email" type="email" autocomplete="email" required>
+
+        <label for="contactPhone">Your phone with country code *</label>
+        <input id="contactPhone" name="phone" type="tel" autocomplete="tel" placeholder="+91-XXXXXXXXXX" required>
+
+        <label for="contactMessage">Message *</label>
+        <textarea id="contactMessage" name="message" placeholder="How can we help you?" required></textarea>
+
+        <p class="form-note">All fields are mandatory.</p>
+
+        <p style="margin-top:20px">
+          <button class="button" id="contactSubmit" type="submit">Send Message</button>
+        </p>
+
+        <div id="contactStatus" class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+
+  </div>
+
+  <section class="card location-card">
+    <h2>Visit SaraDharma</h2>
+    <p>We encourage prospective residents and their families to schedule a personal visit to experience our community, meet our team and explore the facilities.</p>
+    <p style="margin-top:20px">
+      <a class="button" href="registration.html">Schedule a Visit</a>
+    </p>
+  </section>
+
+</main>
+
+<div id="contactProcessing" class="contact-processing" aria-hidden="true">
+  <div class="processing-box">
+    <div class="spinner"></div>
+    <strong>Sending your message…</strong>
+    <p>Please wait.</p>
+  </div>
+</div>
+
+<div id="footer"></div>
+
+<script>
+(function(){
+  const form = document.getElementById('contactForm');
+  const status = document.getElementById('contactStatus');
+  const overlay = document.getElementById('contactProcessing');
+  const submit = document.getElementById('contactSubmit');
+
+  function showStatus(message, type){
+    status.textContent = message;
+    status.className = 'form-status ' + type;
+  }
+
+  function setProcessing(on){
+    overlay.classList.toggle('show', on);
+    overlay.setAttribute('aria-hidden', on ? 'false' : 'true');
+    submit.disabled = on;
+  }
+
+  function validateForm(){
+    if(!form.checkValidity()){
+      form.reportValidity();
+      return false;
+    }
+
+    const phone = document.getElementById('contactPhone').value.trim();
+    if(!/^\+?[0-9][0-9\s().-]{7,}$/.test(phone)){
+      showStatus('Please enter a valid phone number with country code.', 'error');
+      document.getElementById('contactPhone').focus();
+      return false;
+    }
+
+    return true;
+  }
+
+  form.addEventListener('submit', function(event){
+    event.preventDefault();
+    status.className = 'form-status';
+
+    if(!validateForm()) return;
+
+    const data = {
+      name: document.getElementById('contactName').value.trim(),
+      email: document.getElementById('contactEmail').value.trim(),
+      phone: document.getElementById('contactPhone').value.trim(),
+      message: document.getElementById('contactMessage').value.trim()
+    };
+
+    setProcessing(true);
+
+    // SaraDharma production Apps Script Web App endpoint.
+    // The server receives action=contact and routes the request to
+    // the existing server-side sendContactMessage() function.
+    const CONTACT_WEB_APP_URL =
+      'https://script.google.com/macros/s/AKfycbzYx0gfnQNee5bfy5NB_b5u1yuF1ZeYG-DC3OvQsk6ZNDaYoufeXe7-criLkPA9zmBYHw/exec';
+
+    const payload = new URLSearchParams();
+    payload.append('action', 'contact');
+    payload.append('name', data.name);
+    payload.append('email', data.email);
+    payload.append('phone', data.phone);
+    payload.append('message', data.message);
+
+    fetch(CONTACT_WEB_APP_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
+      },
+      body: payload.toString()
+    })
+    .then(function(){
+      setProcessing(false);
+      form.reset();
+      showStatus('Thank you. Your message has been sent successfully.', 'success');
+    })
+    .catch(function(error){
+      setProcessing(false);
+      showStatus('We could not send your message right now. Please try again or contact us directly.', 'error');
+      console.error(error);
+    });
+  });
+})();
+</script>
+
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/site.js"></script>
+</body>
+</html>
