@@ -1,142 +1,950 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+>
+
 <title>SaraDharma Razorpay Test</title>
+
+
 <style>
-:root{--green:#064C2F;--green2:#3F704F;--gold:#C9972B;--cream:#FBF7ED}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:var(--cream);font-family:Arial,sans-serif;color:#24332B}
-.card{width:min(440px,92vw);background:#fff;border:1px solid var(--gold);border-radius:18px;padding:32px;box-shadow:0 12px 35px #0000001a;text-align:center}
-.brand{font: bold 30px Georgia,serif;color:var(--green)}.sub{margin:5px 0 28px;color:var(--green2);font-size:13px}
-label{display:block;text-align:left;margin-bottom:8px;font-weight:bold;color:var(--green)}
-.amount{display:flex;border:1px solid #ccc;border-radius:10px;overflow:hidden;margin-bottom:18px}
-.currency{padding:14px 16px;background:#f2f2f2;font-size:18px;font-weight:bold}
-input{width:100%;border:0;outline:0;padding:14px;font-size:18px;text-align:center}
-button{width:100%;border:0;border-radius:10px;padding:14px;background:var(--green);color:#fff;font-size:16px;font-weight:bold;cursor:pointer}
-button:disabled{opacity:.65;cursor:not-allowed}.hint{margin-top:10px;font-size:12px;color:#666}
-#status{display:none;margin-top:20px;padding:14px;border-radius:10px;font-size:14px}
-.error{display:block!important;background:#fdecec;color:#a52a2a}
-#success{display:none;margin-top:20px;padding:18px;border-radius:12px;background:#eaf7ee;border:1px solid #73b58a;color:var(--green)}
-.check{width:54px;height:54px;margin:0 auto 10px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:bold}
-.success-title{font-size:20px;font-weight:bold;margin-bottom:8px}.details{font-size:12px;color:#466050;word-break:break-word}
+
+/***********************************************************************
+   TEST PAGE
+***********************************************************************/
+
+:root{
+    --green:#064C2F;
+    --green2:#3F704F;
+    --gold:#C9972B;
+    --cream:#FBF7ED;
+}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    background:var(--cream);
+
+    font-family:Arial,sans-serif;
+    color:#24332B;
+}
+
+
+/***********************************************************************
+   PAYMENT CARD
+***********************************************************************/
+
+.card{
+
+    width:min(440px,92vw);
+
+    background:#fff;
+
+    border:1px solid var(--gold);
+
+    border-radius:18px;
+
+    padding:32px;
+
+    box-shadow:
+        0 12px 35px #0000001a;
+
+    text-align:center;
+}
+
+
+/***********************************************************************
+   BRAND
+***********************************************************************/
+
+.brand{
+
+    font:
+        bold 30px Georgia,serif;
+
+    color:var(--green);
+}
+
+.sub{
+
+    margin:
+        5px 0 28px;
+
+    color:var(--green2);
+
+    font-size:13px;
+}
+
+
+/***********************************************************************
+   FORM
+***********************************************************************/
+
+label{
+
+    display:block;
+
+    text-align:left;
+
+    margin-bottom:8px;
+
+    font-weight:bold;
+
+    color:var(--green);
+}
+
+
+.amount{
+
+    display:flex;
+
+    border:
+        1px solid #ccc;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    margin-bottom:18px;
+}
+
+
+.currency{
+
+    padding:
+        14px 16px;
+
+    background:#f2f2f2;
+
+    font-size:18px;
+
+    font-weight:bold;
+}
+
+
+input{
+
+    width:100%;
+
+    border:0;
+
+    outline:0;
+
+    padding:14px;
+
+    font-size:18px;
+
+    text-align:center;
+}
+
+
+/***********************************************************************
+   BUTTON
+***********************************************************************/
+
+button{
+
+    width:100%;
+
+    border:0;
+
+    border-radius:10px;
+
+    padding:14px;
+
+    background:var(--green);
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+
+button:disabled{
+
+    opacity:.65;
+
+    cursor:not-allowed;
+}
+
+
+.hint{
+
+    margin-top:10px;
+
+    font-size:12px;
+
+    color:#666;
+}
+
+
+/***********************************************************************
+   STATUS
+***********************************************************************/
+
+#status{
+
+    display:none;
+
+    margin-top:20px;
+
+    padding:14px;
+
+    border-radius:10px;
+
+    font-size:14px;
+}
+
+
+.error{
+
+    display:block!important;
+
+    background:#fdecec;
+
+    color:#a52a2a;
+}
+
+
+/***********************************************************************
+   SUCCESS
+***********************************************************************/
+
+#success{
+
+    display:none;
+
+    margin-top:20px;
+
+    padding:18px;
+
+    border-radius:12px;
+
+    background:#eaf7ee;
+
+    border:1px solid #73b58a;
+
+    color:var(--green);
+}
+
+
+.check{
+
+    width:54px;
+
+    height:54px;
+
+    margin:
+        0 auto 10px;
+
+    border-radius:50%;
+
+    background:var(--green);
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:30px;
+
+    font-weight:bold;
+}
+
+
+.success-title{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    margin-bottom:8px;
+}
+
+
+.details{
+
+    font-size:12px;
+
+    color:#466050;
+
+    word-break:break-word;
+}
+
 </style>
+
 </head>
+
+
 <body>
+
+
 <div class="card">
-<div class="brand">SaraDharma</div>
-<div class="sub">Razorpay Live Payment Test</div>
-<label for="amount">Enter amount</label>
-<div class="amount"><div class="currency">₹</div><input id="amount" type="number" min="1" max="10" step="1" value="1" inputmode="numeric"></div>
-<button id="payButton" type="button">Test Razorpay Payment</button>
-<div class="hint">Enter any amount from ₹1 to ₹10.</div>
-<div id="status"></div>
-<div id="success"><div class="check">✓</div><div class="success-title">Payment Verified Successfully</div><div class="details" id="details"></div></div>
+
+
+    <div class="brand">
+        SaraDharma
+    </div>
+
+
+    <div class="sub">
+        Razorpay Live Payment Test
+    </div>
+
+
+    <label for="amount">
+        Enter amount
+    </label>
+
+
+    <div class="amount">
+
+        <div class="currency">
+            ₹
+        </div>
+
+        <input
+            id="amount"
+            type="number"
+            min="1"
+            max="10"
+            step="1"
+            value="1"
+            inputmode="numeric"
+        >
+
+    </div>
+
+
+    <button
+        id="payButton"
+        type="button"
+    >
+        Test Razorpay Payment
+    </button>
+
+
+    <div class="hint">
+        Enter any amount from ₹1 to ₹10.
+    </div>
+
+
+    <div id="status"></div>
+
+
+    <div id="success">
+
+        <div class="check">
+            ✓
+        </div>
+
+        <div class="success-title">
+            Payment Verified Successfully
+        </div>
+
+        <div
+            class="details"
+            id="details"
+        ></div>
+
+    </div>
+
+
 </div>
+
+
+<!--
+=======================================================================
+   SARA DHARMA CENTRAL CONFIGURATION
+
+   layout.js defines:
+
+       window.SaraDharma.WEBAPP_URL
+
+   test.html deliberately does NOT define its own WEBAPP_URL.
+=======================================================================
+-->
+
+<script src="assets/js/layout.js"></script>
+
+
 <script>
+
 "use strict";
 
-const WEBAPP_URL="https://script.google.com/macros/s/AKfycby13uBQmpEkzj0fwXI8qSwG82SLvsM694uz1dOF7DmWeBKdAaTmFWqf6CkhCW-UlJt3ew/exec";
+
+/***********************************************************************
+   RAZORPAY LOADER
+***********************************************************************/
 
 function loadRazorpay(){
-  return new Promise((resolve,reject)=>{
-    if(typeof Razorpay!=="undefined"){resolve();return;}
-    const s=document.createElement("script");
-    s.src="https://checkout.razorpay.com/v1/checkout.js";
-    s.onload=resolve;
-    s.onerror=()=>reject(new Error("Unable to load Razorpay Checkout."));
-    document.head.appendChild(s);
-  });
+
+    return new Promise(
+        function(resolve,reject){
+
+            if(
+                typeof Razorpay !== "undefined"
+            ){
+
+                resolve();
+
+                return;
+            }
+
+
+            const s =
+                document.createElement("script");
+
+
+            s.src =
+                "https://checkout.razorpay.com/v1/checkout.js";
+
+
+            s.onload =
+                resolve;
+
+
+            s.onerror =
+                function(){
+
+                    reject(
+                        new Error(
+                            "Unable to load Razorpay Checkout."
+                        )
+                    );
+
+                };
+
+
+            document.head.appendChild(s);
+
+        }
+    );
+
 }
 
-function serverCall(params,prefix){
-  return new Promise((resolve,reject)=>{
-    const cb=prefix+"_"+Date.now();
-    let s;
-    window[cb]=(r)=>{
-      delete window[cb];
-      if(s&&s.parentNode)s.parentNode.removeChild(s);
-      if(!r||!r.success){reject(new Error(r&&r.message?r.message:"Payment server returned an error."));return;}
-      resolve(r);
-    };
-    params.callback=cb;
-    const q=Object.keys(params).map(k=>encodeURIComponent(k)+"="+encodeURIComponent(params[k]??"")).join("&");
-    s=document.createElement("script");
-    s.src=WEBAPP_URL+"?"+q;
-    s.async=true;
-    s.onerror=()=>{delete window[cb];if(s&&s.parentNode)s.parentNode.removeChild(s);reject(new Error("Unable to contact the payment server."));};
-    document.head.appendChild(s);
-  });
+
+/***********************************************************************
+   SERVER CALL
+
+   Uses the central URL from layout.js.
+***********************************************************************/
+
+function serverCall(
+    params,
+    prefix
+){
+
+    return new Promise(
+        function(resolve,reject){
+
+            const cb =
+                prefix + "_" + Date.now();
+
+
+            let s;
+
+
+            window[cb] =
+                function(r){
+
+                    delete window[cb];
+
+
+                    if(
+                        s &&
+                        s.parentNode
+                    ){
+
+                        s.parentNode.removeChild(s);
+
+                    }
+
+
+                    if(
+                        !r ||
+                        !r.success
+                    ){
+
+                        reject(
+                            new Error(
+                                r &&
+                                r.message
+                                    ? r.message
+                                    : "Payment server returned an error."
+                            )
+                        );
+
+                        return;
+                    }
+
+
+                    resolve(r);
+
+                };
+
+
+            params.callback =
+                cb;
+
+
+            const q =
+                Object.keys(params)
+                .map(
+                    function(k){
+
+                        return (
+                            encodeURIComponent(k)
+                            +
+                            "="
+                            +
+                            encodeURIComponent(
+                                params[k] ?? ""
+                            )
+                        );
+
+                    }
+                )
+                .join("&");
+
+
+            s =
+                document.createElement("script");
+
+
+            /*
+             * IMPORTANT:
+             *
+             * WEBAPP_URL is NOT defined in this file.
+             *
+             * It comes from:
+             *
+             *     assets/js/layout.js
+             *
+             * through:
+             *
+             *     SaraDharma.WEBAPP_URL
+             */
+
+            s.src =
+                SaraDharma.WEBAPP_URL
+                +
+                "?"
+                +
+                q;
+
+
+            s.async =
+                true;
+
+
+            s.onerror =
+                function(){
+
+                    delete window[cb];
+
+
+                    if(
+                        s &&
+                        s.parentNode
+                    ){
+
+                        s.parentNode.removeChild(s);
+
+                    }
+
+
+                    reject(
+                        new Error(
+                            "Unable to contact the payment server."
+                        )
+                    );
+
+                };
+
+
+            document.head.appendChild(s);
+
+        }
+    );
+
 }
+
+
+/***********************************************************************
+   START PAYMENT
+***********************************************************************/
 
 async function startPayment(){
-  const amount=Number(document.getElementById("amount").value);
-  const button=document.getElementById("payButton");
-  const status=document.getElementById("status");
-  const success=document.getElementById("success");
-  const details=document.getElementById("details");
-  status.className="";status.style.display="none";success.style.display="none";
 
-  if(!Number.isInteger(amount)||amount<1||amount>10){
-    status.className="error";status.textContent="Please enter an amount from ₹1 to ₹10.";return;
-  }
+    const amount =
+        Number(
+            document.getElementById(
+                "amount"
+            ).value
+        );
 
-  button.disabled=true;button.textContent="Creating payment...";
 
-  try{
-    /* Only amount is sent. No donor record, donation ID or receipt data. */
-    const order=await serverCall({action:"testrazorpayorder",amount:amount},"testOrder");
-    await loadRazorpay();
-    button.textContent="Opening Razorpay...";
+    const button =
+        document.getElementById(
+            "payButton"
+        );
 
-    const rzp=new Razorpay({
-      key:order.keyId,
-      amount:order.amount,
-      currency:order.currency,
-      order_id:order.orderId,
-      name:"SaraDharma",
-      description:"SaraDharma Live Razorpay Test",
 
-      /* Checkout-only prefill; not a donation record. */
-      prefill:{name:"SaraDharma Test",email:"info@saradharma.in",contact:"+919620834492"},
+    const status =
+        document.getElementById(
+            "status"
+        );
 
-      handler:async(payment)=>{
-        button.textContent="Verifying payment...";
-        try{
-          await serverCall({
-            action:"testrazorpayverify",
-            razorpay_payment_id:payment.razorpay_payment_id,
-            razorpay_order_id:payment.razorpay_order_id,
-            razorpay_signature:payment.razorpay_signature
-          },"testVerify");
 
-          button.disabled=false;button.textContent="Test Razorpay Payment";
-          details.innerHTML="Amount: ₹"+amount.toLocaleString("en-IN")+
-            "<br>Payment ID: "+payment.razorpay_payment_id+
-            "<br>Order ID: "+payment.razorpay_order_id+
-            "<br><br><b>No donation record or receipt was created.</b>";
-          success.style.display="block";
-        }catch(e){
-          button.disabled=false;button.textContent="Test Razorpay Payment";
-          status.className="error";status.textContent=e.message||"Payment verification failed.";
-        }
-      },
-      modal:{ondismiss:()=>{button.disabled=false;button.textContent="Test Razorpay Payment";}}
-    });
+    const success =
+        document.getElementById(
+            "success"
+        );
 
-    rzp.on("payment.failed",(response)=>{
-      button.disabled=false;button.textContent="Test Razorpay Payment";
-      status.className="error";
-      status.textContent="Payment failed: "+(response.error&&response.error.description?response.error.description:"Please try again.");
-    });
-    rzp.open();
-  }catch(e){
-    button.disabled=false;button.textContent="Test Razorpay Payment";
-    status.className="error";status.textContent=e.message||"Unable to start Razorpay payment.";
-  }
+
+    const details =
+        document.getElementById(
+            "details"
+        );
+
+
+    status.className = "";
+
+    status.style.display =
+        "none";
+
+    success.style.display =
+        "none";
+
+
+    /*******************************************************************
+       VALIDATE AMOUNT
+    *******************************************************************/
+
+    if(
+        !Number.isInteger(amount)
+        ||
+        amount < 1
+        ||
+        amount > 10
+    ){
+
+        status.className =
+            "error";
+
+        status.textContent =
+            "Please enter an amount from ₹1 to ₹10.";
+
+        return;
+    }
+
+
+    /*******************************************************************
+       DISABLE BUTTON
+    *******************************************************************/
+
+    button.disabled =
+        true;
+
+    button.textContent =
+        "Creating payment...";
+
+
+    try{
+
+
+        /***************************************************************
+           CREATE TEST ORDER
+
+           Only amount is sent.
+
+           No donor record.
+           No donation ID.
+           No receipt data.
+        ***************************************************************/
+
+        const order =
+            await serverCall(
+                {
+                    action:
+                        "testrazorpayorder",
+
+                    amount:
+                        amount
+                },
+                "testOrder"
+            );
+
+
+        /***************************************************************
+           LOAD RAZORPAY
+        ***************************************************************/
+
+        await loadRazorpay();
+
+
+        button.textContent =
+            "Opening Razorpay...";
+
+
+        /***************************************************************
+           RAZORPAY CHECKOUT
+        ***************************************************************/
+
+        const rzp =
+            new Razorpay({
+
+                key:
+                    order.keyId,
+
+                amount:
+                    order.amount,
+
+                currency:
+                    order.currency,
+
+                order_id:
+                    order.orderId,
+
+                name:
+                    "SaraDharma",
+
+                description:
+                    "SaraDharma Live Razorpay Test",
+
+
+                /*********************************************************
+                   CHECKOUT-ONLY PREFILL
+
+                   This is NOT a donation record.
+                *********************************************************/
+
+                prefill:{
+                    name:
+                        "SaraDharma Test",
+
+                    email:
+                        "info@saradharma.in",
+
+                    contact:
+                        "+919620834492"
+                },
+
+
+                /*********************************************************
+                   PAYMENT HANDLER
+                *********************************************************/
+
+                handler:
+                    async function(payment){
+
+                        button.textContent =
+                            "Verifying payment...";
+
+
+                        try{
+
+
+                            /*************************************************
+                               VERIFY PAYMENT
+                            *************************************************/
+
+                            await serverCall(
+                                {
+                                    action:
+                                        "testrazorpayverify",
+
+                                    razorpay_payment_id:
+                                        payment.razorpay_payment_id,
+
+                                    razorpay_order_id:
+                                        payment.razorpay_order_id,
+
+                                    razorpay_signature:
+                                        payment.razorpay_signature
+                                },
+                                "testVerify"
+                            );
+
+
+                            /*************************************************
+                               SUCCESS
+                            *************************************************/
+
+                            button.disabled =
+                                false;
+
+                            button.textContent =
+                                "Test Razorpay Payment";
+
+
+                            details.innerHTML =
+                                "Amount: ₹"
+                                +
+                                amount.toLocaleString("en-IN")
+                                +
+                                "<br>Payment ID: "
+                                +
+                                payment.razorpay_payment_id
+                                +
+                                "<br>Order ID: "
+                                +
+                                payment.razorpay_order_id
+                                +
+                                "<br><br><b>No donation record or receipt was created.</b>";
+
+
+                            success.style.display =
+                                "block";
+
+
+                        }
+                        catch(e){
+
+                            button.disabled =
+                                false;
+
+                            button.textContent =
+                                "Test Razorpay Payment";
+
+
+                            status.className =
+                                "error";
+
+
+                            status.textContent =
+                                e.message
+                                    ||
+                                "Payment verification failed.";
+
+                        }
+
+                    },
+
+
+                /*********************************************************
+                   MODAL DISMISS
+                *********************************************************/
+
+                modal:{
+                    ondismiss:
+                        function(){
+
+                            button.disabled =
+                                false;
+
+                            button.textContent =
+                                "Test Razorpay Payment";
+
+                        }
+                }
+
+            });
+
+
+        /*****************************************************************
+           RAZORPAY PAYMENT FAILED EVENT
+        *****************************************************************/
+
+        rzp.on(
+            "payment.failed",
+            function(response){
+
+                button.disabled =
+                    false;
+
+                button.textContent =
+                    "Test Razorpay Payment";
+
+
+                status.className =
+                    "error";
+
+
+                status.textContent =
+                    "Payment failed: "
+                    +
+                    (
+                        response.error &&
+                        response.error.description
+                            ?
+                        response.error.description
+                            :
+                        "Please try again."
+                    );
+
+            }
+        );
+
+
+        /*****************************************************************
+           OPEN CHECKOUT
+        *****************************************************************/
+
+        rzp.open();
+
+
+    }
+    catch(e){
+
+        button.disabled =
+            false;
+
+        button.textContent =
+            "Test Razorpay Payment";
+
+
+        status.className =
+            "error";
+
+
+        status.textContent =
+            e.message
+                ||
+            "Unable to start Razorpay payment.";
+
+    }
+
 }
 
-document.getElementById("payButton").addEventListener("click",startPayment);
+
+/***********************************************************************
+   BUTTON EVENT
+***********************************************************************/
+
+document
+    .getElementById("payButton")
+    .addEventListener(
+        "click",
+        startPayment
+    );
+
 </script>
+
+
 </body>
+
 </html>
