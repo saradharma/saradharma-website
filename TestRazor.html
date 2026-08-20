@@ -366,7 +366,7 @@ function requestRazorpayOrder(amount){
 
     return jsonpRequest(
         {
-            action: "razorpayorder",
+            action: "testrazorpayorder",
 
             amount: amount,
 
@@ -408,7 +408,7 @@ function verifyRazorpayPayment(paymentResponse){
     return jsonpRequest(
         {
             action:
-                "razorpayverify",
+                "testrazorpayverify",
 
             razorpay_payment_id:
                 paymentResponse.razorpay_payment_id,
