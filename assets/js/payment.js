@@ -21,7 +21,7 @@ PAYMENT CONFIGURATION
 
 const PAYMENT = {
 
-    MODE : "TEST",          // TEST | LIVE
+    MODE : "LIVE",          // TEST | LIVE
 
     PROVIDER : "RAZORPAY",
 
