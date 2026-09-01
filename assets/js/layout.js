@@ -169,7 +169,7 @@ const navigation = `
 
         <li>
 
-            <a href="affiliation.html">
+            <a href="community-partnerships.html">
 
                 Community Partnerships
 
