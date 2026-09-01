@@ -154,7 +154,32 @@ const navigation = `
         </a>
 
     </li>
+    
+<!-- Affiliation -->
 
+<li class="dropdown">
+
+    <a href="affiliation.html">
+
+        Affiliation
+
+    </a>
+
+    <ul class="dropdown-menu">
+
+        <li>
+
+            <a href="affiliation.html">
+
+                Community Partnerships
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</li>
     <!-- Contact -->
 
     <li class="dropdown">
