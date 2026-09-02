@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partner Information Form | SaraDharma</title>
+<meta name="description" content="SaraDharma Community Partner Information Form">
+<link rel="stylesheet" href="assets/css/theme.css">
+<link rel="stylesheet" href="assets/css/common.css">
+<style>
+:root{
+ --sd-green:#075936;--sd-dark-green:#06452b;--sd-gold:#c58a22;
+ --sd-cream:#faf7ef;--sd-soft-green:#eef6ef;--sd-border:#d9c27c;
+ --sd-text:#24352b;--sd-muted:#59665e;
+}
+body{margin:0}.partner-page{background:var(--sd-cream);min-height:100vh;color:var(--sd-text)}
+.hero{padding:42px 20px 36px;text-align:center;background:linear-gradient(135deg,#f8f1df,#edf5e8);border-bottom:4px solid var(--sd-gold)}
+.hero h1{margin:0;color:var(--sd-green);font:clamp(34px,5vw,52px) Georgia,"Times New Roman",serif}
+.hero .tag{margin-top:10px;color:#45634f;font:clamp(18px,2.4vw,24px) Georgia,"Times New Roman",serif}
+.rule{width:150px;height:2px;margin:18px auto;background:var(--sd-gold)}
+.hero p{max-width:760px;margin:0 auto;color:var(--sd-muted);line-height:1.7;font-size:16px}
+.wrap{width:min(940px,94%);margin:42px auto 65px}
+.card{background:#fff;border:1px solid var(--sd-border);border-radius:22px;padding:34px;box-shadow:0 8px 28px rgba(0,0,0,.07)}
+.section{margin-bottom:34px}.section:last-child{margin-bottom:0}
+.section h2{margin:0 0 7px;color:var(--sd-green);font:27px Georgia,"Times New Roman",serif}
+.note{margin:0 0 20px;color:#6a756e;font-size:14px;line-height:1.55}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 22px}
+.group{display:flex;flex-direction:column}.full{grid-column:1/-1}
+label{margin-bottom:7px;color:#294b3a;font-weight:700;font-size:15px}
+.req{color:#a45123}
+input,textarea,select{box-sizing:border-box;width:100%;border:1px solid #cfcfcf;border-radius:10px;padding:12px 13px;font:inherit;color:var(--sd-text);background:#fff}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--sd-green);box-shadow:0 0 0 3px rgba(7,89,54,.1)}
+textarea{min-height:150px;resize:vertical;line-height:1.55}
+.help{margin-top:5px;color:#747c77;font-size:12px}
+.counter{display:flex;justify-content:flex-end;margin-top:6px;color:var(--sd-green);font-size:12px;font-weight:700}
+.rate-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rate{display:flex;align-items:center;gap:9px;border:1px solid #d7d7d7;border-radius:10px;padding:12px 14px;font-weight:500;color:#3a5043}
+.rate input{width:auto}
+.info{margin-top:20px;padding:15px 17px;background:var(--sd-soft-green);border-left:5px solid var(--sd-green);border-radius:10px;color:#395448;line-height:1.6;font-size:14px}
+.submit{text-align:center;border-top:1px solid #e7dfc9;padding-top:25px}
+button{border:0;border-radius:30px;padding:14px 34px;background:var(--sd-green);color:#fff;font-size:16px;font-weight:800;cursor:pointer}
+button:hover{background:var(--sd-dark-green)}
+.message{display:none;margin-top:16px;padding:13px 16px;border-radius:10px;font-size:14px;line-height:1.5}
+.message.success{display:block;background:#eef8f0;border:1px solid #9bc7a5;color:#225a34}
+.message.error{display:block;background:#fff1ef;border:1px solid #dfaaa2;color:#8b3327}
+.private{margin-top:13px;color:#747c77;font-size:12px;line-height:1.5}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.full{grid-column:auto}.rate-row{grid-template-columns:1fr}.card{padding:23px}}
+</style>
+</head>
+<body>
+<div id="navigation"></div>
+
+<main class="partner-page">
+<section class="hero">
+<h1>Partner Information Form</h1>
+<div class="tag">Community Partnerships • SaraDharma</div>
+<div class="rule"></div>
+<p>Please share a few details about your organization and the services you can offer to SaraDharma residents. This will help us explore the most suitable form of collaboration.</p>
+</section>
+
+<div class="wrap">
+<form class="card" id="partnerForm" novalidate>
+
+<section class="section">
+<h2>Organization Details</h2>
+<p class="note">Basic information about your organization.</p>
+<div class="grid">
+<div class="group full">
+<label for="organizationName">Organization Name <span class="req">*</span></label>
+<input id="organizationName" name="organizationName" type="text" maxlength="150" required>
+</div>
+<div class="group full">
+<label for="address">Address <span class="req">*</span></label>
+<textarea id="address" name="address" rows="4" maxlength="500" required></textarea>
+</div>
+</div>
+</section>
+
+<section class="section">
+<h2>Contact Person</h2>
+<p class="note">The person SaraDharma may contact regarding the proposed affiliation.</p>
+<div class="grid">
+<div class="group">
+<label for="contactPerson">Contact Person <span class="req">*</span></label>
+<input id="contactPerson" name="contactPerson" type="text" maxlength="100" required>
+</div>
+<div class="group">
+<label for="mobile">Contact Person Mobile <span class="req">*</span></label>
+<input id="mobile" name="mobile" type="tel" inputmode="tel" maxlength="20" placeholder="+91 98765 43210" required>
+</div>
+<div class="group">
+<label for="email">Email Address</label>
+<input id="email" name="email" type="email" maxlength="150" placeholder="name@example.com">
+</div>
+<div class="group">
+<label for="website">Website</label>
+<input id="website" name="website" type="url" maxlength="250" placeholder="https://">
+</div>
+</div>
+</section>
+
+<section class="section">
+<h2>Services Offered</h2>
+<p class="note">Please describe the services, products, programs or activities your organization can offer to SaraDharma residents.</p>
+
+<div class="group">
+<label for="servicesDescription">Service Description <span class="req">*</span></label>
+<textarea id="servicesDescription" name="servicesDescription" maxlength="1000" required placeholder="Describe your services and how they may benefit senior citizens."></textarea>
+<div class="counter" id="counter">0 / 1000</div>
+</div>
+
+<div class="grid" style="margin-top:20px">
+<div class="group full">
+<label for="serviceTimings">Service Timings</label>
+<input id="serviceTimings" name="serviceTimings" type="text" maxlength="200" placeholder="Example: Monday–Saturday, 9:00 AM–6:00 PM">
+<div class="help">Mention days, hours, appointment requirements or timing restrictions.</div>
+</div>
+
+<div class="group">
+<label>Rates</label>
+<div class="rate-row">
+<label class="rate"><input type="radio" name="ratePreference" value="Negotiable"> Negotiable</label>
+<label class="rate"><input type="radio" name="ratePreference" value="Standard / Published"> Standard / Published</label>
+</div>
+</div>
+
+<div class="group">
+<label for="distance">Distance from SaraDharma</label>
+<input id="distance" name="distance" type="text" maxlength="100" placeholder="Example: 3 km / 15 minutes">
+<div class="help">Approximate distance or travel time from SaraDharma.</div>
+</div>
+</div>
+
+<div class="info">
+<strong>Preferred arrangements:</strong> Please mention whether you can offer special rates, priority appointments, home visits, onsite sessions, group programs, or other arrangements for SaraDharma residents.
+</div>
+</section>
+
+<section class="section">
+<h2>Additional Information</h2>
+<p class="note">Anything else that may help us understand your organization or the proposed partnership.</p>
+<div class="group">
+<label for="additionalInformation">Additional Information</label>
+<textarea id="additionalInformation" name="additionalInformation" maxlength="750" rows="5" placeholder="Optional"></textarea>
+</div>
+</section>
+
+<div class="submit">
+<button type="submit">Submit Partner Information</button>
+<div id="message" class="message" role="status" aria-live="polite"></div>
+<div class="private">This form is intended for prospective SaraDharma community partners. Information will be used for evaluating and discussing the proposed affiliation.</div>
+</div>
+
+</form>
+</div>
+</main>
+
+<div id="footer"></div>
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/site.js"></script>
+
+<script>
+(function(){
+
+  const form = document.getElementById("partnerForm");
+  const desc = document.getElementById("servicesDescription");
+  const counter = document.getElementById("counter");
+  const msg = document.getElementById("message");
+  const submitButton = document.getElementById("submitButton") || form.querySelector("button[type='submit']");
+
+  function updateCounter(){
+    counter.textContent = desc.value.length + " / 1000";
+  }
+
+  function showMessage(text, type){
+    msg.textContent = text;
+    msg.className = "message " + type;
+  }
+
+  desc.addEventListener("input", updateCounter);
+
+  form.addEventListener("submit", function(event){
+    event.preventDefault();
+
+    if(!form.checkValidity()){
+      form.reportValidity();
+      showMessage("Please complete the required fields.", "error");
+      return;
+    }
+
+    const webAppUrl = window.SaraDharma && window.SaraDharma.WEBAPP_URL;
+
+    if(!webAppUrl){
+      showMessage("The SaraDharma submission service is not configured.", "error");
+      return;
+    }
+
+    const callbackName = "saradharmaPartnerCallback_" + Date.now();
+    const params = new URLSearchParams(Object.fromEntries(new FormData(form).entries()));
+    params.set("action", "partner");
+    params.set("callback", callbackName);
+
+    const script = document.createElement("script");
+    let finished = false;
+
+    function finish(){
+      if(finished) return;
+      finished = true;
+      delete window[callbackName];
+      if(script.parentNode) script.parentNode.removeChild(script);
+      submitButton.disabled = false;
+    }
+
+    window[callbackName] = function(result){
+      if(result && result.success){
+        showMessage(
+          "Thank you. Your partner information has been received successfully. Reference: " + result.partnerId,
+          "success"
+        );
+        form.reset();
+        updateCounter();
+      } else {
+        showMessage(
+          result && result.message ? result.message : "We could not submit your information right now. Please try again.",
+          "error"
+        );
+      }
+      finish();
+    };
+
+    script.onerror = function(){
+      showMessage("We could not contact the SaraDharma submission service. Please try again.", "error");
+      finish();
+    };
+
+    submitButton.disabled = true;
+    showMessage("Submitting your partner information...", "success");
+
+    script.src = webAppUrl + "?" + params.toString();
+    document.body.appendChild(script);
+
+    setTimeout(function(){
+      if(!finished){
+        showMessage("The submission is taking longer than expected. Please try again.", "error");
+        finish();
+      }
+    }, 20000);
+  });
+
+  updateCounter();
+})();
+</script>
+</body>
+</html>
