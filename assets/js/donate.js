@@ -302,7 +302,7 @@ function validateDonationForm(){
 
         alert(
 
-            "General Fund donations must be at least ₹10,000."
+            "General Fund donations must be at least ₹1,000."
 
         );
 
