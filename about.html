@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | SaraDharma Community</title>
+
+  <style>
+    :root {
+      --primary: #0f4a2f;
+      --secondary: #c98a22;
+      --accent: #c97b8f;
+      --bg: #faf8f2;
+      --card: #fffdf8;
+      --text: #333333;
+      --muted: #6b665d;
+      --border: #dfcfaa;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    .about-page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 30px 22px 60px;
+    }
+
+    .about-title {
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .about-title h1 {
+      margin: 0;
+      color: var(--primary);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .gold-rule {
+      width: 115px;
+      height: 3px;
+      margin: 14px auto 0;
+      background: var(--secondary);
+      border-radius: 2px;
+    }
+
+    .about-intro {
+      max-width: 850px;
+      margin: 0 auto 38px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .person-card {
+      display: grid;
+      grid-template-columns: 235px 1fr;
+      gap: 34px;
+      align-items: center;
+      margin: 0 0 30px;
+      padding: 28px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(65, 50, 25, 0.07);
+    }
+
+    .person-card.reverse {
+      grid-template-columns: 1fr 235px;
+    }
+
+    .person-card.reverse .portrait-wrap {
+      order: 2;
+    }
+
+    .portrait-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .portrait {
+      width: 210px;
+      height: 245px;
+      border-radius: 16px;
+      border: 4px solid #ead9b3;
+      background:
+        linear-gradient(145deg, #f7efd9, #efe3c2);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    .portrait-fallback {
+      position: absolute;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      text-align: center;
+      color: var(--primary);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.05rem;
+    }
+
+    .role {
+      margin: 0 0 5px;
+      color: var(--secondary);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .name {
+      margin: 0 0 18px;
+      color: var(--primary);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .credentials {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .person-copy p {
+      margin: 0 0 15px;
+      font-size: 1rem;
+    }
+
+    .motto-box {
+      margin-top: 18px;
+      padding: 15px 20px;
+      border-left: 4px solid var(--secondary);
+      border-radius: 0 10px 10px 0;
+      background: #fbf4e3;
+      color: var(--primary);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.12rem;
+      font-style: italic;
+    }
+
+    .about-closing {
+      max-width: 850px;
+      margin: 40px auto 0;
+      padding: 24px;
+      text-align: center;
+      background: #f3eddf;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      color: var(--primary);
+    }
+
+    .about-closing p {
+      margin: 0;
+      font-size: 1.05rem;
+    }
+
+    .about-closing .closing-motto {
+      margin-top: 10px;
+      color: var(--secondary);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    @media (max-width: 760px) {
+      .person-card,
+      .person-card.reverse {
+        grid-template-columns: 1fr;
+        text-align: left;
+      }
+
+      .person-card.reverse .portrait-wrap {
+        order: initial;
+      }
+
+      .portrait {
+        width: 190px;
+        height: 220px;
+      }
+
+      .name {
+        font-size: 1.7rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="about-page">
+
+    <header class="about-title">
+      <h1>About Us</h1>
+      <div class="gold-rule"></div>
+    </header>
+
+    <p class="about-intro">
+      SaraDharma is being created with a simple purpose: to build a caring
+      residential wellness community where older adults can experience dignity,
+      companionship, holistic well-being and a meaningful sense of belonging.
+    </p>
+
+    <!-- Founder and CEO -->
+    <section class="person-card">
+      <div class="portrait-wrap">
+        <div class="portrait">
+          <img
+            src="assets/images/dharma-rajan.jpg"
+            alt="Dharma Rajan, Founder and CEO of SaraDharma"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <div class="portrait-fallback">Founder and CEO<br>Dharma Rajan</div>
+        </div>
+      </div>
+
+      <div class="person-copy">
+        <div class="role">Founder and CEO</div>
+
+        <h2 class="name">
+          Dharma Rajan
+          <span class="credentials">M.Tech, M.S, PhD</span>
+        </h2>
+
+        <p>
+          Rajan started his career as a Space Scientist at ISRO and has spent
+          more than 30 years in the United States working with leading technology
+          companies. He is also a former Advisor to the Government of India on
+          Next Generation Technology.
+        </p>
+
+        <p>
+          Based on his personal experience and the challenges many NRIs face in
+          taking care of their elderly parents, he is starting the SaraDharma
+          community. SaraDharma is also a vision project of his mother to serve
+          society.
+        </p>
+
+        <p>
+          He is hopeful of evolving the community where senior adults experience
+          dignity, companionship and holistic well-being, with support from
+          everyone.
+        </p>
+      </div>
+    </section>
+
+    <!-- Chairman Emeritus -->
+    <section class="person-card reverse">
+      <div class="person-copy">
+        <div class="role">Chairman Emeritus</div>
+
+        <h2 class="name">Anantu Iyer Saraswathi</h2>
+
+        <p>
+          Anantu Iyer Saraswathi is the visionary behind SaraDharma. She is one
+          of those rare gems who has devoted her life to serving others. Her
+          principle in life, her smile and her will power have been a source of
+          strength to all around her.
+        </p>
+
+        <p>
+          Her noble service includes multiple instances in which families have
+          sought her spiritual support during critical illness, including severe
+          jaundice. These experiences have been described by the families
+          concerned as part of their loved ones' recovery.
+        </p>
+
+        <div class="motto-box">
+          “Help One Another” is her message.
+        </div>
+      </div>
+
+      <div class="portrait-wrap">
+        <div class="portrait">
+          <img
+            src="assets/images/anantu-iyer-saraswathi.jpg"
+            alt="Anantu Iyer Saraswathi, Chairman Emeritus of SaraDharma"
+            onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+          >
+          <div class="portrait-fallback">Chairman Emeritus<br>Anantu Iyer Saraswathi</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="about-closing">
+      <p>
+        SaraDharma brings together a personal journey, a family vision and a
+        commitment to creating a caring community for older adults.
+      </p>
+      <div class="closing-motto">Help One Another.</div>
+    </section>
+
+  </main>
+</body>
+</html>
