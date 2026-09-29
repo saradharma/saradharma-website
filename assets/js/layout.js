@@ -38,8 +38,8 @@ const navigation = `
 
     <!-- Brand -->
 
-    <li class="nav-brand">
-
+    <!--  <li class="nav-brand"> -->
+        <li class="drop-down">
         <a href="index.html">
 
             <img
