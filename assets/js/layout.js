@@ -68,10 +68,6 @@ const navigation = `
         </li>
 
     </ul>
-
-
-
-
        
     </li>
 
