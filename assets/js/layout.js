@@ -191,6 +191,16 @@ const navigation = `
 
         </li>
 
+        <li>
+
+            <a href="about.html">
+
+                About Us
+
+            </a>
+
+        </li> 
+
     </ul>
 
 </li>
