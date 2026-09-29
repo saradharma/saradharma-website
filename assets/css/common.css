@@ -1389,5 +1389,55 @@ Footer
     }
 }
 
+/* ==========================================================
+   SaraDharma Home - Dropdown Fix
+   ========================================================== */
 
+.main-nav .nav-brand.dropdown {
+    position: relative;
+}
+
+.main-nav .nav-brand.dropdown > .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    margin: 0;
+    padding: 8px 0;
+    list-style: none;
+    background: #ffffff;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,.18);
+    z-index: 9999;
+}
+
+.main-nav .nav-brand.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+.main-nav .nav-brand.dropdown > .dropdown-menu li {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.main-nav .nav-brand.dropdown > .dropdown-menu li a {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    background: #ffffff;
+    color: #333333 !important;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transform: none;
+}
+
+.main-nav .nav-brand.dropdown > .dropdown-menu li a:hover {
+    background: #f7efe4;
+    color: #0f4a2f !important;
+    transform: none;
+}
 
