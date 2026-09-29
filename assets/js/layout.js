@@ -193,9 +193,9 @@ const navigation = `
 
         <li>
 
-            <a href="about.html">
+            <a href="PartnerInputForm.html">
 
-                About Us
+                Partner Input Form
 
             </a>
 
