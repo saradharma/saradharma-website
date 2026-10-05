@@ -190,7 +190,15 @@ const navigation = `
             </a>
 
         </li>
+         <li>
 
+            <a href="Healthcare_Partner.html">
+
+                Healthcare Partners
+
+            </a>
+
+        </li>
         <li>
 
             <a href="PartnerInputForm.html">
