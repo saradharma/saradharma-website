@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaraDharma Senior Living | Grahapravesam</title>
+<style>
+:root{--green:#075936;--gold:#c58a22;--cream:#faf7ef;--maroon:#8b1830;--text:#24352b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--text);font-family:Arial,Helvetica,sans-serif}
+.wrap{width:min(760px,94%);margin:20px auto 40px}
+.card{background:#fff;border:2px solid var(--gold);border-radius:24px;overflow:hidden;box-shadow:0 12px 30px rgba(0,0,0,.12)}
+.invite{width:100%;display:block}
+.actions{padding:20px;display:grid;gap:12px}
+.btn{display:flex;align-items:center;justify-content:center;min-height:52px;padding:13px 18px;border-radius:13px;text-decoration:none;font-weight:700;font-size:16px;border:0;cursor:pointer}
+.primary{background:var(--green);color:#fff}
+.secondary{background:#fff7e7;color:var(--green);border:1px solid #d9c27c}
+.voice{background:#fceaf0;color:var(--maroon);border:1px solid #df9ab0}
+.status{display:none;margin:0 20px 20px;padding:12px 14px;border-radius:12px;background:#edf7ef;border:1px solid #9ac9a5;color:var(--green);text-align:center}
+.small{text-align:center;color:#66736b;font-size:12px;line-height:1.5;padding:0 20px 20px}
+.footer-note{text-align:center;color:#746c61;font-size:12px;margin-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="card">
+    <img class="invite" src="saradharma-grahapravesam-invite.png" alt="SaraDharma Senior Living Grahapravesam Invitation">
+
+    <div class="actions">
+      <a class="btn primary" href="https://saradharma.in" target="_blank" rel="noopener">🌐 Visit SaraDharma Website</a>
+      <button class="btn voice" id="voiceBtn" type="button">🎤 Say “Open SaraDharma”</button>
+      <a class="btn secondary" href="https://www.google.com/maps/search/?api=1&query=17%20Muniswamappa%20Road%2C%20Halasuru%2C%20Bengaluru%20560008" target="_blank" rel="noopener">📍 Open Location in Google Maps</a>
+      <a class="btn secondary" href="tel:+919620834492">📞 Call SaraDharma</a>
+      <a class="btn secondary" href="https://wa.me/919620834492?text=Hello%20SaraDharma%2C%20I%20would%20like%20more%20information%20about%20the%20Grahapravesam." target="_blank" rel="noopener">💬 WhatsApp SaraDharma</a>
+    </div>
+
+    <div id="status" class="status" aria-live="polite"></div>
+    <div class="small">For voice navigation, tap the microphone button and say <strong>“Open SaraDharma”</strong>. Your browser may ask for microphone permission.</div>
+  </div>
+
+  <div class="footer-note">SaraDharma Senior Living • 17 Muniswamappa Road, Halasuru, Bengaluru 560008</div>
+</div>
+
+<script>
+(function(){
+  const btn=document.getElementById("voiceBtn");
+  const status=document.getElementById("status");
+  const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+
+  if(!SpeechRecognition){
+    btn.addEventListener("click",function(){
+      status.style.display="block";
+      status.textContent="Voice commands are not supported by this browser. Please use the Visit SaraDharma Website button.";
+    });
+    return;
+  }
+
+  const recognition=new SpeechRecognition();
+  recognition.lang="en-IN";
+  recognition.interimResults=false;
+  recognition.maxAlternatives=3;
+
+  btn.addEventListener("click",function(){
+    status.style.display="block";
+    status.textContent="Listening… Say “Open SaraDharma”.";
+    try{recognition.start();}catch(e){status.textContent="Please wait a moment and try again.";}
+  });
+
+  recognition.onresult=function(event){
+    const transcript=Array.from(event.results).map(r=>r[0].transcript.toLowerCase()).join(" ");
+    const accepted=["open saradharma","open sara dharma","visit saradharma","visit sara dharma"];
+    if(accepted.some(p=>transcript.includes(p))){
+      status.textContent="Opening SaraDharma website…";
+      window.location.href="https://saradharma.in";
+    }else{
+      status.textContent='I heard: "'+transcript+'". Please say “Open SaraDharma”.';
+    }
+  };
+
+  recognition.onerror=function(event){
+    status.style.display="block";
+    status.textContent=event.error==="not-allowed"
+      ?"Microphone access was not allowed. Please enable microphone access in your browser."
+      :"Voice recognition could not start. Please use the website button instead.";
+  };
+
+  recognition.onend=function(){
+    if(status.textContent==="Listening… Say “Open SaraDharma”."){
+      status.textContent="Listening ended. Tap the button and try again.";
+    }
+  };
+})();
+</script>
+</body>
+</html>
