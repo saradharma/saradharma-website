@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+      content="SaraDharma Senior Living Grahapravesam — Wednesday, October 21, 2026. Muhurtam 9:30 AM to 11:00 AM, Lunch 1:00 PM.">
+<title>SaraDharma Senior Living | Grahapravesam</title>
+
+<link rel="stylesheet" href="assets/css/theme.css">
+<link rel="stylesheet" href="assets/css/common.css">
+
+<style>
+:root{
+    --invite-cream:#faf7ef;
+    --invite-green:#075936;
+    --invite-gold:#c58a22;
+    --invite-text:#24352b;
+}
+*{box-sizing:border-box}
+body{
+    margin:0;
+    background:var(--invite-cream);
+    color:var(--invite-text);
+    font-family:Arial,Helvetica,sans-serif;
+}
+.invitation-page{
+    width:min(1180px,94%);
+    margin:0 auto;
+    padding:22px 0 28px;
+}
+.invitation-card{
+    background:#fff;
+    border:1px solid #dfc98d;
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,.10);
+}
+.invitation-image{
+    display:block;
+    width:100%;
+    height:auto;
+}
+.rsvp-actions{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+    padding:18px 20px 16px;
+    background:#fffdf8;
+    border-top:1px solid #eadfbe;
+}
+.rsvp-button{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    min-height:58px;
+    padding:14px 16px;
+    border-radius:12px;
+    text-decoration:none;
+    font-size:16px;
+    font-weight:700;
+    text-align:center;
+    transition:transform .2s ease,filter .2s ease;
+}
+.rsvp-button:hover{
+    transform:translateY(-2px);
+    filter:brightness(.97);
+}
+.maps{
+    background:#fff4e2;
+    color:#8a4a08;
+    border:1px solid #dfb15b;
+}
+.call{
+    background:#075936;
+    color:#fff;
+    border:1px solid #075936;
+}
+.whatsapp{
+    background:#e9f7ed;
+    color:#075936;
+    border:1px solid #9ac9a5;
+}
+.rsvp-note{
+    text-align:center;
+    padding:0 20px 18px;
+    background:#fffdf8;
+    color:#6a746e;
+    font-size:13px;
+}
+@media(max-width:720px){
+    .rsvp-actions{grid-template-columns:1fr}
+    .invitation-page{width:min(96%,680px)}
+}
+</style>
+</head>
+
+<body>
+
+<div id="navigation"></div>
+
+<main class="invitation-page">
+    <div class="invitation-card">
+
+        <!-- Latest invitation artwork with actual building photo -->
+        <img
+            class="invitation-image"
+            src="assets/images/SaraDharma_Grahapravesam_Invite_BuildingPhoto.png"
+            alt="SaraDharma Senior Living Grahapravesam invitation"
+        >
+
+        <div class="rsvp-actions">
+
+            <a
+                class="rsvp-button maps"
+                href="https://www.google.com/maps/place/SaraDharma+Senior+Care+Living/@12.9771187,77.6267328,17z/data=!3m1!4b1!4m6!3m5!1s0x3bae1700336d2047:0x2068657f0575eaa0!8m2!3d12.9771187!4d77.6293131!16s%2Fg%2F11m6n7f5_d?entry=ttu&amp;g_ep=EgoyMDI2MDkzMC4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer">
+                📍 Open Location in Google Maps
+            </a>
+
+            <a
+                class="rsvp-button call"
+                href="tel:+919620834492">
+                📞 Call SaraDharma to RSVP
+            </a>
+
+            <a
+                class="rsvp-button whatsapp"
+                href="https://wa.me/919620834492?text=Hello%20SaraDharma%2C%20Our%20RSVP%20attendee%20count%20for%20Grahapravesam%20%3D%20"
+                target="_blank"
+                rel="noopener noreferrer">
+                💬 WhatsApp SaraDharma to RSVP
+            </a>
+
+        </div>
+
+        <div class="rsvp-note">
+            Please use the WhatsApp option to send the number of attendees for your RSVP.
+        </div>
+    </div>
+</main>
+
+<div id="footer"></div>
+
+<script src="assets/js/layout.js"></script>
+<script src="assets/js/site.js"></script>
+
+</body>
+</html>
