@@ -42,11 +42,6 @@ const navigation = `
         <li class="nav-brand dropdown">
         <a href="index.html">
 
-            <img
-                src="assets/images/logo.png"
-                alt="SaraDharma"
-                class="nav-logo">
-
             <span class="nav-title">
 
                 SaraDharma Home
@@ -547,9 +542,7 @@ document.addEventListener(
 
                 const mobileTitle = document.createElement("div");
                 mobileTitle.className = "sd-mobile-title";
-                mobileTitle.innerHTML =
-                    '<img src="assets/images/logo.png" alt="">' +
-                    '<span>SaraDharma</span>';
+                mobileTitle.textContent = "SaraDharma";
 
                 mainNav.insertBefore(mobileTitle, mainNav.firstChild);
                 mainNav.insertBefore(mobileTrigger, mainNav.firstChild);
@@ -585,6 +578,16 @@ document.addEventListener(
                     mobileMenu.classList.remove("sd-mobile-open");
                     overlay.classList.remove("sd-mobile-overlay-open");
                     document.body.classList.remove("sd-mobile-menu-open");
+
+                    mobileMenu.querySelectorAll(".sd-mobile-dropdown-open").forEach(function(dropdown){
+                        dropdown.classList.remove("sd-mobile-dropdown-open");
+                    });
+
+                    mobileMenu.querySelectorAll(".sd-mobile-dropdown-toggle.open").forEach(function(toggle){
+                        toggle.classList.remove("open");
+                        toggle.setAttribute("aria-expanded", "false");
+                        toggle.setAttribute("aria-label", "Expand submenu");
+                    });
 
                     if(mobileTrigger){
                         mobileTrigger.setAttribute("aria-expanded", "false");
@@ -623,49 +626,64 @@ document.addEventListener(
                 overlay.addEventListener("click", closeMobileMenu);
 
                 // -----------------------------------------------------
-                // Mobile dropdown toggles. The main link remains a real
-                // navigation link; the small arrow button expands the
-                // submenu.
+                // Mobile dropdown toggles. Use child nodes rather than
+                // :scope selectors so this also works reliably on iOS
+                // Safari and other mobile browsers.
                 // -----------------------------------------------------
 
                 mobileMenu.querySelectorAll(".dropdown").forEach(function(dropdown){
 
-                    const topLink = dropdown.querySelector(":scope > a");
-                    const submenu = dropdown.querySelector(":scope > .dropdown-menu");
+                    let topLink = null;
+                    let submenu = null;
+
+                    Array.from(dropdown.children).forEach(function(child){
+                        if(child.tagName === "A" && !topLink){
+                            topLink = child;
+                        }
+                        if(child.tagName === "UL" && child.classList.contains("dropdown-menu") && !submenu){
+                            submenu = child;
+                        }
+                    });
 
                     if(!topLink || !submenu){
                         return;
                     }
 
-                    if(dropdown.querySelector(":scope > .sd-mobile-dropdown-toggle")){
-                        return;
+                    let toggle = null;
+
+                    Array.from(dropdown.children).forEach(function(child){
+                        if(child.classList && child.classList.contains("sd-mobile-dropdown-toggle")){
+                            toggle = child;
+                        }
+                    });
+
+                    if(!toggle){
+                        toggle = document.createElement("button");
+                        toggle.type = "button";
+                        toggle.className = "sd-mobile-dropdown-toggle";
+                        toggle.setAttribute("aria-label", "Expand submenu");
+                        toggle.setAttribute("aria-expanded", "false");
+                        toggle.innerHTML = "<span aria-hidden=\"true\"></span>";
+                        dropdown.insertBefore(toggle, submenu);
                     }
 
-                    const toggle = document.createElement("button");
-
-                    toggle.type = "button";
-                    toggle.className = "sd-mobile-dropdown-toggle";
-                    toggle.setAttribute("aria-label", "Expand submenu");
-                    toggle.setAttribute("aria-expanded", "false");
-                    toggle.innerHTML = "<span aria-hidden=\"true\"></span>";
-
-                    dropdown.insertBefore(toggle, submenu);
-
-                    toggle.addEventListener("click", function(event){
-
-                        event.preventDefault();
-                        event.stopPropagation();
-
-                        const isOpen =
-                            dropdown.classList.toggle("sd-mobile-dropdown-open");
-
+                    const setDropdownState = function(isOpen){
+                        dropdown.classList.toggle("sd-mobile-dropdown-open", isOpen);
                         toggle.classList.toggle("open", isOpen);
                         toggle.setAttribute("aria-expanded", String(isOpen));
                         toggle.setAttribute(
                             "aria-label",
                             isOpen ? "Collapse submenu" : "Expand submenu"
                         );
+                    };
 
+                    // Dedicated arrow button: expand/collapse only.
+                    toggle.addEventListener("click", function(event){
+                        event.preventDefault();
+                        event.stopPropagation();
+                        setDropdownState(
+                            !dropdown.classList.contains("sd-mobile-dropdown-open")
+                        );
                     });
 
                 });
