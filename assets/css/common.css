@@ -2593,3 +2593,42 @@ Footer
         overflow:hidden !important;
     }
 }
+
+/* ================================================================
+   SaraDharma Navigation - v6.3 DESKTOP STRAY-TEXT CLEANUP
+   The live desktop view was still showing a legacy "SaraDharma"
+   text fragment immediately to the left of the Home item.
+   This patch removes any non-navigation sibling in the nav and
+   suppresses any raw text node rendered directly by the browser.
+   Mobile behavior is left unchanged.
+   ================================================================ */
+
+@media (min-width:769px){
+    /* Prevent stray raw text inside <nav class="main-nav"> from rendering. */
+    .main-nav{
+        font-size:0 !important;
+    }
+
+    /* The only intended direct child is the navigation <ul>. */
+    .main-nav > :not(.nav-menu):not(.sd-mobile-trigger):not(.sd-mobile-title){
+        display:none !important;
+    }
+
+    /* Restore intended text sizing for the real navigation. */
+    .main-nav .nav-menu,
+    .main-nav .nav-menu *{
+        font-size:inherit;
+    }
+
+    .main-nav .nav-menu > li > a{
+        font-size:0.96rem !important;
+    }
+
+    .main-nav .nav-title{
+        font-size:1.32rem !important;
+    }
+
+    .main-nav .dropdown-menu a{
+        font-size:1rem !important;
+    }
+}
