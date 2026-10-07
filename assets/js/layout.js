@@ -2,7 +2,7 @@
  *
  * SaraDharma Community
  *
- * Version : 5.2
+ * Version : 6.3
  * File    : layout.js
  *
  * Purpose :
@@ -378,6 +378,27 @@ document.addEventListener(
         if(navigationDiv){
 
             navigationDiv.innerHTML = navigation;
+
+            // v6.3: remove any legacy brand/logo fragment that may still
+            // exist in an older cached/assembled navigation container.
+            navigationDiv.querySelectorAll(
+                ".nav-logo, .logo-link, .site-title, .header-container"
+            ).forEach(function(el){
+                if(el.closest(".nav-menu") || el.closest(".main-nav")){
+                    el.remove();
+                }
+            });
+
+            // Remove an accidental standalone legacy text node if present.
+            const mainNav = navigationDiv.querySelector(".main-nav");
+            if(mainNav){
+                Array.from(mainNav.childNodes).forEach(function(node){
+                    if(node.nodeType === Node.TEXT_NODE &&
+                       node.textContent.trim() === "SaraDharma") {
+                        node.remove();
+                    }
+                });
+            }
 
         }
 
