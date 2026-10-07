@@ -2157,3 +2157,439 @@ Footer
         overflow:hidden !important;
     }
 }
+
+/* ================================================================
+   SaraDharma Navigation - v6.2 FINAL OVERRIDE
+   Goals:
+   1. Remove any legacy header/logo text above/below navigation.
+   2. Make the full desktop navigation fit normal laptop widths.
+   3. Make dropdown arrows clear and aligned with the label text.
+   4. Keep mobile menu the SAME golden-brown as desktop.
+   5. Keep the mobile slide-out menu above the dimming overlay.
+   ================================================================ */
+
+/* ---------- Remove legacy header/brand remnants ---------- */
+#header,
+.site-header,
+.header-container {
+    display:none !important;
+}
+
+/* No logo is part of the navigation. */
+.main-nav .nav-logo,
+.main-nav img.nav-logo,
+.main-nav .nav-brand img {
+    display:none !important;
+    width:0 !important;
+    height:0 !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+
+/* ---------- DESKTOP ---------- */
+@media (min-width:769px){
+
+    .main-nav,
+    .main-nav > ul.nav-menu,
+    .main-nav .nav-menu{
+        background:#B46A1F !important;
+        box-sizing:border-box !important;
+    }
+
+    .main-nav{
+        width:100% !important;
+        height:72px !important;
+        min-height:72px !important;
+        max-height:72px !important;
+        padding:0 8px !important;
+        margin:0 !important;
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+        overflow:visible !important;
+        gap:0 !important;
+    }
+
+    .main-nav .nav-menu,
+    .main-nav > ul.nav-menu{
+        width:100% !important;
+        max-width:none !important;
+        height:72px !important;
+        min-height:72px !important;
+        max-height:72px !important;
+        display:flex !important;
+        flex:1 1 auto !important;
+        flex-direction:row !important;
+        align-items:center !important;
+        justify-content:space-between !important;
+        flex-wrap:nowrap !important;
+        gap:0 !important;
+        margin:0 !important;
+        padding:0 !important;
+        list-style:none !important;
+        overflow:visible !important;
+    }
+
+    .main-nav .nav-menu > li,
+    .main-nav > ul.nav-menu > li{
+        position:relative !important;
+        flex:0 1 auto !important;
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+        height:72px !important;
+        min-height:72px !important;
+        max-height:72px !important;
+        margin:0 !important;
+        padding:0 !important;
+        box-sizing:border-box !important;
+        list-style:none !important;
+    }
+
+    .main-nav .nav-menu > li > a,
+    .main-nav > ul.nav-menu > li > a{
+        height:72px !important;
+        min-height:72px !important;
+        max-height:72px !important;
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+        box-sizing:border-box !important;
+        margin:0 !important;
+        padding:0 8px !important;
+        white-space:nowrap !important;
+        text-decoration:none !important;
+        line-height:1 !important;
+        color:#fff !important;
+        font-size:0.96rem !important;
+        font-weight:700 !important;
+    }
+
+    .main-nav .nav-brand,
+    .main-nav > ul.nav-menu > li.nav-brand{
+        flex:0 1 auto !important;
+        margin:0 !important;
+        padding:0 !important;
+    }
+
+    .main-nav .nav-brand > a{
+        height:72px !important;
+        padding:0 8px !important;
+        gap:0 !important;
+    }
+
+    .main-nav .nav-title{
+        display:inline-flex !important;
+        align-items:center !important;
+        height:72px !important;
+        margin:0 !important;
+        padding:0 !important;
+        color:#fff !important;
+        font-size:1.32rem !important;
+        font-weight:700 !important;
+        line-height:1 !important;
+        white-space:nowrap !important;
+        letter-spacing:0 !important;
+    }
+
+    /* Clear, visible dropdown triangle. */
+    .main-nav .nav-menu > li.dropdown > a::after{
+        content:"▼" !important;
+        display:inline-block !important;
+        margin-left:7px !important;
+        color:#fff !important;
+        font-size:0.72em !important;
+        font-weight:800 !important;
+        line-height:1 !important;
+        opacity:1 !important;
+        transform:none !important;
+        vertical-align:middle !important;
+    }
+
+    /* Dropdown remains directly below its parent. */
+    .main-nav .nav-menu > li.dropdown > .dropdown-menu,
+    .main-nav .nav-brand.dropdown > .dropdown-menu{
+        top:72px !important;
+        left:0 !important;
+        margin:0 !important;
+        min-width:220px !important;
+        z-index:10050 !important;
+    }
+
+    .main-nav .dropdown:hover > .dropdown-menu,
+    .main-nav .dropdown:focus-within > .dropdown-menu{
+        display:block !important;
+    }
+}
+
+/* ---------- MOBILE ---------- */
+@media (max-width:768px){
+
+    .main-nav{
+        --sd-nav-bg:#B46A1F;
+        position:sticky !important;
+        top:0 !important;
+        z-index:10006 !important;
+        width:100% !important;
+        height:56px !important;
+        min-height:56px !important;
+        max-height:56px !important;
+        display:flex !important;
+        flex-direction:row !important;
+        align-items:center !important;
+        justify-content:flex-start !important;
+        box-sizing:border-box !important;
+        padding:0 12px !important;
+        margin:0 !important;
+        gap:0 !important;
+        background:#B46A1F !important;
+        overflow:visible !important;
+    }
+
+    .sd-mobile-trigger{
+        display:flex !important;
+        position:relative !important;
+        z-index:10008 !important;
+        flex:0 0 44px !important;
+        align-items:center !important;
+        justify-content:center !important;
+        width:44px !important;
+        height:44px !important;
+        margin:0 9px 0 0 !important;
+        padding:0 !important;
+        border:1px solid rgba(255,255,255,.32) !important;
+        border-radius:10px !important;
+        background:rgba(0,0,0,.08) !important;
+        color:#fff !important;
+        font-size:28px !important;
+        font-weight:700 !important;
+        line-height:1 !important;
+    }
+
+    .sd-mobile-title{
+        position:relative !important;
+        z-index:10008 !important;
+        display:flex !important;
+        align-items:center !important;
+        color:#fff !important;
+        font-size:1.08rem !important;
+        font-weight:700 !important;
+        line-height:1 !important;
+        white-space:nowrap !important;
+        margin:0 !important;
+        padding:0 !important;
+    }
+
+    /* Left drawer starts BELOW the top bar, so the hamburger remains visible. */
+    .main-nav .nav-menu,
+    .main-nav > ul.nav-menu{
+        position:fixed !important;
+        top:56px !important;
+        left:0 !important;
+        bottom:0 !important;
+        width:min(320px,84vw) !important;
+        height:auto !important;
+        max-height:none !important;
+        box-sizing:border-box !important;
+        display:flex !important;
+        flex-direction:column !important;
+        align-items:stretch !important;
+        justify-content:flex-start !important;
+        flex-wrap:nowrap !important;
+        gap:0 !important;
+        margin:0 !important;
+        padding:0 0 20px !important;
+        list-style:none !important;
+        background:#B46A1F !important;
+        box-shadow:8px 0 25px rgba(0,0,0,.30) !important;
+        overflow-x:hidden !important;
+        overflow-y:auto !important;
+        transform:translateX(-105%) !important;
+        transition:transform .28s ease !important;
+        z-index:10007 !important;
+    }
+
+    .main-nav .nav-menu.sd-mobile-open,
+    .main-nav > ul.nav-menu.sd-mobile-open{
+        transform:translateX(0) !important;
+    }
+
+    .main-nav .nav-menu > li,
+    .main-nav > ul.nav-menu > li{
+        position:relative !important;
+        width:100% !important;
+        height:auto !important;
+        min-height:0 !important;
+        max-height:none !important;
+        flex:0 0 auto !important;
+        display:block !important;
+        margin:0 !important;
+        padding:0 !important;
+        box-sizing:border-box !important;
+        border-bottom:1px solid rgba(255,255,255,.18) !important;
+    }
+
+    .main-nav .nav-menu > li > a,
+    .main-nav > ul.nav-menu > li > a{
+        position:relative !important;
+        display:flex !important;
+        align-items:center !important;
+        justify-content:flex-start !important;
+        width:100% !important;
+        min-height:54px !important;
+        height:auto !important;
+        max-height:none !important;
+        box-sizing:border-box !important;
+        margin:0 !important;
+        padding:15px 62px 15px 22px !important;
+        border:0 !important;
+        border-radius:0 !important;
+        background:transparent !important;
+        color:#fff !important;
+        font-size:1rem !important;
+        font-weight:700 !important;
+        line-height:1.25 !important;
+        text-align:left !important;
+        white-space:normal !important;
+        text-decoration:none !important;
+    }
+
+    .main-nav .nav-menu > li > a:hover,
+    .main-nav .nav-menu > li > a:focus,
+    .main-nav .nav-menu > li > a:active{
+        background:rgba(255,255,255,.10) !important;
+        color:#fff !important;
+    }
+
+    .main-nav .nav-brand > a,
+    .main-nav .nav-menu .nav-brand > a{
+        min-height:54px !important;
+        padding:15px 62px 15px 22px !important;
+    }
+
+    .main-nav .nav-title{
+        display:inline !important;
+        height:auto !important;
+        margin:0 !important;
+        padding:0 !important;
+        color:#fff !important;
+        font-size:1.05rem !important;
+        font-weight:700 !important;
+        line-height:1.25 !important;
+        white-space:normal !important;
+    }
+
+    /* JS-controlled mobile dropdown arrow. */
+    .main-nav .nav-menu > li.dropdown > a::after{
+        content:"" !important;
+        display:none !important;
+    }
+
+    .sd-mobile-dropdown-toggle{
+        position:absolute !important;
+        top:5px !important;
+        right:8px !important;
+        z-index:10010 !important;
+        width:44px !important;
+        height:44px !important;
+        display:flex !important;
+        align-items:center !important;
+        justify-content:center !important;
+        margin:0 !important;
+        padding:0 !important;
+        border:0 !important;
+        border-radius:8px !important;
+        background:transparent !important;
+        color:#fff !important;
+        font-size:23px !important;
+        font-weight:800 !important;
+        line-height:1 !important;
+        cursor:pointer !important;
+        -webkit-tap-highlight-color:transparent !important;
+    }
+
+    .sd-mobile-dropdown-toggle::before{
+        content:"▶" !important;
+    }
+
+    .sd-mobile-dropdown-toggle.open::before{
+        content:"▼" !important;
+    }
+
+    /* The entire top-level anchor is also handled by JS on mobile. */
+    .main-nav .nav-menu .dropdown.sd-mobile-dropdown-open > a{
+        background:rgba(255,255,255,.08) !important;
+    }
+
+    .main-nav .nav-menu .dropdown > .dropdown-menu{
+        display:none !important;
+        position:static !important;
+        width:100% !important;
+        min-width:0 !important;
+        height:auto !important;
+        max-height:none !important;
+        margin:0 !important;
+        padding:0 !important;
+        background:rgba(0,0,0,.12) !important;
+        border-radius:0 !important;
+        box-shadow:none !important;
+        transform:none !important;
+        overflow:visible !important;
+        z-index:auto !important;
+    }
+
+    .main-nav .nav-menu .dropdown.sd-mobile-dropdown-open > .dropdown-menu{
+        display:block !important;
+    }
+
+    .main-nav .nav-menu .dropdown-menu li{
+        width:100% !important;
+        margin:0 !important;
+        padding:0 !important;
+        border-top:1px solid rgba(255,255,255,.10) !important;
+    }
+
+    .main-nav .nav-menu .dropdown-menu li a{
+        display:block !important;
+        width:100% !important;
+        min-height:47px !important;
+        box-sizing:border-box !important;
+        margin:0 !important;
+        padding:12px 22px 12px 44px !important;
+        background:transparent !important;
+        color:#fff !important;
+        font-size:.94rem !important;
+        font-weight:600 !important;
+        line-height:1.3 !important;
+        text-decoration:none !important;
+        white-space:normal !important;
+    }
+
+    .main-nav .nav-menu .dropdown-menu li a:hover,
+    .main-nav .nav-menu .dropdown-menu li a:focus{
+        background:rgba(255,255,255,.10) !important;
+        color:#fff !important;
+    }
+
+    /* Overlay is BELOW the nav bar and the drawer, so the golden bar
+       remains the same color while the page content is dimmed. */
+    .sd-mobile-overlay{
+        display:block !important;
+        position:fixed !important;
+        inset:0 !important;
+        background:rgba(0,0,0,.45) !important;
+        opacity:0 !important;
+        visibility:hidden !important;
+        z-index:10005 !important;
+        transition:opacity .28s ease, visibility .28s ease !important;
+    }
+
+    .sd-mobile-overlay.sd-mobile-overlay-open{
+        opacity:1 !important;
+        visibility:visible !important;
+    }
+
+    body.sd-mobile-menu-open{
+        overflow:hidden !important;
+    }
+}
