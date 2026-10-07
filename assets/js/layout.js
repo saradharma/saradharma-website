@@ -521,8 +521,185 @@ document.addEventListener(
 
         /**************************************************************
         MOBILE NAVIGATION
-        (Reserved for Version 6)
+        Version 6
+        Compact top bar + left slide-out menu
         **************************************************************/
+
+        const mainNav = document.querySelector(".main-nav");
+
+        if(mainNav){
+
+            // ---------------------------------------------------------
+            // Create compact mobile trigger/title. Hidden on desktop by
+            // common.css, so the existing desktop navigation is unchanged.
+            // ---------------------------------------------------------
+
+            if(!mainNav.querySelector(".sd-mobile-trigger")){
+
+                const mobileTrigger = document.createElement("button");
+
+                mobileTrigger.type = "button";
+                mobileTrigger.className = "sd-mobile-trigger";
+                mobileTrigger.setAttribute("aria-label", "Open navigation menu");
+                mobileTrigger.setAttribute("aria-expanded", "false");
+                mobileTrigger.setAttribute("aria-controls", "sd-mobile-nav-menu");
+                mobileTrigger.innerHTML = "☰";
+
+                const mobileTitle = document.createElement("div");
+                mobileTitle.className = "sd-mobile-title";
+                mobileTitle.innerHTML =
+                    '<img src="assets/images/logo.png" alt="">' +
+                    '<span>SaraDharma</span>';
+
+                mainNav.insertBefore(mobileTitle, mainNav.firstChild);
+                mainNav.insertBefore(mobileTrigger, mainNav.firstChild);
+            }
+
+            const mobileTrigger =
+                mainNav.querySelector(".sd-mobile-trigger");
+
+            const mobileMenu =
+                mainNav.querySelector(".nav-menu");
+
+            if(mobileMenu){
+
+                mobileMenu.id = "sd-mobile-nav-menu";
+
+                // -----------------------------------------------------
+                // Overlay
+                // -----------------------------------------------------
+
+                let overlay = document.querySelector(".sd-mobile-overlay");
+
+                if(!overlay){
+
+                    overlay = document.createElement("div");
+                    overlay.className = "sd-mobile-overlay";
+                    overlay.setAttribute("aria-hidden", "true");
+                    document.body.appendChild(overlay);
+
+                }
+
+                const closeMobileMenu = function(){
+
+                    mobileMenu.classList.remove("sd-mobile-open");
+                    overlay.classList.remove("sd-mobile-overlay-open");
+                    document.body.classList.remove("sd-mobile-menu-open");
+
+                    if(mobileTrigger){
+                        mobileTrigger.setAttribute("aria-expanded", "false");
+                        mobileTrigger.setAttribute("aria-label", "Open navigation menu");
+                    }
+
+                };
+
+                const openMobileMenu = function(){
+
+                    mobileMenu.classList.add("sd-mobile-open");
+                    overlay.classList.add("sd-mobile-overlay-open");
+                    document.body.classList.add("sd-mobile-menu-open");
+
+                    if(mobileTrigger){
+                        mobileTrigger.setAttribute("aria-expanded", "true");
+                        mobileTrigger.setAttribute("aria-label", "Close navigation menu");
+                    }
+
+                };
+
+                if(mobileTrigger){
+
+                    mobileTrigger.addEventListener("click", function(){
+
+                        if(mobileMenu.classList.contains("sd-mobile-open")){
+                            closeMobileMenu();
+                        }else{
+                            openMobileMenu();
+                        }
+
+                    });
+
+                }
+
+                overlay.addEventListener("click", closeMobileMenu);
+
+                // -----------------------------------------------------
+                // Mobile dropdown toggles. The main link remains a real
+                // navigation link; the small arrow button expands the
+                // submenu.
+                // -----------------------------------------------------
+
+                mobileMenu.querySelectorAll(".dropdown").forEach(function(dropdown){
+
+                    const topLink = dropdown.querySelector(":scope > a");
+                    const submenu = dropdown.querySelector(":scope > .dropdown-menu");
+
+                    if(!topLink || !submenu){
+                        return;
+                    }
+
+                    if(dropdown.querySelector(":scope > .sd-mobile-dropdown-toggle")){
+                        return;
+                    }
+
+                    const toggle = document.createElement("button");
+
+                    toggle.type = "button";
+                    toggle.className = "sd-mobile-dropdown-toggle";
+                    toggle.setAttribute("aria-label", "Expand submenu");
+                    toggle.setAttribute("aria-expanded", "false");
+                    toggle.innerHTML = "<span aria-hidden=\"true\"></span>";
+
+                    dropdown.insertBefore(toggle, submenu);
+
+                    toggle.addEventListener("click", function(event){
+
+                        event.preventDefault();
+                        event.stopPropagation();
+
+                        const isOpen =
+                            dropdown.classList.toggle("sd-mobile-dropdown-open");
+
+                        toggle.classList.toggle("open", isOpen);
+                        toggle.setAttribute("aria-expanded", String(isOpen));
+                        toggle.setAttribute(
+                            "aria-label",
+                            isOpen ? "Collapse submenu" : "Expand submenu"
+                        );
+
+                    });
+
+                });
+
+                // Close after a page is selected.
+                mobileMenu.querySelectorAll("a").forEach(function(link){
+
+                    link.addEventListener("click", function(){
+                        closeMobileMenu();
+                    });
+
+                });
+
+                // Escape closes the mobile panel.
+                document.addEventListener("keydown", function(event){
+
+                    if(event.key === "Escape"){
+                        closeMobileMenu();
+                    }
+
+                });
+
+                // Restore normal state whenever the viewport returns to desktop.
+                window.addEventListener("resize", function(){
+
+                    if(window.innerWidth > 768){
+                        closeMobileMenu();
+                    }
+
+                });
+
+            }
+
+        }
 
 
 
