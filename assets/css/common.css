@@ -1441,3 +1441,278 @@ Footer
     transform: none;
 }
 
+
+/* ================================================================
+   SaraDharma Mobile Navigation - Version 6
+   Desktop navigation remains unchanged.
+   On phones, navigation becomes a compact top bar with a
+   left-side slide-out menu so page content stays immediately visible.
+   ================================================================ */
+
+.sd-mobile-trigger,
+.sd-mobile-overlay{
+    display:none;
+}
+
+@media (max-width:768px){
+
+    /* Compact navigation bar */
+    .main-nav{
+        position:sticky;
+        top:0;
+        z-index:10000;
+        min-height:56px;
+        height:56px;
+        padding:0 12px;
+        display:flex;
+        align-items:center;
+        justify-content:flex-start;
+        background:#3f2b1d;
+        box-shadow:0 3px 10px rgba(0,0,0,.18);
+    }
+
+    /* Mobile menu button */
+    .sd-mobile-trigger{
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        width:44px;
+        height:44px;
+        margin:0 8px 0 0;
+        padding:0;
+        border:0;
+        border-radius:8px;
+        background:transparent;
+        color:#ffffff;
+        font-size:28px;
+        line-height:1;
+        cursor:pointer;
+        flex:0 0 auto;
+    }
+
+    .sd-mobile-trigger:hover,
+    .sd-mobile-trigger:focus{
+        background:rgba(255,255,255,.14);
+        outline:2px solid rgba(255,255,255,.35);
+        outline-offset:1px;
+    }
+
+    .sd-mobile-title{
+        display:flex;
+        align-items:center;
+        gap:8px;
+        color:#ffffff;
+        font-size:1.05rem;
+        font-weight:700;
+        white-space:nowrap;
+        letter-spacing:.2px;
+    }
+
+    .sd-mobile-title img{
+        width:34px;
+        height:34px;
+        object-fit:contain;
+    }
+
+    /* The existing UL becomes the left slide-out panel */
+    .main-nav .nav-menu{
+        display:flex !important;
+        flex-direction:column !important;
+        align-items:stretch !important;
+        justify-content:flex-start !important;
+        position:fixed !important;
+        top:0 !important;
+        left:0 !important;
+        bottom:0 !important;
+        width:min(300px,84vw) !important;
+        height:100vh !important;
+        margin:0 !important;
+        padding:76px 0 24px !important;
+        gap:0 !important;
+        background:#3f2b1d !important;
+        box-shadow:8px 0 25px rgba(0,0,0,.30) !important;
+        overflow-y:auto !important;
+        overflow-x:hidden !important;
+        transform:translateX(-105%) !important;
+        transition:transform .28s ease !important;
+        z-index:10001 !important;
+        -webkit-overflow-scrolling:touch;
+    }
+
+    .main-nav .nav-menu.sd-mobile-open{
+        transform:translateX(0) !important;
+    }
+
+    /* All first-level items occupy the sidebar width */
+    .main-nav .nav-menu > li{
+        width:100% !important;
+        flex:0 0 auto !important;
+        min-width:0 !important;
+        margin:0 !important;
+        border-bottom:1px solid rgba(255,255,255,.10);
+    }
+
+    .main-nav .nav-menu > li > a{
+        display:flex !important;
+        align-items:center;
+        width:100% !important;
+        min-height:50px;
+        padding:13px 22px !important;
+        color:#ffffff !important;
+        background:transparent !important;
+        border-radius:0 !important;
+        border-top:0 !important;
+        font-size:1rem !important;
+        line-height:1.25;
+        text-align:left !important;
+        white-space:normal !important;
+        transform:none !important;
+    }
+
+    .main-nav .nav-menu > li > a:hover,
+    .main-nav .nav-menu > li > a:focus{
+        background:rgba(255,255,255,.12) !important;
+        transform:none !important;
+    }
+
+    /* SaraDharma Home inside the panel */
+    .main-nav .nav-menu .nav-brand{
+        width:100% !important;
+        flex:0 0 auto !important;
+        margin:0 !important;
+        padding:0 !important;
+        text-align:left !important;
+    }
+
+    .main-nav .nav-menu .nav-brand a{
+        justify-content:flex-start !important;
+        gap:10px !important;
+        padding:15px 22px !important;
+    }
+
+    .main-nav .nav-menu .nav-logo{
+        display:block !important;
+        width:34px !important;
+        height:34px !important;
+    }
+
+    .main-nav .nav-menu .nav-title{
+        display:block !important;
+        font-size:1.08rem !important;
+        line-height:1.2 !important;
+        color:#ffffff !important;
+    }
+
+    /* Do not rely on hover for mobile dropdowns */
+    .main-nav .nav-menu .dropdown{
+        position:relative !important;
+    }
+
+    .main-nav .nav-menu .dropdown > a::after{
+        content:"" !important;
+    }
+
+    .main-nav .nav-menu .dropdown > .dropdown-menu{
+        display:none !important;
+        position:static !important;
+        width:100% !important;
+        min-width:0 !important;
+        margin:0 !important;
+        padding:0 !important;
+        background:#2f2118 !important;
+        border-radius:0 !important;
+        box-shadow:none !important;
+        transform:none !important;
+    }
+
+    .main-nav .nav-menu .dropdown.sd-mobile-dropdown-open > .dropdown-menu{
+        display:block !important;
+    }
+
+    .main-nav .nav-menu .dropdown-menu li{
+        width:100% !important;
+        margin:0 !important;
+        padding:0 !important;
+        border-top:1px solid rgba(255,255,255,.07);
+    }
+
+    .main-nav .nav-menu .dropdown-menu li a{
+        display:block !important;
+        width:100% !important;
+        padding:11px 22px 11px 44px !important;
+        color:#f6eee3 !important;
+        background:transparent !important;
+        font-size:.94rem !important;
+        line-height:1.35;
+        text-align:left !important;
+        white-space:normal !important;
+        transform:none !important;
+    }
+
+    .main-nav .nav-menu .dropdown-menu li a:hover,
+    .main-nav .nav-menu .dropdown-menu li a:focus{
+        background:rgba(255,255,255,.10) !important;
+        color:#ffffff !important;
+    }
+
+    /* Mobile dropdown expand/collapse button */
+    .sd-mobile-dropdown-toggle{
+        position:absolute;
+        top:6px;
+        right:10px;
+        width:40px;
+        height:40px;
+        padding:0;
+        border:0;
+        border-radius:8px;
+        background:transparent;
+        color:#f4d27a;
+        font-size:22px;
+        line-height:1;
+        cursor:pointer;
+        z-index:2;
+    }
+
+    .sd-mobile-dropdown-toggle:hover,
+    .sd-mobile-dropdown-toggle:focus{
+        background:rgba(255,255,255,.12);
+        outline:none;
+    }
+
+    .sd-mobile-dropdown-toggle.open::before{
+        content:"▾";
+    }
+
+    .sd-mobile-dropdown-toggle:not(.open)::before{
+        content:"▸";
+    }
+
+    /* Overlay behind the open left panel */
+    .sd-mobile-overlay{
+        display:block;
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,.45);
+        opacity:0;
+        visibility:hidden;
+        transition:opacity .28s ease,visibility .28s ease;
+        z-index:10000;
+    }
+
+    .sd-mobile-overlay.sd-mobile-overlay-open{
+        opacity:1;
+        visibility:visible;
+    }
+
+    body.sd-mobile-menu-open{
+        overflow:hidden;
+    }
+
+    /* Keep the compact mobile bar above page content */
+    .main-nav .sd-mobile-title-wrap{
+        display:flex;
+        align-items:center;
+        min-width:0;
+    }
+
+}
